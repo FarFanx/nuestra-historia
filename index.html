@@ -61,7 +61,7 @@
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- CORAZONES DE FONDO CORREGIDOS --- */
+        /* --- CORAZONES DE FONDO --- */
         .heart-particle {
             position: fixed;
             pointer-events: none;
@@ -246,7 +246,7 @@
         }
         @keyframes twitchEarLeft {
             0%, 90%, 100% { transform: rotate(-15deg); }
-            33% { transform: rotate(-22deg); }
+            93% { transform: rotate(-22deg); }
         }
         @keyframes twitchEarRight {
             0%, 85%, 100% { transform: rotate(15deg); }
@@ -491,7 +491,6 @@
 
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
-    <!-- AQUÍ SE MODIFICÓ LA RUTA PARA EVITAR ERRORES DE ACENTOS Y ESPACIOS -->
     <audio id="audioLocal" loop>
         <source src="musica/pablo_alboran_donde_esta_el_amor.mp3" type="audio/mpeg">
         Tu navegador no soporta el elemento de audio.
@@ -552,7 +551,7 @@
         <h2>📖 Capítulo 1: Todo comenzó mucho antes...</h2>
         <p>Nuestra historia no empezó con una declaración romántica.</p>
         <p>Empezó mucho antes de las fotos y las llamadas.</p>
-        <p>En aquel entonces éramos simplemente dos personas que coincidieron in el mismo camino sin imaginar todo lo que vendría después. ❤️</p>
+        <p>En aquel entonces éramos simplemente dos personas que coincidieron en el mismo camino sin imaginar todo lo que vendría después. ❤️</p>
         <p>Parecía una coincidencia cualquiera, pero resultó ser el prólogo de algo increíble.</p>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo1', 'capitulo2', 3)">Continuar con el chisme 👀</button>
@@ -620,7 +619,7 @@
         <p>Hemos compartido días buenos, días increíbles y también de los otros, pero siempre juntos. Porque de eso se trata: de ser un equipo que no se rinde y que disfruta cada segundo que la vida nos regala.</p>
         <p>Gracias por cada minuto de tu tiempo. ❤️</p>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('mensajeFinal', 'mensajeFinal', 8)">Llegar al final 🏁</button>
+            <button class="boton" onclick="navegar('capitulo6', 'mensajeFinal', 8)">Llegar al final 🏁</button>
             <button class="boton-regresar" onclick="navegar('capitulo6', 'capitulo5', 6)">Anterior 👈</button>
         </div>
     </div>
@@ -648,7 +647,6 @@
             const audio = document.getElementById('audioLocal');
             const indicador = document.getElementById('musicIndicator');
 
-            // Lanzar audio local al primer clic
             if (!musicaIniciada && audio) {
                 audio.play().then(() => {
                     musicaIniciada = true;
