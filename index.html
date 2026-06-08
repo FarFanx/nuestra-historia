@@ -238,7 +238,7 @@
         /* ANIMACIONES DEL GATITO */
         @keyframes catBlink {
             0%, 90%, 100% { transform: scaleY(1); }
-            55% { transform: scaleY(0.1); }
+            95% { transform: scaleY(0.1); }
         }
         @keyframes wavePaw {
             0%, 100% { transform: rotate(0deg); }
@@ -431,44 +431,44 @@
             100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
         }
 
-        /* --- CONTENEDOR DE AUDIO PREMIUM (NUEVO) --- */
-        .music-player-container {
+        /* --- NOTA MUSICAL FLOTANTE PREMIUM --- */
+        .music-note-container {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 25px;
+            left: 25px;
             z-index: 999;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 10px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
             box-shadow: var(--shadow-premium);
-            max-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             transition: var(--transition-smooth);
         }
-        
-        .music-player-container:hover {
-            transform: scale(1.03);
-            background: rgba(255, 255, 255, 0.95);
+
+        .music-note-container:hover {
+            transform: translateY(-3px);
         }
 
-        .music-title {
+        .music-text {
             font-family: 'Playfair Display', serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-style: italic;
             color: var(--primary);
-            margin-bottom: 6px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
             font-weight: 600;
-            text-align: center;
         }
 
-        .music-player-container iframe {
-            border-radius: 10px;
-            display: block;
+        .music-icon {
+            animation: pulseMusic 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseMusic {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
         /* RESPONSIVE DESIGN INTELIGENTE */
@@ -478,8 +478,8 @@
             .container, .capitulo { padding: 45px 25px; border-radius: 20px; }
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
             .boton, .boton-regresar { width: 100%; text-align: center; padding: 16px 20px; }
-            .music-player-container { bottom: 15px; left: 15px; max-width: 160px; padding: 8px; }
-            .music-title { font-size: 0.65rem; }
+            .music-note-container { bottom: 15px; left: 15px; padding: 8px 14px; }
+            .music-text { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -487,9 +487,13 @@
 
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
-    <div class="music-player-container">
-        <div class="music-title">🎵 Donde Está El Amor</div>
-        <iframe width="100%" height="40" src="https://www.youtube.com/embed/S2C_m7gYI7M?rel=0&amp;controls=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div style="position: absolute; left: -9999px; top: -9999px;">
+        <iframe id="audioPlayer" width="100" height="100" src="https://www.youtube.com/embed/QSaH1ikLXFw?enablejsapi=1&rel=0" title="Audio Player" frameborder="0" allow="autoplay"></iframe>
+    </div>
+
+    <div class="music-note-container">
+        <span class="music-icon">🎵</span>
+        <span class="music-text">Donde Está El Amor</span>
     </div>
 
     <div class="container card-active" id="inicio">
@@ -540,7 +544,7 @@
         <div class="badge-secreto">Prólogo</div>
         <div class="img-wrapper"><img src="imagenes/snoopy.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 1: Todo comenzó mucho antes...</h2>
-        <p>Nuestra historia no empezó con una declaration romántica.</p>
+        <p>Nuestra historia no empezó con una declaración romántica.</p>
         <p>Empezó mucho antes de las fotos y las llamadas.</p>
         <p>En aquel entonces éramos simplemente dos personas que coincidieron en el mismo camino sin imaginar todo lo que vendría después. ❤️</p>
         <p>Parecía una coincidencia cualquiera, pero resultó ser el prólogo de algo increíble.</p>
@@ -630,11 +634,22 @@
 
     <script>
         const totalPasos = 8;
+        let musicaIniciada = false;
 
         // --- NAVEGACIÓN MEJORADA ---
         function navegar(actualId, siguienteId, pasoActual) {
             const actualCard = document.getElementById(actualId);
             const siguienteCard = document.getElementById(siguienteId);
+
+            // ACTIVAR MÚSICA CON EL PRIMER CLIC (Evita bloqueo del navegador)
+            if (!musicaIniciada) {
+                const player = document.getElementById('audioPlayer');
+                if (player) {
+                    // Forzamos al iframe a recargar con autoplay activo tras la acción del usuario
+                    player.src += "&autoplay=1";
+                }
+                musicaIniciada = true;
+            }
 
             actualCard.style.opacity = "0";
             actualCard.style.transform = "translateY(-30px) scale(0.95)";
@@ -667,17 +682,16 @@
             const corazon = document.createElement('div');
             corazon.classList.add('heart-particle');
             
-            // Solución limpia con inline-style y currentColor para compatibilidad total del SVG
             corazon.innerHTML = `
                 <svg width="24" height="24" viewBox="0 0 24 24" style="fill: var(--primary); opacity: 0.25;">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>`;
             
             corazon.style.left = Math.random() * 100 + 'vw';
-            const size = Math.random() * 15 + 10; // Variación de tamaño entre 10px y 25px
+            const size = Math.random() * 15 + 10;
             corazon.style.width = size + 'px';
             
-            const duracion = Math.random() * 4 + 5; // Entre 5s y 9s para suavidad visual
+            const duracion = Math.random() * 4 + 5;
             corazon.style.animationDuration = duracion + 's';
             
             document.body.appendChild(corazon);
@@ -685,7 +699,6 @@
             setTimeout(() => { corazon.remove(); }, duracion * 1000);
         }
 
-        // Frecuencia equilibrada de partículas
         setInterval(crearParticulaDeFondo, 800);
 
         // --- LANZADOR DE CONFETI PREMIUM (ALTA COMPATIBILIDAD) ---
@@ -700,11 +713,10 @@
                     
                     const dimension = Math.random() * 10 + 6;
                     confeti.style.width = dimension + 'px';
-                    confeti.style.height = (Math.random() > 0.5 ? dimension : dimension * 1.5) + 'px'; // Formas rectangulares y cuadradas variadas
+                    confeti.style.height = (Math.random() > 0.5 ? dimension : dimension * 1.5) + 'px';
                     
                     confeti.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
                     
-                    // Añadimos dispersión física asíncrona
                     confeti.style.setProperty('transform', `translateX(${Math.random() * 300 - 150}px)`);
                     
                     document.body.appendChild(confeti);
