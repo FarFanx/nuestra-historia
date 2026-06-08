@@ -1,194 +1,163 @@
 <!DOCTYPE html>
-
 <html lang="es">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuestra Historia ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-<style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #0f0f0f,
+                #1d1026,
+                #2b1637
+            );
+            display: flex;
+            flex-direction: column; /* Permite que los elementos se apilen si hay más de uno visible */
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
-}
+        .container,
+        .segunda-pantalla,
+        .capitulo {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 35px;
+            text-align: center;
+            color: white;
+            animation: aparecer 1.2s ease;
+            margin-bottom: 20px;
+        }
 
-body{
-    min-height:100vh;
-    background:linear-gradient(
-        135deg,
-        #0f0f0f,
-        #1d1026,
-        #2b1637
-    );
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:25px;
-}
+        .segunda-pantalla,
+        .capitulo {
+            display: none;
+        }
 
-.container,
-.segunda-pantalla{
-    width:100%;
-    max-width:600px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.1);
-    border-radius:25px;
-    padding:35px;
-    text-align:center;
-    color:white;
-    animation:aparecer 1.2s ease;
-}
+        h1, h2 {
+            margin-bottom: 20px;
+        }
 
-.segunda-pantalla{
-    display:none;
-}
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #e5e5e5;
+        }
 
-h1,h2{
-    margin-bottom:20px;
-}
+        .advertencia {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ffb3d9;
+        }
 
-p{
-    line-height:1.8;
-    margin-bottom:15px;
-    color:#e5e5e5;
-}
+        .boton {
+            margin-top: 30px;
+            display: inline-block;
+            text-decoration: none;
+            background: linear-gradient(
+                135deg,
+                #ff5ea8,
+                #ff7ac3
+            );
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: .3s;
+            cursor: pointer;
+        }
 
-.advertencia{
-    margin-top:20px;
-    font-weight:bold;
-    color:#ffb3d9;
-}
+        .boton:hover {
+            transform: scale(1.05);
+        }
 
-.boton{
-    margin-top:30px;
-    display:inline-block;
-    text-decoration:none;
-    background:linear-gradient(
-        135deg,
-        #ff5ea8,
-        #ff7ac3
-    );
-    color:white;
-    padding:15px 30px;
-    border-radius:50px;
-    font-weight:bold;
-    transition:.3s;
-}
+        /* Estilos específicos para la imagen de Snoopy en el capítulo */
+        .capitulo img {
+            width: 120px;
+            margin-bottom: 15px;
+        }
 
-.boton:hover{
-    transform:scale(1.05);
-}
-
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-</style>
-
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container" id="inicio">
+    <div class="container" id="inicio">
+        <h1>🐱 Hola, chismosito o chismosita</h1>
+        <p>Si llegaste hasta aquí, es porque la curiosidad te ganó.</p>
+        <p>Y como dicen por ahí... la curiosidad mató al gato, pero aquí solo te hará conocer nuestra historia. 😌</p>
+        <p>¿Quieres saber cómo empezó todo?</p>
+        <p>¿Cómo dos personas que no imaginaban lo que vendría terminaron construyendo tantos recuerdos?</p>
+        <p>Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.</p>
+        <p class="advertencia">⚠️ Advertencia: podrías terminar creyendo en las coincidencias.</p>
+        <a href="#" class="boton" onclick="mostrarHistoria()">Quiero el chisme completo 👀</a>
+    </div>
 
-<h1>🐱 Hola, chismosito o chismosita</h1>
+    <div class="segunda-pantalla" id="segundaPantalla">
+        <h2>😳 ¿Seguro que quieres continuar?</h2>
+        <p>Porque una vez que empieces, ya no hay marcha atrás...</p>
+        <p>Todavía estás a tiempo de volver a Instagram y seguir viendo memes.</p>
+        <p>Pero si llegaste hasta aquí...</p>
+        <p>Bueno...</p>
+        <p>Supongo que el chisme te interesa bastante. 👀</p>
+        <p>Así que ponte cómodo.</p>
+        <p>Sirve tu gaseosa.</p>
+        <p>Busca unas papitas.</p>
+        <p>Y acompáñanos mientras te contamos cómo dos personas terminaron convirtiéndose en una parte importante de la vida del otro. ❤️</p>
+        <a href="#" class="boton" onclick="mostrarCapituloUno()">¡Sí, dale! 🚀</a>
+    </div>
 
-<p>
-Si llegaste hasta aquí, es porque la curiosidad te ganó.
-</p>
+    <div class="capitulo" id="capitulo1">
+        <img src="imagenes/snoopy.png" alt="Snoopy">
+        <h2>📖 Capítulo 1: Todo comenzó mucho antes...</h2>
+        <p>Si pensabas que esta historia comenzó el día que nos hicimos pareja... pues te equivocaste. 😌</p>
+        <p>Porque las mejores historias no empiezan con una declaración romántica ni con música de película.</p>
+        <p>La nuestra comenzó mucho antes.</p>
+        <p>Mucho antes de las fotos.</p>
+        <p>Mucho antes de las llamadas.</p>
+        <p>Mucho antes de que existiera un "nosotros".</p>
+        <p>En aquel entonces éramos simplemente dos personas que coincidieron en el mismo camino.</p>
+        <p>Dos personas que todavía no imaginaban todo lo que vendría después.</p>
+        <p>Y aunque parecía una coincidencia cualquiera...</p>
+        <p>Resultó ser el primer capítulo de una historia bastante bonita. ❤️</p>
+        <p>Pero tranquilo, chismosito...</p>
+        <p>Lo bueno todavía no empieza. 👀</p>
+    </div>
 
-<p>
-Y como dicen por ahí... la curiosidad mató al gato, pero aquí solo te hará conocer nuestra historia. 😌
-</p>
+    <script>
+        function mostrarHistoria(){
+            document.getElementById("inicio").style.display = "none";
+            document.getElementById("segundaPantalla").style.display = "block";
+        }
 
-<p>
-¿Quieres saber cómo empezó todo?
-</p>
-
-<p>
-¿Cómo dos personas que no imaginaban lo que vendría terminaron construyendo tantos recuerdos?
-</p>
-
-<p>
-Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.
-</p>
-
-<p class="advertencia">
-⚠️ Advertencia: podrías terminar creyendo en las coincidencias.
-</p>
-
-<a href="#" class="boton" onclick="mostrarHistoria()">
-Quiero el chisme completo 👀
-</a>
-
-</div>
-
-<div class="segunda-pantalla" id="segundaPantalla">
-
-<h2>😳 ¿Seguro que quieres continuar?</h2>
-
-<p>
-Porque una vez que empieces, ya no hay marcha atrás...
-</p>
-
-<p>
-Todavía estás a tiempo de volver a Instagram y seguir viendo memes.
-</p>
-
-<p>
-Pero si llegaste hasta aquí...
-</p>
-
-<p>
-Bueno...
-</p>
-
-<p>
-Supongo que el chisme te interesa bastante. 👀
-</p>
-
-<p>
-Así que ponte cómodo.
-</p>
-
-<p>
-Sirve tu gaseosa.
-</p>
-
-<p>
-Busca unas papitas.
-</p>
-
-<p>
-Y acompáñanos mientras te contamos cómo dos personas terminaron convirtiéndose en una parte importante de la vida del otro. ❤️
-</p>
-
-</div>
-
-<script>
-
-function mostrarHistoria(){
-
-    document.getElementById("inicio").style.display = "none";
-
-    document.getElementById("segundaPantalla").style.display = "block";
-
-}
-
-</script>
+        function mostrarCapituloUno(){
+            document.getElementById("segundaPantalla").style.display = "none";
+            document.getElementById("capitulo1").style.display = "block";
+        }
+    </script>
 
 </body>
-
 </html>
