@@ -6,10 +6,10 @@
     <title>Nuestra Historia ❤️</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- VARIABLES PREMIUM --- */
+        /* --- VARIABLES DE ALTA GAMA --- */
         :root {
             --primary: #800020;
             --primary-light: #bd9399;
@@ -18,8 +18,8 @@
             --accent-light: #fbf5f8;
             --text-main: #3a2e31;
             --text-muted: #614d52;
-            --shadow-premium: 0 20px 50px rgba(128, 0, 32, 0.08), 0 5px 15px rgba(0, 0, 0, 0.02);
-            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-premium: 0 30px 70px rgba(128, 0, 32, 0.12), 0 10px 30px rgba(0, 0, 0, 0.04);
+            --transition-smooth: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         /* --- CONFIGURACIÓN BASE --- */
@@ -36,7 +36,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
             position: relative;
@@ -48,7 +48,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
+            height: 6px;
             background: rgba(217, 167, 176, 0.2);
             z-index: 1000;
         }
@@ -57,120 +57,241 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, var(--primary-light), var(--primary));
-            transition: width 0.4s ease;
+            box-shadow: 0 2px 10px rgba(128, 0, 32, 0.3);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- EFECTO DE PARTÍCULAS DE FONDO --- */
+        /* --- CORAZONES DE FONDO CORREGIDOS --- */
         .heart-particle {
-            position: absolute;
+            position: fixed;
             pointer-events: none;
             z-index: 0;
             opacity: 0;
-            animation: floatParticle 6s ease-in-out infinite;
+            bottom: -50px;
+            animation: floatParticle 7s ease-in-out infinite;
         }
 
         @keyframes floatParticle {
-            0% { transform: translateY(100vh) scale(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(0) scale(0) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.5; }
+            85% { opacity: 0.5; }
+            100% { transform: translateY(-115vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
-        /* --- CONTENEDORES CON EFECTO GLASSMORPHISM --- */
+        /* --- INTERFAZ GLASSMORPHISM AVANZADA --- */
         .container, .capitulo {
             width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 50px 45px;
+            max-width: 620px;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px 50px;
             text-align: center;
             position: relative;
             box-shadow: var(--shadow-premium);
-            border: 1px solid rgba(128, 0, 32, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.7);
             z-index: 10;
-            
-            /* Control de estados de animación */
             display: none;
             opacity: 0;
-            transform: translateY(20px) scale(0.98);
+            transform: translateY(40px) scale(0.95);
             transition: var(--transition-smooth);
         }
 
-        /* Clase activa controlada por JS */
         .card-active {
             display: block;
-            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: cubicReveal 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        @keyframes fadeInUp {
+        @keyframes cubicReveal {
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
 
-        /* --- ESQUINAS FLORALES VECTORIALES MEJORADAS --- */
+        /* --- DETALLES FLORALES VECTORIALES --- */
         .container::before, .container::after,
         .capitulo::before, .capitulo::after {
             content: "";
             position: absolute;
-            width: 140px;
-            height: 140px;
+            width: 150px;
+            height: 150px;
             background-repeat: no-repeat;
             background-size: contain;
-            opacity: 0.25; /* Transparencia fina de marca de agua premium */
+            opacity: 0.18;
             pointer-events: none;
             z-index: 1;
             transition: var(--transition-smooth);
         }
 
-        .container::before, .capitulo::before { top: 15px; left: 15px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 Q30,0 40,25 Q20,45 0,30 Z' fill='%23800020'/%3E%3Ccircle cx='15' cy='15' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
-        .container::after, .capitulo::after { bottom: 15px; right: 15px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100,100 Q70,100 60,75 Q80,55 100,70 Z' fill='%23800020'/%3E%3Ccircle cx='85' cy='85' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
+        .container::before, .capitulo::before { top: 20px; left: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 Q30,0 40,25 Q20,45 0,30 Z' fill='%23800020'/%3E%3Ccircle cx='15' cy='15' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
+        .container::after, .capitulo::after { bottom: 20px; right: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100,100 Q70,100 60,75 Q80,55 100,70 Z' fill='%23800020'/%3E%3Ccircle cx='85' cy='85' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
 
-        .container:hover::before, .capitulo:hover::before { transform: translate(-5px, -5px); opacity: 0.4; }
-        .container:hover::after, .capitulo:hover::after { transform: translate(5px, 5px); opacity: 0.4; }
+        .container:hover::before, .capitulo:hover::before { transform: translate(-8px, -8px) scale(1.05); opacity: 0.3; }
+        .container:hover::after, .capitulo:hover::after { transform: translate(8px, 8px) scale(1.05); opacity: 0.3; }
 
-        /* --- MARCA TEXTUAL DE SECCIÓN --- */
-        .badge-secreto {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.75rem;
-            color: var(--primary-light);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
-            font-weight: 600;
-            display: inline-block;
-            border-bottom: 1px solid rgba(189, 147, 153, 0.3);
-            padding-bottom: 4px;
+        /* --- COMPONENTE: GATITO ANIMADO EN CSS --- */
+        .cat-stage {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(135deg, rgba(217, 167, 176, 0.1), rgba(128, 0, 32, 0.05));
+            border-radius: 50%;
+            position: relative;
+            border: 2px dashed var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 20px rgba(128, 0, 32, 0.05);
         }
 
-        /* --- TIPOGRAFÍAS DE ALTA GAMA --- */
+        .premium-cat {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .cat-ears {
+            position: absolute;
+            top: 5px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cat-ear {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid var(--primary);
+            border-radius: 4px;
+        }
+        .cat-ear.left { transform: rotate(-15deg); animation: twitchEarLeft 4s infinite; }
+        .cat-ear.right { transform: rotate(15deg); animation: twitchEarRight 5s infinite; }
+
+        .cat-face {
+            position: absolute;
+            bottom: 10px;
+            width: 76px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 40px 40px 35px 35px;
+            left: 2px;
+        }
+
+        .cat-eyes {
+            position: absolute;
+            top: 22px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 14px;
+        }
+
+        .cat-eye {
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: relative;
+            animation: catBlink 3.5s infinite;
+        }
+
+        .cat-eye::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+        }
+
+        .cat-nose {
+            position: absolute;
+            top: 34px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid var(--accent);
+        }
+
+        .cat-paw {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            bottom: 5px;
+            right: -5px;
+            border: 2px solid var(--primary);
+            transform-origin: bottom center;
+            animation: wavePaw 2.5s ease-in-out infinite;
+        }
+
+        /* ANIMACIONES DEL GATITO */
+        @keyframes catBlink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+        @keyframes wavePaw {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-35deg) translateY(-5px); }
+        }
+        @keyframes twitchEarLeft {
+            0%, 90%, 100% { transform: rotate(-15deg); }
+            93% { transform: rotate(-22deg); }
+        }
+        @keyframes twitchEarRight {
+            0%, 85%, 100% { transform: rotate(15deg); }
+            88% { transform: rotate(25deg); }
+        }
+
+        /* --- MARCA TEXTUAL --- */
+        .badge-secreto {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: inline-block;
+            border-bottom: 1px solid rgba(189, 147, 153, 0.4);
+            padding-bottom: 6px;
+        }
+
+        /* --- TIPOGRAFÍA PREMIUM --- */
         h1, h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.6rem;
+            font-size: 4rem;
             color: var(--primary);
             font-weight: 400;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.8);
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.9);
         }
 
         h1+p, h2+p {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-style: italic;
             color: var(--text-muted);
-            margin-bottom: 30px;
-            line-height: 1.5;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
 
         p {
-            font-size: 0.95rem;
-            line-height: 1.9;
+            font-size: 1rem;
+            line-height: 2;
             color: var(--text-main);
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             position: relative;
             z-index: 2;
             font-weight: 300;
@@ -178,19 +299,19 @@
 
         .advertencia {
             font-family: 'Playfair Display', serif;
-            margin-top: 35px;
+            margin-top: 40px;
             font-style: italic;
             color: var(--primary);
-            font-size: 0.95rem;
-            border-top: 1px dashed rgba(219, 167, 176, 0.5);
-            padding-top: 20px;
+            font-size: 1rem;
+            border-top: 1px dashed rgba(219, 167, 176, 0.6);
+            padding-top: 25px;
         }
 
-        /* --- BOTONES CON ACCIÓN PRO --- */
+        /* --- BOTONES CON EFECTO DE BRILLO (SHIMMER) --- */
         .btn-group {
-            margin-top: 35px;
+            margin-top: 40px;
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
@@ -198,45 +319,57 @@
 
         .boton {
             text-decoration: none;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bg) 100%);
             color: #ffffff;
             font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 15px 35px;
+            letter-spacing: 2.5px;
+            padding: 18px 40px;
             border: 1px solid var(--primary);
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
             transition: var(--transition-smooth);
             position: relative;
             z-index: 5;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(128, 0, 32, 0.15);
+            box-shadow: 0 10px 25px rgba(128, 0, 32, 0.2);
+            overflow: hidden;
+        }
+
+        .boton::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-25deg);
+            transition: none;
+        }
+
+        .boton:hover::before {
+            left: 150%;
+            transition: all 0.8s ease;
         }
 
         .boton:hover {
-            background: transparent;
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(128, 0, 32, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(128, 0, 32, 0.3);
         }
 
-        .boton:active {
-            transform: translateY(1px);
-        }
+        .boton:active { transform: translateY(-1px); }
 
         .boton-regresar {
             text-decoration: none;
             background: transparent;
-            color: var(--primary-light);
+            color: var(--text-muted);
             font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 15px 25px;
+            letter-spacing: 2.5px;
+            padding: 18px 30px;
             border: 1px solid transparent;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
             transition: var(--transition-smooth);
             position: relative;
@@ -245,26 +378,27 @@
 
         .boton-regresar:hover {
             color: var(--primary);
-            border-color: rgba(128, 0, 32, 0.15);
-            background: rgba(255, 255, 255, 0.5);
+            border-color: rgba(128, 0, 32, 0.2);
+            background: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
         }
 
-        /* --- CONTENEDORES DE IMÁGENES PREMIUM --- */
+        /* --- CONTENEDORES DE IMÁGENES ROTATIVAS --- */
         .img-wrapper {
             position: relative;
-            width: 130px;
-            height: 130px;
-            margin: 0 auto 25px auto;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px auto;
             z-index: 5;
         }
 
         .img-wrapper::after {
             content: "";
             position: absolute;
-            top: -5px; left: -5px; right: -5px; bottom: -5px;
-            border: 1px dashed var(--primary-light);
+            top: -7px; left: -7px; right: -7px; bottom: -7px;
+            border: 2px dashed var(--primary-light);
             border-radius: 50%;
-            animation: rotateDashed 20s linear infinite;
+            animation: rotateDashed 25s linear infinite;
         }
 
         @keyframes rotateDashed {
@@ -276,48 +410,62 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            border: 3px solid #ffffff;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             background: #ffffff;
         }
 
-        /* --- EFECTO CELEBRACIÓN FINAL (CONFETI) --- */
+        /* --- CELEBRACIÓN DE CONFETI PREMIUM --- */
         .confetti {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f00;
-            position: absolute;
-            z-index: 999;
+            width: 12px;
+            height: 12px;
+            z-index: 1000;
             pointer-events: none;
-            border-radius: 50%;
-            animation: dropConfetti 4s ease-out forwards;
+            border-radius: 4px;
+            animation: dropConfetti 3.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
         }
 
         @keyframes dropConfetti {
-            0% { transform: translateY(-5vh) translateX(0px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(105vh) translateX(100px) rotate(360deg); opacity: 0; }
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) translateX(150px) rotate(720deg); opacity: 0; }
         }
 
-        /* RWD */
+        /* RESPONSIVE DESIGN INTELIGENTE */
         @media (max-width: 480px) {
-            h1, h2 { font-size: 2.8rem; }
-            h1+p, h2+p { font-size: 1.1rem; }
-            .container, .capitulo { padding: 40px 25px; }
-            .btn-group { flex-direction: column; width: 100%; }
-            .boton, .boton-regresar { width: 100%; text-align: center; }
+            h1, h2 { font-size: 3rem; }
+            h1+p, h2+p { font-size: 1.2rem; }
+            .container, .capitulo { padding: 45px 25px; border-radius: 20px; }
+            .btn-group { flex-direction: column; width: 100%; gap: 12px; }
+            .boton, .boton-regresar { width: 100%; text-align: center; padding: 16px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Barra de progreso superior -->
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
-    <!-- PANTALLA INICIAL -->
     <div class="container card-active" id="inicio">
         <div class="badge-secreto">Bienvenidos</div>
-        <h1>🐱 Hola, chismosito o chismosita</h1>
+        
+        <div class="cat-stage">
+            <div class="premium-cat">
+                <div class="cat-ears">
+                    <div class="cat-ear left"></div>
+                    <div class="cat-ear right"></div>
+                </div>
+                <div class="cat-face">
+                    <div class="cat-eyes">
+                        <div class="cat-eye"></div>
+                        <div class="cat-eye"></div>
+                    </div>
+                    <div class="cat-nose"></div>
+                    <div class="cat-paw"></div>
+                </div>
+            </div>
+        </div>
+
+        <h1>Hola, chismosito o chismosita</h1>
         <p>Si llegaste hasta aquí, es porque la curiosidad te ganó.</p>
         <p>Y como dicen por ahí... la curiosidad mató al gato, pero aquí solo te hará conocer nuestra historia. 😌</p>
         <p>¿Quieres saber cómo empezó todo?</p>
@@ -329,7 +477,6 @@
         </div>
     </div>
 
-    <!-- CONFIRMACIÓN -->
     <div class="capitulo" id="segundaPantalla">
         <div class="badge-secreto">Confirmación</div>
         <h2>😳 ¿Seguro que quieres continuar?</h2>
@@ -342,7 +489,6 @@
         </div>
     </div>
 
-    <!-- CAPÍTULO 1 -->
     <div class="capitulo" id="capitulo1">
         <div class="badge-secreto">Prólogo</div>
         <div class="img-wrapper"><img src="imagenes/snoopy.png" alt="Snoopy"></div>
@@ -357,7 +503,6 @@
         </div>
     </div>
 
-    <!-- CAPÍTULO 2 -->
     <div class="capitulo" id="capitulo2">
         <div class="badge-secreto">El Destino</div>
         <div class="img-wrapper"><img src="imagenes/snoopy2.png" alt="Snoopy"></div>
@@ -371,7 +516,6 @@
         </div>
     </div>
 
-    <!-- CAPÍTULO 3 -->
     <div class="capitulo" id="capitulo3">
         <div class="badge-secreto">El Click</div>
         <div class="img-wrapper"><img src="imagenes/snoopy3.png" alt="Snoopy"></div>
@@ -385,7 +529,6 @@
         </div>
     </div>
 
-    <!-- CAPÍTULO 4 -->
     <div class="capitulo" id="capitulo4">
         <div class="badge-secreto">Momentos</div>
         <div class="img-wrapper"><img src="imagenes/snoopy4.png" alt="Snoopy"></div>
@@ -399,7 +542,6 @@
         </div>
     </div>
 
-    <!-- CAPÍTULO 5 -->
     <div class="capitulo" id="capitulo5">
         <div class="badge-secreto">Dedicatoria</div>
         <div class="img-wrapper"><img src="imagenes/snoopy5.png" alt="Snoopy"></div>
@@ -413,7 +555,6 @@
         </div>
     </div>
 
-    <!-- CAPÍTULO 6 -->
     <div class="capitulo" id="capitulo6">
         <div class="badge-secreto">Presente</div>
         <div class="img-wrapper"><img src="imagenes/snoopy6.png" alt="Snoopy"></div>
@@ -427,7 +568,6 @@
         </div>
     </div>
 
-    <!-- MENSAJE FINAL -->
     <div class="capitulo" id="mensajeFinal">
         <div class="badge-secreto">Para Siempre</div>
         <div class="img-wrapper"><img src="imagenes/snoopy_final.png" alt="Snoopy"></div>
@@ -442,85 +582,87 @@
     </div>
 
     <script>
-        const totalPasos = 8; // Número total de vistas
+        const totalPasos = 8;
 
-        // --- SISTEMA DE NAVEGACIÓN PRO CON ANIMACIÓN ---
+        // --- NAVEGACIÓN MEJORADA ---
         function navegar(actualId, siguienteId, pasoActual) {
             const actualCard = document.getElementById(actualId);
             const siguienteCard = document.getElementById(siguienteId);
 
-            // Transición de salida suave
             actualCard.style.opacity = "0";
-            actualCard.style.transform = "translateY(-15px) scale(0.98)";
+            actualCard.style.transform = "translateY(-30px) scale(0.95)";
 
             setTimeout(() => {
                 actualCard.classList.remove('card-active');
                 
-                // Configuración inicial de la tarjeta entrante
                 siguienteCard.classList.add('card-active');
                 siguienteCard.style.opacity = "0";
-                siguienteCard.style.transform = "translateY(15px) scale(0.98)";
+                siguienteCard.style.transform = "translateY(30px) scale(0.95)";
                 
-                // Forzar reflow para que el navegador capte el estado base antes de animar
-                siguienteCard.offsetHeight; 
+                siguienteCard.offsetHeight; // Forzar reflow nativo
                 
                 siguienteCard.style.opacity = "1";
                 siguienteCard.style.transform = "translateY(0) scale(1)";
 
-                // Actualizar barra de progreso superior
                 const porcentaje = (pasoActual / totalPasos) * 100;
                 document.getElementById('progressBar').style.width = `${porcentaje}%`;
 
-                // Disparar confeti premium si llega al final
                 if(siguienteId === 'mensajeFinal') {
                     lanzarCelebracion();
                 }
-            }, 400); // Sincronizado con los tiempos del CSS
+            }, 400);
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- GENERADOR AUTOMÁTICO DE AMBIENTE (CORAZONES DE FONDO) ---
+        // --- GENERADOR DE CORAZONES (CORREGIDO PARA PRODUCCIÓN) ---
         function crearParticulaDeFondo() {
             const corazon = document.createElement('div');
             corazon.classList.add('heart-particle');
-            // Usamos un SVG emebebido directo para no requerir dependencias externas
-            corazon.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="%23800020" opacity="0.3"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`;
+            
+            // Solución limpia con inline-style y currentColor para compatibilidad total del SVG
+            corazon.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" style="fill: var(--primary); opacity: 0.25;">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>`;
             
             corazon.style.left = Math.random() * 100 + 'vw';
-            const duracion = Math.random() * 3 + 4; // Entre 4s y 7s
+            const size = Math.random() * 15 + 10; // Variación de tamaño entre 10px y 25px
+            corazon.style.width = size + 'px';
+            
+            const duracion = Math.random() * 4 + 5; // Entre 5s y 9s para suavidad visual
             corazon.style.animationDuration = duracion + 's';
             
             document.body.appendChild(corazon);
 
-            setTimeout(() => {
-                corazon.remove();
-            }, duracion * 1000);
+            setTimeout(() => { corazon.remove(); }, duracion * 1000);
         }
 
-        // Generar partículas continuamente de manera sutil
-        setInterval(crearParticulaDeFondo, 900);
+        // Frecuencia equilibrada de partículas
+        setInterval(crearParticulaDeFondo, 800);
 
-        // --- ACCIÓN PREMIUM: LANZADOR DE CONFETI DINÁMICO ---
+        // --- LANZADOR DE CONFETI PREMIUM (ALTA COMPATIBILIDAD) ---
         function lanzarCelebracion() {
-            const colores = ['#800020', '#bd9399', '#d9a7b0', '#eecad5', '#ffffff'];
-            for (let i = 0; i < 60; i++) {
+            const colores = ['#800020', '#bd9399', '#d9a7b0', '#f5eef4', '#ffffff'];
+            for (let i = 0; i < 70; i++) {
                 setTimeout(() => {
                     const confeti = document.createElement('div');
                     confeti.classList.add('confetti');
                     confeti.style.left = Math.random() * 100 + 'vw';
                     confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-                    confeti.style.width = Math.random() * 8 + 6 + 'px';
-                    confeti.style.height = confeti.style.width;
-                    confeti.style.animationDuration = (Math.random() * 2 + 2) + 's';
                     
-                    // Dispersión horizontal aleatoria
-                    confeti.style.setProperty('transform', `translateX(${Math.random() * 200 - 100}px)`);
+                    const dimension = Math.random() * 10 + 6;
+                    confeti.style.width = dimension + 'px';
+                    confeti.style.height = (Math.random() > 0.5 ? dimension : dimension * 1.5) + 'px'; // Formas rectangulares y cuadradas variadas
+                    
+                    confeti.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
+                    
+                    // Añadimos dispersión física asíncrona
+                    confeti.style.setProperty('transform', `translateX(${Math.random() * 300 - 150}px)`);
                     
                     document.body.appendChild(confeti);
-                    
-                    setTimeout(() => { confeti.remove(); }, 4000);
-                }, i * 25); // Cascada ligera
+                    setTimeout(() => { confeti.remove(); }, 3500);
+                }, i * 20);
             }
         }
     </script>
