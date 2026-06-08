@@ -21,7 +21,7 @@
                 #2b1637
             );
             display: flex;
-            flex-direction: column; /* Permite que los elementos se apilen si hay más de uno visible */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 25px;
@@ -85,7 +85,6 @@
             transform: scale(1.05);
         }
 
-        /* Estilos específicos para la imagen de Snoopy en el capítulo */
         .capitulo img {
             width: 120px;
             margin-bottom: 15px;
@@ -145,14 +144,55 @@
         <p>Resultó ser el primer capítulo de una historia bastante bonita. ❤️</p>
         <p>Pero tranquilo, chismosito...</p>
         <p>Lo bueno todavía no empieza. 👀</p>
-        
         <a href="#" class="boton" onclick="mostrarCapituloDos()">Continuar con el chisme 👀</a>
     </div>
 
     <div class="capitulo" id="capitulo2">
-        <img src="imagenes/snoopy2.png" alt="Snoopy Capítulo 2">
-        <h2>📖 Capítulo 2: El siguiente paso...</h2>
-        <p>¡Aquí puedes empezar a escribir el segundo capítulo de tu historia cuando quieras! 📝</p>
+        <img src="imagenes/snoopy2.png" alt="Snoopy Reencuentro">
+        <h2>📖 Capítulo 2: Volvimos a encontrarnos</h2>
+        <p>Dicen por ahí que el mundo es un pañuelo, pero lo nuestro ya parecía un plan bien armado por el destino. 😮‍💨</p>
+        <p>Después de haber coincidido antes, la vida decidió que era momento de cruzarnos otra vez.</p>
+        <p>Pero esta vez no fue una coincidencia cualquiera.</p>
+        <p>Hubo algo diferente. Una mirada, una sonrisa o tal vez esas ganas de quedarnos a hablar un ratito más.</p>
+        <p>Ese reencuentro fue el chispazo que necesitábamos. Empezamos a hablar más seguido, a conocernos de verdad y a darnos cuenta de que la compañía del otro se sentía extrañamente bien. ❤️</p>
+        <p>De pronto, los mensajes ya no eran por aburrimiento, sino porque realmente queríamos saber del otro.</p>
+        <p>Pasamos de ser dos personas que "se conocían" a ser dos personas que no querían dejar de hablar. 📲</p>
+        <p>¿Y qué pasó después? Bueno, ahí es donde la cosa se pone verdaderamente interesante...</p>
+        <a href="#" class="boton" onclick="mostrarCapituloTres()">¿Qué pasó después? 👀</a>
+    </div>
+
+    <div class="capitulo" id="capitulo3">
+        <img src="imagenes/snoopy3.png" alt="Snoopy Capítulo 3">
+        <h2>📖 Capítulo 3: Cuando todo cambió</h2>
+        <p>Aquí escribiremos el momento exacto en el que las cosas dejaron de ser simples mensajes cotidianos y nació esa conexión única. ⚡</p>
+        <a href="#" class="boton" onclick="mostrarCapituloCuatro()">Ver nuestros recuerdos 📸</a>
+    </div>
+
+    <div class="capitulo" id="capitulo4">
+        <img src="imagenes/snoopy4.png" alt="Snoopy Capítulo 4">
+        <h2>📖 Capítulo 4: Nuestros recuerdos</h2>
+        <p>Aquí recopilaremos esos momentos, bromas internas, salidas o detalles especiales que se han quedado grabados para siempre. 🗺️✨</p>
+        <a href="#" class="boton" onclick="mostrarCapituloCinco()">Siguiente capítulo... 💕</a>
+    </div>
+
+    <div class="capitulo" id="capitulo5">
+        <img src="imagenes/snoopy5.png" alt="Snoopy Capítulo 5">
+        <h2>📖 Capítulo 5: Mi Morenita Linda ❤️</h2>
+        <p>Esta sección estará dedicada por completo a ella, a lo especial que es y a lo que significa en tu vida. La parte más romántica del viaje. 🥰</p>
+        <a href="#" class="boton" onclick="mostrarCapituloSeis()">¿Hay más tiempo juntos? ⏳</a>
+    </div>
+
+    <div class="capitulo" id="capitulo6">
+        <img src="imagenes/snoopy6.png" alt="Snoopy Capítulo 6">
+        <h2>📖 Capítulo 6: Tiempo juntos</h2>
+        <p>Aquí contaremos cómo ha sido el camino compartiendo días, riendo y construyendo lo que tienen hoy en día. 👣🍀</p>
+        <a href="#" class="boton" onclick="mostrarMensajeFinal()">Llegar al final 🏁</a>
+    </div>
+
+    <div class="capitulo" id="mensajeFinal">
+        <img src="imagenes/snoopy_final.png" alt="Snoopy Final">
+        <h2>❤️ Mensaje final</h2>
+        <p>El cierre perfecto para el chismosito o para ustedes mismos. Una bonita conclusión de este rincón web que creaste. 🌹🐱</p>
     </div>
 
     <script>
@@ -169,6 +209,31 @@
         function mostrarCapituloDos(){
             document.getElementById("capitulo1").style.display = "none";
             document.getElementById("capitulo2").style.display = "block";
+        }
+
+        function mostrarCapituloTres(){
+            document.getElementById("capitulo2").style.display = "none";
+            document.getElementById("capitulo3").style.display = "block";
+        }
+
+        function mostrarCapituloCuatro(){
+            document.getElementById("capitulo3").style.display = "none";
+            document.getElementById("capitulo4").style.display = "block";
+        }
+
+        function mostrarCapituloCinco(){
+            document.getElementById("capitulo4").style.display = "none";
+            document.getElementById("capitulo5").style.display = "block";
+        }
+
+        function mostrarCapituloSeis(){
+            document.getElementById("capitulo5").style.display = "none";
+            document.getElementById("capitulo6").style.display = "block";
+        }
+
+        function mostrarMensajeFinal(){
+            document.getElementById("capitulo6").style.display = "none";
+            document.getElementById("mensajeFinal").style.display = "block";
         }
     </script>
 
