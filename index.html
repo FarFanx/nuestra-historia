@@ -307,7 +307,7 @@
             padding-top: 25px;
         }
 
-        /* --- BOTONES CON EFECTO DE BRILLO (SHIMMER) --- */
+        /* --- BOTONES CON EFECTO DE BRILLO --- */
         .btn-group {
             margin-top: 40px;
             display: flex;
@@ -470,6 +470,10 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.15); }
         }
+        
+        .music-playing .music-icon {
+            animation: pulseMusic 0.8s infinite ease-in-out;
+        }
 
         /* RESPONSIVE DESIGN INTELIGENTE */
         @media (max-width: 480px) {
@@ -487,11 +491,12 @@
 
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
-    <div style="position: absolute; left: -9999px; top: -9999px;">
-        <iframe id="audioPlayer" width="100" height="100" src="https://www.youtube.com/embed/QSaH1ikLXFw?enablejsapi=1&rel=0" title="Audio Player" frameborder="0" allow="autoplay"></iframe>
-    </div>
+    <audio id="audioLocal" loop>
+        <source src="música/musica.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
 
-    <div class="music-note-container">
+    <div class="music-note-container" id="musicIndicator">
         <span class="music-icon">🎵</span>
         <span class="music-text">Donde Está El Amor</span>
     </div>
@@ -542,7 +547,7 @@
 
     <div class="capitulo" id="capitulo1">
         <div class="badge-secreto">Prólogo</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 1: Todo comenzó mucho antes...</h2>
         <p>Nuestra historia no empezó con una declaración romántica.</p>
         <p>Empezó mucho antes de las fotos y las llamadas.</p>
@@ -556,7 +561,7 @@
 
     <div class="capitulo" id="capitulo2">
         <div class="badge-secreto">El Destino</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy2.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy2.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 2: Volvimos a encontrarnos</h2>
         <p>Dicen que el mundo es un pañuelo, pero lo nuestro ya parecía un plan del destino. 😮‍💨</p>
         <p>Después de un tiempo, la vida decidió que era momento de cruzarnos otra vez. Pero esta vez fue diferente.</p>
@@ -569,7 +574,7 @@
 
     <div class="capitulo" id="capitulo3">
         <div class="badge-secreto">El Click</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy3.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy3.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 3: Cuando todo cambió</h2>
         <p>Hubo un momento exacto en el que las cosas dejaron de ser "normales" y empezaron a ser especiales. ✨</p>
         <p>Ese día en que una simple charla se convirtió en horas de confianza, donde las risas eran más ruidosas y el interés más profundo.</p>
@@ -582,7 +587,7 @@
 
     <div class="capitulo" id="capitulo4">
         <div class="badge-secreto">Momentos</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy4.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy4.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 4: Nuestros recuerdos</h2>
         <p>A partir de ahí, empezamos a coleccionar momentos que hoy son tesoros. 🗺️</p>
         <p>Las bromas internas que nadie más entiende, las primeras salidas llenas de nervios, y esos detalles que parecen pequeños pero significan el mundo entero.</p>
@@ -595,7 +600,7 @@
 
     <div class="capitulo" id="capitulo5">
         <div class="badge-secreto">Dedicatoria</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy5.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy5.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 5: Mi Morenita Linda ❤️</h2>
         <p>Este capítulo tiene un nombre especial porque ella es el corazón de esta historia. 🥰</p>
         <p>Mi morenita, la que con su forma de ser y su belleza me conquistó por completo. Ella es la razón por la que este sitio web existe y la que hace que cada día sea más bonito.</p>
@@ -608,20 +613,20 @@
 
     <div class="capitulo" id="capitulo6">
         <div class="badge-secreto">Presente</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy6.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy6.png" alt="Snoopy"></div>
         <h2>📖 Capítulo 6: Tiempo juntos</h2>
         <p>El tiempo ha pasado y aquí seguimos, aprendiendo el uno del otro cada día. 👣🍀</p>
         <p>Hemos compartido días buenos, días increíbles y también de los otros, pero siempre juntos. Porque de eso se trata: de ser un equipo que no se rinde y que disfruta cada segundo que la vida nos regala.</p>
         <p>Gracias por cada minuto de tu tiempo. ❤️</p>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo6', 'mensajeFinal', 8)">Llegar al final 🏁</button>
+            <button class="boton" onclick="navegar('mensajeFinal', 'mensajeFinal', 8)">Llegar al final 🏁</button>
             <button class="boton-regresar" onclick="navegar('capitulo6', 'capitulo5', 6)">Anterior 👈</button>
         </div>
     </div>
 
     <div class="capitulo" id="mensajeFinal">
         <div class="badge-secreto">Para Forever</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy_final.png" alt="Snoopy"></div>
+        <div class="img-wrapper"><img src="imágenes/snoopy_final.png" alt="Snoopy"></div>
         <h2>❤️ Mensaje final</h2>
         <p>Y así, llegamos al final de este recorrido... por ahora. 😌</p>
         <p>Gracias por ser parte de nuestra historia, ya sea leyéndola o viviéndola con nosotros.</p>
@@ -636,19 +641,20 @@
         const totalPasos = 8;
         let musicaIniciada = false;
 
-        // --- NAVEGACIÓN MEJORADA ---
         function navegar(actualId, siguienteId, pasoActual) {
             const actualCard = document.getElementById(actualId);
             const siguienteCard = document.getElementById(siguienteId);
+            const audio = document.getElementById('audioLocal');
+            const indicador = document.getElementById('musicIndicator');
 
-            // ACTIVAR MÚSICA CON EL PRIMER CLIC (Evita bloqueo del navegador)
-            if (!musicaIniciada) {
-                const player = document.getElementById('audioPlayer');
-                if (player) {
-                    // Forzamos al iframe a recargar con autoplay activo tras la acción del usuario
-                    player.src += "&autoplay=1";
-                }
-                musicaIniciada = true;
+            // Lanzar audio local al primer clic
+            if (!musicaIniciada && audio) {
+                audio.play().then(() => {
+                    musicaIniciada = true;
+                    if(indicador) indicador.classList.add('music-playing');
+                }).catch(error => {
+                    console.log("Bloqueo de reproducción controlado:", error);
+                });
             }
 
             actualCard.style.opacity = "0";
@@ -661,7 +667,7 @@
                 siguienteCard.style.opacity = "0";
                 siguienteCard.style.transform = "translateY(30px) scale(0.95)";
                 
-                siguienteCard.offsetHeight; // Forzar reflow nativo
+                siguienteCard.offsetHeight; 
                 
                 siguienteCard.style.opacity = "1";
                 siguienteCard.style.transform = "translateY(0) scale(1)";
@@ -677,7 +683,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // --- GENERADOR DE CORAZONES (CORREGIDO PARA PRODUCCIÓN) ---
         function crearParticulaDeFondo() {
             const corazon = document.createElement('div');
             corazon.classList.add('heart-particle');
@@ -701,7 +706,6 @@
 
         setInterval(crearParticulaDeFondo, 800);
 
-        // --- LANZADOR DE CONFETI PREMIUM (ALTA COMPATIBILIDAD) ---
         function lanzarCelebracion() {
             const colores = ['#800020', '#bd9399', '#d9a7b0', '#f5eef4', '#ffffff'];
             for (let i = 0; i < 70; i++) {
@@ -716,7 +720,6 @@
                     confeti.style.height = (Math.random() > 0.5 ? dimension : dimension * 1.5) + 'px';
                     
                     confeti.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
-                    
                     confeti.style.setProperty('transform', `translateX(${Math.random() * 300 - 150}px)`);
                     
                     document.body.appendChild(confeti);
