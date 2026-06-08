@@ -157,6 +157,31 @@
             box-shadow: 0 4px 15px rgba(128, 0, 32, 0.15);
         }
 
+        /* --- BOTÓN DE REGRESAR SUTIL --- */
+        .boton-regresar {
+            margin-top: 25px;
+            margin-left: 15px;
+            display: inline-block;
+            text-decoration: none;
+            background: transparent;
+            color: #bd9399; /* Tono rosa/grisáceo de los badges */
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 14px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 5;
+        }
+
+        .boton-regresar:hover {
+            color: #800020;
+            transform: translateX(-3px); /* Efecto sutil hacia atrás */
+        }
+
         /* --- IMÁGENES DE SNOOPY REDISEÑADAS --- */
         .capitulo img {
             width: 120px;
@@ -190,6 +215,10 @@
             .container, .capitulo { padding: 40px 20px; }
             .container::before, .container::after,
             .capitulo::before, .capitulo::after { width: 110px; height: 110px; }
+            .boton-regresar {
+                display: block;
+                margin: 10px auto 0 auto;
+            }
         }
     </style>
 </head>
@@ -214,17 +243,19 @@
         <p>Supongo que el chisme te interesa bastante. 👀</p>
         <p>Así que ponte cómodo, busca unas papitas y acompáñanos mientras te contamos cómo dos personas se convirtieron en el mundo del otro. ❤️</p>
         <button class="boton" onclick="navegar('segundaPantalla', 'capitulo1')">¡Sí, dale! 🚀</button>
+        <button class="boton-regresar" onclick="navegar('segundaPantalla', 'inicio')">Atrás 👈</button>
     </div>
 
     <div class="capitulo" id="capitulo1">
         <div class="badge-secreto">Prólogo</div>
         <img src="imagenes/snoopy.png" alt="Snoopy">
         <h2>📖 Capítulo 1: Todo comenzó mucho antes...</h2>
-        <p>Nuestra historia no empezó con una declaración romántica.</p>
+        <p>Nuestra historia no empezó con una declaration romántica.</p>
         <p>Empezó mucho antes de las fotos y las llamadas.</p>
         <p>En aquel entonces éramos simplemente dos personas que coincidieron en el mismo camino sin imaginar todo lo que vendría después. ❤️</p>
         <p>Parecía una coincidencia cualquiera, pero resultó ser el prólogo de algo increíble.</p>
         <button class="boton" onclick="navegar('capitulo1', 'capitulo2')">Continuar con el chisme 👀</button>
+        <button class="boton-regresar" onclick="navegar('capitulo1', 'segundaPantalla')">Regresar 👈</button>
     </div>
 
     <div class="capitulo" id="capitulo2">
@@ -235,6 +266,7 @@
         <p>Después de un tiempo, la vida decidió que era momento de cruzarnos otra vez. Pero esta vez fue diferente.</p>
         <p>Hubo una mirada o una sonrisa que nos hizo querer quedarnos a hablar un ratito más. De pronto, los mensajes ya no eran por aburrimiento, sino porque realmente queríamos saber del otro. ❤️</p>
         <button class="boton" onclick="navegar('capitulo2', 'capitulo3')">¿Qué pasó después? 👀</button>
+        <button class="boton-regresar" onclick="navegar('capitulo2', 'capitulo1')">Anterior 👈</button>
     </div>
 
     <div class="capitulo" id="capitulo3">
@@ -245,6 +277,7 @@
         <p>Ese día en que una simple charla se convirtió en horas de confianza, donde las risas eran más ruidosas y el interés más profundo.</p>
         <p>Sin darnos cuenta, el "yo" y el "tú" se estaba convirtiendo en un "nosotros". Ese fue el click que nos cambió la vida. ⚡</p>
         <button class="boton" onclick="navegar('capitulo3', 'capitulo4')">Ver nuestros recuerdos 📸</button>
+        <button class="boton-regresar" onclick="navegar('capitulo3', 'capitulo2')">Atrás 👈</button>
     </div>
 
     <div class="capitulo" id="capitulo4">
@@ -255,6 +288,7 @@
         <p>Las bromas internas que nadie más entiende, las primeras salidas llenas de nervios, y esos detalles que parecen pequeños pero significan el mundo entero.</p>
         <p>Cada foto y cada recuerdo son los ladrillos de lo que hemos construido hasta hoy. Y lo mejor es que todavía faltan muchos por agregar. ✨</p>
         <button class="boton" onclick="navegar('capitulo4', 'capitulo5')">Siguiente capítulo... 💕</button>
+        <button class="boton-regresar" onclick="navegar('capitulo4', 'capitulo3')">Anterior 👈</button>
     </div>
 
     <div class="capitulo" id="capitulo5">
@@ -265,6 +299,7 @@
         <p>Mi morenita, la que con su forma de ser y su belleza me conquistó por completo. Ella es la razón por la que este sitio web existe y la que hace que cada día sea más bonito.</p>
         <p>Eres, sin duda, la mejor parte de todo este chisme romántico. ❤️</p>
         <button class="boton" onclick="navegar('capitulo5', 'capitulo6')">¿Hay más tiempo juntos? ⏳</button>
+        <button class="boton-regresar" onclick="navegar('capitulo5', 'capitulo4')">Regresar 👈</button>
     </div>
 
     <div class="capitulo" id="capitulo6">
@@ -275,6 +310,7 @@
         <p>Hemos compartido días buenos, días increíbles y también de los otros, pero siempre juntos. Porque de eso se trata: de ser un equipo que no se rinde y que disfruta cada segundo que la vida nos regala.</p>
         <p>Gracias por cada minuto de tu tiempo. ❤️</p>
         <button class="boton" onclick="navegar('capitulo6', 'mensajeFinal')">Llegar al final 🏁</button>
+        <button class="boton-regresar" onclick="navegar('capitulo6', 'capitulo5')">Anterior 👈</button>
     </div>
 
     <div class="capitulo" id="mensajeFinal">
@@ -285,6 +321,7 @@
         <p>Gracias por ser parte de nuestra historia, ya sea leyéndola o viviéndola con nosotros.</p>
         <p>Nuestra historia sigue escribiéndose día a día, con más risas, más chismes y mucho más amor.</p>
         <p>¡Gracias por llegar hasta aquí! ❤️🐱</p>
+        <button class="boton-regresar" style="display:block; margin:30px auto 0 auto;" onclick="navegar('mensajeFinal', 'inicio')">🔄 Volver al inicio</button>
     </div>
 
     <script>
