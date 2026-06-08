@@ -145,6 +145,14 @@
         <p>Resultó ser el primer capítulo de una historia bastante bonita. ❤️</p>
         <p>Pero tranquilo, chismosito...</p>
         <p>Lo bueno todavía no empieza. 👀</p>
+        
+        <a href="#" class="boton" onclick="mostrarCapituloDos()">Continuar con el chisme 👀</a>
+    </div>
+
+    <div class="capitulo" id="capitulo2">
+        <img src="imagenes/snoopy2.png" alt="Snoopy Capítulo 2">
+        <h2>📖 Capítulo 2: El siguiente paso...</h2>
+        <p>¡Aquí puedes empezar a escribir el segundo capítulo de tu historia cuando quieras! 📝</p>
     </div>
 
     <script>
@@ -156,6 +164,11 @@
         function mostrarCapituloUno(){
             document.getElementById("segundaPantalla").style.display = "none";
             document.getElementById("capitulo1").style.display = "block";
+        }
+
+        function mostrarCapituloDos(){
+            document.getElementById("capitulo1").style.display = "none";
+            document.getElementById("capitulo2").style.display = "block";
         }
     </script>
 
