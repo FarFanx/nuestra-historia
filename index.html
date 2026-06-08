@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
 
 body{
     min-height:100vh;
-    background: linear-gradient(
+    background:linear-gradient(
         135deg,
         #0f0f0f,
         #1d1026,
@@ -29,9 +30,10 @@ body{
     padding:25px;
 }
 
-.container{
+.container,
+.segunda-pantalla{
     width:100%;
-    max-width:500px;
+    max-width:600px;
     background:rgba(255,255,255,0.08);
     backdrop-filter:blur(15px);
     border:1px solid rgba(255,255,255,0.1);
@@ -42,8 +44,11 @@ body{
     animation:aparecer 1.2s ease;
 }
 
-h1{
-    font-size:2rem;
+.segunda-pantalla{
+    display:none;
+}
+
+h1,h2{
     margin-bottom:20px;
 }
 
@@ -96,7 +101,7 @@ p{
 
 <body>
 
-<div class="container">
+<div class="container" id="inicio">
 
 <h1>🐱 Hola, chismosito o chismosita</h1>
 
@@ -124,11 +129,66 @@ Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.
 ⚠️ Advertencia: podrías terminar creyendo en las coincidencias.
 </p>
 
-<a href="#" class="boton">
+<a href="#" class="boton" onclick="mostrarHistoria()">
 Quiero el chisme completo 👀
 </a>
 
 </div>
 
+<div class="segunda-pantalla" id="segundaPantalla">
+
+<h2>😳 ¿Seguro que quieres continuar?</h2>
+
+<p>
+Porque una vez que empieces, ya no hay marcha atrás...
+</p>
+
+<p>
+Todavía estás a tiempo de volver a Instagram y seguir viendo memes.
+</p>
+
+<p>
+Pero si llegaste hasta aquí...
+</p>
+
+<p>
+Bueno...
+</p>
+
+<p>
+Supongo que el chisme te interesa bastante. 👀
+</p>
+
+<p>
+Así que ponte cómodo.
+</p>
+
+<p>
+Sirve tu gaseosa.
+</p>
+
+<p>
+Busca unas papitas.
+</p>
+
+<p>
+Y acompáñanos mientras te contamos cómo dos personas terminaron convirtiéndose en una parte importante de la vida del otro. ❤️
+</p>
+
+</div>
+
+<script>
+
+function mostrarHistoria(){
+
+    document.getElementById("inicio").style.display = "none";
+
+    document.getElementById("segundaPantalla").style.display = "block";
+
+}
+
+</script>
+
 </body>
+
 </html>
