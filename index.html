@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archivo Confidencial: Nuestra Historia 🕵️‍♂️❤️</title>
+    <title>Nuestra Historia ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    
     <style>
+        /* --- CONFIGURACIÓN ESTALÉNTICA Y ROMÁNTICA --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Courier New', Courier, monospace, 'Segoe UI', sans-serif;
         }
 
         body {
             min-height: 100vh;
-            background: radial-gradient(circle at center, #1a0b2e 0%, #0a0514 100%);
+            /* Fondo degradado suave de blanco a un rosa/lavanda muy tenue como la foto */
+            background: linear-gradient(135deg, #ffffff 0%, #fbf5f8 50%, #f5eef4 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -23,226 +28,273 @@
             overflow-x: hidden;
         }
 
-        /* Efecto de líneas de escáner de fondo tipo espía / monitor táctico */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
-            z-index: 10;
-            background-size: 100% 4px, 6px 100%;
-            pointer-events: none;
-        }
-
-        /* Estilo unificado para todas las tarjetas contenedoras */
+        /* --- CONTENEDORES ESTILO BODA / ROMÁNTICO --- */
         .container,
         .capitulo {
             width: 100%;
-            max-width: 600px;
-            background: rgba(20, 10, 30, 0.75);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 2px solid #ff5ea8;
-            border-radius: 25px;
-            padding: 35px;
+            max-width: 620px;
+            /* Fondo blanco limpio con ligera opacidad */
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 4px; /* Bordes sutiles y rectos muy elegantes como la web de bodas */
+            padding: 50px 40px;
             text-align: center;
-            color: white;
-            box-shadow: 0 0 25px rgba(255, 94, 168, 0.25);
-            animation: aparecer 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
             position: relative;
-            display: none; /* Oculto por defecto mediante JS */
+            display: none; /* Controlado por JS */
+            box-shadow: 0 12px 40px rgba(128, 0, 32, 0.06); /* Sombra suave color vino */
+            overflow: hidden; /* Para que las flores no sobresalgan bruscamente */
+            border: 1px solid rgba(128, 0, 32, 0.08);
+            animation: aparecer 1s ease forwards;
         }
 
-        /* Forzamos que la primera pantalla esté visible al cargar */
+        /* Forzamos que la primera tarjeta sea la única visible al cargar */
         #inicio {
             display: block;
         }
 
-        /* Viñeta de estatus militar/detective superior */
-        .badge-secreto {
+        /* --- DECORACIONES FLORALES EN LAS ESQUINAS (SVG embebido limpio) --- */
+        .container::before, .container::after,
+        .capitulo::before, .capitulo::after {
+            content: "";
             position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ff3366;
-            color: white;
-            padding: 5px 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+            width: 160px;
+            height: 160px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            opacity: 0.85;
+            pointer-events: none;
+            z-index: 1;
         }
 
+        /* Esquina superior izquierda */
+        .container::before, .capitulo::before {
+            top: 0;
+            left: 0;
+            /* Elegante patrón floral vectorizado en tonos granate y rosa empolvado */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 Q30,0 40,25 Q20,45 0,30 Z' fill='%235c061a' opacity='0.9'/%3E%3Cpath d='M0,0 Q15,40 35,35 Q45,15 0,0 Z' fill='%23800020' opacity='0.8'/%3E%3Ccircle cx='15' cy='15' r='10' fill='%23d9a7b0' opacity='0.7'/%3E%3Ccircle cx='30' cy='12' r='6' fill='%23eecad5' opacity='0.6'/%3E%3Cpath d='M0,25 Q15,15 25,0' stroke='%234a5d4e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+        }
+
+        /* Esquina inferior derecha */
+        .container::after, .capitulo::after {
+            bottom: 0;
+            right: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100,100 Q70,100 60,75 Q80,55 100,70 Z' fill='%235c061a' opacity='0.9'/%3E%3Cpath d='M100,100 Q85,60 65,65 Q55,85 100,100 Z' fill='%23800020' opacity='0.8'/%3E%3Ccircle cx='85' cy='85' r='10' fill='%23d9a7b0' opacity='0.7'/%3E%3Ccircle cx='70' cy='88' r='6' fill='%23eecad5' opacity='0.6'/%3E%3Cpath d='M100,75 Q85,85 75,100' stroke='%234a5d4e' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+        }
+
+        /* --- MARCA TEXTUAL DE SECCIÓN (Sustituye al badge tosco) --- */
+        .badge-secreto {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: #bd9399;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* --- TIPOGRAFÍAS Y DISEÑO DE TEXTOS --- */
         h1, h2 {
-            margin-bottom: 20px;
-            color: #ffb3d9;
-            text-shadow: 0 0 10px rgba(255, 179, 217, 0.4);
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: #800020; /* Tono Borgoña / Granate de la imagen */
+            font-weight: 400;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        /* Subtítulos o títulos secundarios internos */
+        h1+p, h2+p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #614d52;
+            margin-bottom: 25px;
         }
 
         p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.98rem;
             line-height: 1.8;
+            color: #554146;
             margin-bottom: 15px;
-            color: #e5e5e5;
+            position: relative;
+            z-index: 2; /* Por encima de las flores */
         }
 
+        /* Sección de advertencia estilizada */
         .advertencia {
-            margin-top: 25px;
-            padding: 12px;
-            background: rgba(255, 51, 102, 0.15);
-            border-left: 4px solid #ff3366;
-            font-weight: bold;
-            color: #ffb3d9;
-            border-radius: 0 8px 8px 0;
+            font-family: 'Playfair Display', serif;
+            margin-top: 30px;
+            font-style: italic;
+            color: #800020;
+            font-size: 1rem;
+            border-top: 1px dashed #d9a7b0;
+            padding-top: 15px;
         }
 
+        /* --- BOTÓN ELEGANTE (Inspirado fielmente en el RSVP) --- */
         .boton {
-            margin-top: 30px;
+            margin-top: 25px;
             display: inline-block;
             text-decoration: none;
-            background: linear-gradient(135deg, #ff5ea8, #ff3366);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: .3s;
+            background: #800020; /* Fondo granate sólido */
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 14px 32px;
+            border: 1px solid #800020;
+            border-radius: 2px; /* Esquinas casi rectas, muy sutiles */
             cursor: pointer;
-            border: none;
-            box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 5;
         }
 
         .boton:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(255, 94, 168, 0.7);
+            background: #ffffff;
+            color: #800020;
+            box-shadow: 0 4px 15px rgba(128, 0, 32, 0.15);
         }
 
-        .boton:active {
-            transform: scale(0.98);
-        }
-
+        /* --- IMÁGENES DE SNOOPY REDISEÑADAS --- */
         .capitulo img {
-            width: 130px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 2px solid #eecad5;
+            padding: 6px;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 2;
         }
 
+        /* Animación suave de transición */
         @keyframes aparecer {
             from {
                 opacity: 0;
-                transform: translateY(30px) scale(0.95);
+                transform: scale(0.98) translateY(10px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: scale(1) translateY(0);
             }
+        }
+
+        /* Ajustes adaptables para celulares */
+        @media (max-width: 480px) {
+            h1, h2 { font-size: 2.5rem; }
+            .container, .capitulo { padding: 40px 20px; }
+            .container::before, .container::after,
+            .capitulo::before, .capitulo::after { width: 110px; height: 110px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container" id="inicio">
-        <div class="badge-secreto">Acceso Restringido</div>
-        <h1>🕵️‍♂️ Hola, agente chismosito o chismosita</h1>
-        <p>Si lograste interceptar esta señal y llegaste hasta aquí, es porque tu nivel de curiosidad evadió nuestros sistemas.</p>
-        <p>Y como dicen por ahí... la curiosidad mató al gato, pero en este departamento secreto solo te dará acceso exclusivo a nuestra historia. 😌</p>
-        <p>¿Procedemos con la apertura del expediente de cómo empezó todo?</p>
-        <p>¿Cómo dos objetivos civiles que no imaginaban el mapa del destino terminaron recopilando tantos recuerdos juntos?</p>
-        <p>Entonces dale clic al botón de abajo para iniciar la decodificación de este viaje.</p>
-        <p class="advertencia">⚠️ ADVERTENCIA: Proceder bajo su propio riesgo. Podrías terminar creyendo en las coincidencias.</p>
-        <button class="boton" onclick="navegar('inicio', 'segundaPantalla')">Desbloquear expediente completo 👀</button>
+        <div class="badge-secreto">Bienvenidos</div>
+        <h1>🐱 Hola, chismosito o chismosita</h1>
+        <p>Si llegaste hasta aquí, es porque la curiosidad te ganó.</p>
+        <p>Y como dicen por ahí... la curiosidad mató al gato, pero aquí solo te hará conocer nuestra historia. 😌</p>
+        <p>¿Quieres saber cómo empezó todo?</p>
+        <p>¿Cómo dos personas que no imaginaban lo que vendría terminaron construyendo tantos recuerdos?</p>
+        <p>Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.</p>
+        <p class="advertencia">⚠️ Advertencia: podrías terminar creyendo en las coincidencias.</p>
+        <button class="boton" onclick="navegar('inicio', 'segundaPantalla')">Quiero el chisme completo 👀</button>
     </div>
 
     <div class="capitulo" id="segundaPantalla">
-        <div class="badge-secreto">Control de Identidad</div>
-        <h2>😳 ¿Seguro(a) que quieres continuar con la infiltración?</h2>
-        <p>Porque una vez que quites el sello de confidencialidad, ya no hay marcha atrás...</p>
-        <p>Veo que el informe de inteligencia te interesa bastante. 👀</p>
-        <p>Así que ponte cómodo en tu cuartel, busca unas papitas de contrabando y acompáñanos en este análisis táctico de cómo dos personas se convirtieron en el mundo entero del otro. ❤️</p>
-        <button class="boton" onclick="navegar('segundaPantalla', 'capitulo1')">¡Sí, iniciar misión! 🚀</button>
+        <div class="badge-secreto">Confirmación</div>
+        <h2>😳 ¿Seguro que quieres continuar?</h2>
+        <p>Porque una vez que empieces, ya no hay marcha atrás...</p>
+        <p>Supongo que el chisme te interesa bastante. 👀</p>
+        <p>Así que ponte cómodo, busca unas papitas y acompáñanos mientras te contamos cómo dos personas se convirtieron en el mundo del otro. ❤️</p>
+        <button class="boton" onclick="navegar('segundaPantalla', 'capitulo1')">¡Sí, dale! 🚀</button>
     </div>
 
     <div class="capitulo" id="capitulo1">
-        <div class="badge-secreto">Fase de investigación 01</div>
+        <div class="badge-secreto">Prólogo</div>
         <img src="imagenes/snoopy.png" alt="Snoopy">
-        <h2>📖 Capítulo 1: Los primeros seguimientos...</h2>
-        <p>Nuestra bitácora de campo no empezó con un operativo romántico planeado.</p>
-        <p>Ocurrió mucho antes de los registros fotográficos y las transmisiones de audio nocturnas.</p>
-        <p>En aquel entonces éramos simplemente dos individuos cruzando las mismas coordenadas de ruta, sin imaginar la escala del caso que construiríamos después. ❤️</p>
-        <p>Parecía una coincidencia rutinaria de patrullaje, pero resultó ser el prólogo de un gran expediente.</p>
-        <button class="boton" onclick="navegar('capitulo1', 'capitulo2')">Siguiente pista del chisme 👀</button>
+        <h2>📖 Capítulo 1: Todo comenzó mucho antes...</h2>
+        <p>Nuestra historia no empezó con una declaración romántica.</p>
+        <p>Empezó mucho antes de las fotos y las llamadas.</p>
+        <p>En aquel entonces éramos simplemente dos personas que coincidieron en el mismo camino sin imaginar todo lo que vendría después. ❤️</p>
+        <p>Parecía una coincidencia cualquiera, pero resultó ser el prólogo de algo increíble.</p>
+        <button class="boton" onclick="navegar('capitulo1', 'capitulo2')">Continuar con el chisme 👀</button>
     </div>
 
     <div class="capitulo" id="capitulo2">
-        <div class="badge-secreto">Fase de investigación 02</div>
+        <div class="badge-secreto">El Destino</div>
         <img src="imagenes/snoopy2.png" alt="Snoopy">
-        <h2>📖 Capítulo 2: Intercepción en el radar</h2>
-        <p>Dicen que el mapa mundial es un pañuelo, pero lo nuestro ya parecía un plan maestro del destino general. 😮‍💨</p>
-        <p>Después de un intervalo de tiempo, la vida activó los radares y decidió cruzarnos otra vez. Pero esta vez los sensores marcaron diferente.</p>
-        <p>Hubo un contacto visual o una sonrisa clave que nos hizo prolongar la vigilancia un ratito más. De pronto, los mensajes directos no eran para matar el aburrimiento, sino reportes indispensables porque realmente queríamos saber del otro. ❤️</p>
-        <button class="boton" onclick="navegar('capitulo2', 'capitulo3')">¿Qué descubrimos después? 👀</button>
+        <h2>📖 Capítulo 2: Volvimos a encontrarnos</h2>
+        <p>Dicen que el mundo es un pañuelo, pero lo nuestro ya parecía un plan del destino. 😮‍💨</p>
+        <p>Después de un tiempo, la vida decidió que era momento de cruzarnos otra vez. Pero esta vez fue diferente.</p>
+        <p>Hubo una mirada o una sonrisa que nos hizo querer quedarnos a hablar un ratito más. De pronto, los mensajes ya no eran por aburrimiento, sino porque realmente queríamos saber del otro. ❤️</p>
+        <button class="boton" onclick="navegar('capitulo2', 'capitulo3')">¿Qué pasó después? 👀</button>
     </div>
 
     <div class="capitulo" id="capitulo3">
-        <div class="badge-secreto">Fase de investigación 03</div>
+        <div class="badge-secreto">El Click</div>
         <img src="imagenes/snoopy3.png" alt="Snoopy">
-        <h2>📖 Capítulo 3: Alerta de anomalía especial</h2>
-        <p>Hubo un punto de inflexión exacto en el que los reportes de rutina dejaron de ser "normales" y se clasificaron como especiales. ✨</p>
-        <p>Ese día en que un simple interrogatorio amistoso se convirtió en horas continuas de confianza mutua, donde las risas alteraban el decibelímetro y el interés era profundo.</p>
-        <p>Sin darnos cuenta, los perfiles individuales de "yo" y "tú" se fusionaron en una sola base de datos central: "Nosotros". Ese fue el click de comando que nos cambió la vida. ⚡</p>
-        <button class="boton" onclick="navegar('capitulo3', 'capitulo4')">Inspeccionar base de recuerdos 📸</button>
+        <h2>📖 Capítulo 3: Cuando todo cambió</h2>
+        <p>Hubo un momento exacto en el que las cosas dejaron de ser "normales" y empezaron a ser especiales. ✨</p>
+        <p>Ese día en que una simple charla se convirtió en horas de confianza, donde las risas eran más ruidosas y el interés más profundo.</p>
+        <p>Sin darnos cuenta, el "yo" y el "tú" se estaba convirtiendo en un "nosotros". Ese fue el click que nos cambió la vida. ⚡</p>
+        <button class="boton" onclick="navegar('capitulo3', 'capitulo4')">Ver nuestros recuerdos 📸</button>
     </div>
 
     <div class="capitulo" id="capitulo4">
-        <div class="badge-secreto">Archivo de evidencias</div>
+        <div class="badge-secreto">Momentos</div>
         <img src="imagenes/snoopy4.png" alt="Snoopy">
-        <h2>📖 Capítulo 4: Evidencias recopiladas</h2>
-        <p>A partir de ahí, nos dedicamos a asegurar momentos clave que hoy custodiamos bajo estricta seguridad como tesoros. 🗺️</p>
-        <p>Los códigos y chistes internos que ningún analista externo entiende, los primeros despliegues a terreno llenos de nerviosismo, y esos detalles mínimos que valen todo en la central.</p>
-        <p>Cada captura y registro son los bloques estructurales de lo que tenemos establecido hoy. Y lo mejor de la misión es que quedan muchas páginas de registro por llenar. ✨</p>
-        <button class="boton" onclick="navegar('capitulo4', 'capitulo5')">Objetivo prioritario... 💕</button>
+        <h2>📖 Capítulo 4: Nuestros recuerdos</h2>
+        <p>A partir de ahí, empezamos a coleccionar momentos que hoy son tesoros. 🗺️</p>
+        <p>Las bromas internas que nadie más entiende, las primeras salidas llenas de nervios, y esos detalles que parecen pequeños pero significan el mundo entero.</p>
+        <p>Cada foto y cada recuerdo son los ladrillos de lo que hemos construido hasta hoy. Y lo mejor es que todavía faltan muchos por agregar. ✨</p>
+        <button class="boton" onclick="navegar('capitulo4', 'capitulo5')">Siguiente capítulo... 💕</button>
     </div>
 
     <div class="capitulo" id="capitulo5">
-        <div class="badge-secreto">Información de Alto Secreto</div>
+        <div class="badge-secreto">Dedicatoria</div>
         <img src="imagenes/snoopy5.png" alt="Snoopy">
         <h2>📖 Capítulo 5: Mi Morenita Linda ❤️</h2>
-        <p>Este folio tiene una etiqueta especial de seguridad porque ella representa el núcleo central de toda esta operación. 🥰</p>
-        <p>Mi morenita, la sospechosa más buscada, la que con su despliegue táctico de ser y su belleza me desarmó por completo. Ella es la causa por la que este servidor web fue programado y la que hace que cada jornada valga la pena.</p>
-        <p>Eres, sin duda, la comandante en jefe de todo este expediente romántico. ❤️</p>
-        <button class="boton" onclick="navegar('capitulo5', 'capitulo6')">¿Ver historial de tiempo? ⏳</button>
+        <p>Este capítulo tiene un nombre especial porque ella es el corazón de esta historia. 🥰</p>
+        <p>Mi morenita, la que con su forma de ser y su belleza me conquistó por completo. Ella es la razón por la que este sitio web existe y la que hace que cada día sea más bonito.</p>
+        <p>Eres, sin duda, la mejor parte de todo este chisme romántico. ❤️</p>
+        <button class="boton" onclick="navegar('capitulo5', 'capitulo6')">¿Hay más tiempo juntos? ⏳</button>
     </div>
 
     <div class="capitulo" id="capitulo6">
-        <div class="badge-secreto">Línea de tiempo</div>
+        <div class="badge-secreto">Presente</div>
         <img src="imagenes/snoopy6.png" alt="Snoopy">
-        <h2>📖 Capítulo 6: Cronología del tiempo juntos</h2>
-        <p>El reloj ha seguido su marcha constante y aquí seguimos en el campamento base, analizando la vida juntos día a día. 👣🍀</p>
-        <p>Hemos superado días estables, misiones increíbles y también contratiempos de mantenimiento logístico, pero siempre integrando el mismo equipo. Porque de eso se trata: de ser una unidad de élite que no se rinde y que optimiza cada segundo que la vida nos asigna.</p>
-        <p>Gracias por registrar cada minuto de tu tiempo en esta base secreta. ❤️</p>
-        <button class="boton" onclick="navegar('capitulo6', 'mensajeFinal')">Finalizar inspección 🏁</button>
+        <h2>📖 Capítulo 6: Tiempo juntos</h2>
+        <p>El tiempo ha pasado y aquí seguimos, aprendiendo el uno del otro cada día. 👣🍀</p>
+        <p>Hemos compartido días buenos, días increíbles y también de los otros, pero siempre juntos. Porque de eso se trata: de ser un equipo que no se rinde y que disfruta cada segundo que la vida nos regala.</p>
+        <p>Gracias por cada minuto de tu tiempo. ❤️</p>
+        <button class="boton" onclick="navegar('capitulo6', 'mensajeFinal')">Llegar al final 🏁</button>
     </div>
 
     <div class="capitulo" id="mensajeFinal">
-        <div class="badge-secreto">Estatus del caso: En curso</div>
+        <div class="badge-secreto">Para Siempre</div>
         <img src="imagenes/snoopy_final.png" alt="Snoopy">
-        <h2>❤️ Cierre del reporte</h2>
-        <p>Y así, llegamos a la conclusión temporal de este monitoreo... por el momento. 😌</p>
-        <p>Gracias por formar parte activa de nuestra base de datos, ya sea leyendo el informe o ejecutándolo conmigo día tras día.</p>
-        <p>Nuestra bitácora sigue redactándose en tiempo de ejecución, con más risas compartidas, más misiones y muchísimo más amor.</p>
-        <p>¡Fin del reporte clasificado! ¡Gracias por llegar al límite del acceso! ❤️🐱</p>
+        <h2>❤️ Mensaje final</h2>
+        <p>Y así, llegamos al final de este recorrido... por ahora. 😌</p>
+        <p>Gracias por ser parte de nuestra historia, ya sea leyéndola o viviéndola con nosotros.</p>
+        <p>Nuestra historia sigue escribiéndose día a día, con más risas, más chismes y mucho más amor.</p>
+        <p>¡Gracias por llegar hasta aquí! ❤️🐱</p>
     </div>
 
     <script>
         function navegar(idPantallaActual, idPantallaSiguiente) {
-            // Ocultamos la pantalla en la que está el usuario actualmente
+            // Oculta con suavidad la pantalla previa
             document.getElementById(idPantallaActual).style.display = "none";
-            // Mostramos de forma automática el siguiente bloque correspondiente
+            // Muestra el siguiente paso
             document.getElementById(idPantallaSiguiente).style.display = "block";
             
-            // Garantizamos un desplazamiento automático superior cómodo si se abre en teléfonos móviles
+            // Auto-scroll hacia arriba suave por si se lee desde teléfonos móviles
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
