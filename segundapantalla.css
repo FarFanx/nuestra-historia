@@ -1,20 +1,50 @@
-.segunda-pantalla{
-display:none;
-width:100%;
-max-width:700px;
-margin:auto;
-text-align:center;
-color:white;
-padding:40px 20px;
-animation:aparecer 1s ease;
+/* --- Estilos de la Segunda Pantalla --- */
+.segunda-pantalla {
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+  color: white;
+  padding: 40px 20px;
+  animation: aparecer 1s ease;
 }
 
-.segunda-pantalla h2{
-margin-bottom:25px;
-font-size:2rem;
+.segunda-pantalla h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
 }
 
-.segunda-pantalla p{
-margin-bottom:18px;
-font-size:1.1rem;
+.segunda-pantalla p {
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+}
+
+/* --- Nuevos Estilos para las Secciones de Capítulos --- */
+.capitulo {
+  display: none;
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  animation: aparecer 1s ease;
+}
+
+.capitulo img {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.capitulo h2 {
+  margin-bottom: 15px;
+}
+
+.capitulo p {
+  margin-bottom: 10px;
+  line-height: 1.6;
 }
