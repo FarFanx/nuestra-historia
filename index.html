@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestra Historia ❤️</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background: linear-gradient(
+        135deg,
+        #0f0f0f,
+        #1d1026,
+        #2b1637
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+}
+
+.container{
+    width:100%;
+    max-width:500px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:25px;
+    padding:35px;
+    text-align:center;
+    color:white;
+    animation:aparecer 1.2s ease;
+}
+
+h1{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+p{
+    line-height:1.8;
+    margin-bottom:15px;
+    color:#e5e5e5;
+}
+
+.advertencia{
+    margin-top:20px;
+    font-weight:bold;
+    color:#ffb3d9;
+}
+
+.boton{
+    margin-top:30px;
+    display:inline-block;
+    text-decoration:none;
+    background:linear-gradient(
+        135deg,
+        #ff5ea8,
+        #ff7ac3
+    );
+    color:white;
+    padding:15px 30px;
+    border-radius:50px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.boton:hover{
+    transform:scale(1.05);
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🐱 Hola, chismosito o chismosita</h1>
+
+<p>
+Si llegaste hasta aquí, es porque la curiosidad te ganó.
+</p>
+
+<p>
+Y como dicen por ahí... la curiosidad mató al gato, pero aquí solo te hará conocer nuestra historia. 😌
+</p>
+
+<p>
+¿Quieres saber cómo empezó todo?
+</p>
+
+<p>
+¿Cómo dos personas que no imaginaban lo que vendría terminaron construyendo tantos recuerdos?
+</p>
+
+<p>
+Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.
+</p>
+
+<p class="advertencia">
+⚠️ Advertencia: podrías terminar creyendo en las coincidencias.
+</p>
+
+<a href="#" class="boton">
+Quiero el chisme completo 👀
+</a>
+
+</div>
+
+</body>
+</html>
