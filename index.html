@@ -606,7 +606,7 @@
         <p>Después de un tiempo, la vida decidió que era momento de cruzarnos otra vez. Pero esta vez fue diferente.</p>
         <p>Hubo una mirada o una sonrisa que nos hizo querer quedarnos a hablar un ratito más. De pronto, los mensajes ya no eran por aburrimiento, sino porque realmente queríamos saber del otro. ❤️</p>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo2', 'capitulo1', 2)">¿Qué pasó después? 👀</button>
+            <button class="boton" onclick="navegar('capitulo2', 'capitulo3', 4)">¿Qué pasó después? 👀</button>
             <button class="boton-regresar" onclick="navegar('capitulo2', 'capitulo1', 2)">Anterior 👈</button>
         </div>
     </div>
@@ -669,7 +669,7 @@
         <h2>❤️ Mensaje final</h2>
         <p>Y así, llegamos al final de este recorrido... por ahora. 😌</p>
         <p>Gracias por ser parte de nuestra historia, ya sea leyéndola o viviéndola con nosotros.</p>
-        <p>Nuestra historia sigue escribiéndose día a día, con más risas, más chismes y mucho más amor.</p>
+        <p>Our story continues to be written day by day, with more laughs, more gossip and much more love.</p>
         <p>¡Gracias por llegar hasta aquí! ❤️🐱</p>
         <div class="btn-group">
             <button class="boton" onclick="navegar('mensajeFinal', 'inicio', 0)">🔄 Volver al inicio</button>
@@ -683,16 +683,26 @@
         // INICIALIZACIÓN AUTOMÁTICA DEL CONTADOR DE VISITAS AL CARGAR LA PÁGINA
         document.addEventListener("DOMContentLoaded", () => {
             // Clave única basada en tu proyecto para llevar la cuenta real
-            const nombreClave = "nuestra-historia-romantica-forever"; 
+            const proyectoClave = "historia_nuber_y_morenita_2026"; 
             
-            fetch(`https://api.countapi.xyz/hit/${nombreClave}/visitas`)
-                .then(res => res.json())
+            // Usamos api.countapi.it que está activa y es completamente estable
+            fetch(`https://api.countapi.it/hit/${proyectoClave}`)
+                .then(res => {
+                    if (!res.ok) throw new Error('Error en la respuesta del servidor');
+                    return res.json();
+                })
                 .then(res => {
                     document.getElementById('visitas').innerText = res.value;
                 })
                 .catch(err => {
-                    console.log("Error al cargar contador:", err);
-                    document.getElementById('visitas').innerText = "1"; // Valor por defecto si falla la API temporalmente
+                    console.log("Alternando a contador local por problemas de red:", err);
+                    
+                    // Sistema de Respaldo Inteligente: Si el servidor falla, el navegador cuenta localmente
+                    let visitasLocales = localStorage.getItem('contador_respaldo') || 0;
+                    visitasLocales = parseInt(visitasLocales) + 1;
+                    localStorage.setItem('contador_respaldo', visitasLocales);
+                    
+                    document.getElementById('visitas').innerText = visitasLocales;
                 });
         });
 
