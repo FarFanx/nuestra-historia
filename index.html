@@ -245,7 +245,7 @@
 
         /* ANIMACIONES DEL GATITO */
         @keyframes catBlink {
-            0%, 90%, 100% { transform: scaleY(1); }
+            0%, 90%, 100’% { transform: scaleY(1); }
             55% { transform: scaleY(0.1); }
         }
         @keyframes wavePaw {
@@ -449,56 +449,6 @@
             background: #ffffff;
         }
 
-        /* --- NUEVO EFECTO PREMIUM: SACUDIR CELULAR (SHAKE BOX) --- */
-        .shake-photo-container {
-            position: relative;
-            width: 160px;
-            height: 160px;
-            margin: 0 auto 25px auto;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 20;
-        }
-
-        .shake-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--primary), var(--primary-bg));
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.75rem;
-            font-style: italic;
-            padding: 15px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 10px 25px rgba(128,0,32,0.3);
-            border: 3px solid #ffffff;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-            backface-visibility: hidden;
-        }
-
-        .shake-overlay span {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-            animation: shakeIcon 1.5s infinite ease-in-out;
-            display: inline-block;
-        }
-
-        @keyframes shakeIcon {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(-15deg); }
-            75% { transform: rotate(15deg); }
-        }
-
-        .shake-photo-container.revealed .shake-overlay {
-            opacity: 0;
-            transform: scale(0.7) rotate(-45deg);
-            pointer-events: none;
-        }
-
         /* --- CELEBRACIÓN DE CONFETI PREMIUM --- */
         .confetti {
             position: fixed;
@@ -636,17 +586,7 @@
 
     <div class="capitulo" id="capitulo1">
         <div class="badge-secreto">Capítulo 1</div>
-        
-        <div class="shake-photo-container" id="contenedorShake" onclick="forzarReveladoClick()">
-            <div class="shake-overlay" id="capaFiltro">
-                <span>📱</span>
-                ¡Agita tu celular para ver la foto!
-            </div>
-            <div class="img-wrapper" style="margin:0; width:100%; height:100%;">
-                <img src="imagenes/snoopy.png" alt="Snoopy">
-            </div>
-        </div>
-
+        <div class="img-wrapper"><img src="imagenes/snoopy.png" alt="Snoopy"></div>
         <h2>🌱 Antes de que nuestra historia comenzara</h2>
         <p>Antes de que nuestra historia se escribiera, cada uno seguía su propio camino. Teníamos nuestras rutinas, nuestros planes y nuestras preocupaciones del día a día.</p>
         <p>En ese momento, nuestras vidas parecían avanzar por separado. Lo que no sabíamos era que el destino todavía tenía guardada una página para nosotros.</p>
@@ -825,9 +765,9 @@
     </div>
 
     <script>
+        // Ajustamos el total de pasos a las nuevas secciones (12 en total)
         const totalPasos = 12;
         let musicaIniciada = false;
-        let fotoRevelada = false; // Flag para controlar que solo se revele una vez
 
         // CONTADOR DE VISITAS COMPATIBLE
         document.addEventListener("DOMContentLoaded", () => {
@@ -848,72 +788,7 @@
                     localStorage.setItem('contador_respaldo', visitasLocales);
                     document.getElementById('visitas').innerText = visitasLocales;
                 });
-
-            // Activar detector de movimiento al cargar la página
-            solicitarPermisoAcelerometro();
         });
-
-        // --- DETECTOR DE AGITACIÓN (SHAKE LOGIC) ---
-        let ultimoX = null, ultimoY = null, ultimoZ = null;
-        let ultimaActualizacion = 0;
-        const UMBRAL_SHAKE = 18; // Sensibilidad del movimiento (Más alto = requiere más fuerza)
-
-        function solicitarPermisoAcelerometro() {
-            if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
-                // Para dispositivos iOS modernos que requieren interactuar primero
-                document.addEventListener('click', () => {
-                    DeviceMotionEvent.requestPermission()
-                        .then(response => {
-                            if (response === 'granted') {
-                                window.addEventListener('devicemotion', analizarMovimiento, false);
-                            }
-                        })
-                        .catch(console.error);
-                }, { once: true });
-            } else {
-                // Para Android y navegadores estándar
-                window.addEventListener('devicemotion', analizarMovimiento, false);
-            }
-        }
-
-        function analizarMovimiento(event) {
-            if (fotoRevelada) return; // Si ya se descubrió, no procesar más
-
-            let aceleracion = event.accelerationIncludingGravity;
-            let tiempoActual = new Date().getTime();
-
-            if ((tiempoActual - ultimaActualizacion) > 100) {
-                let diferenciaTiempo = tiempoActual - ultimaActualizacion;
-                ultimaActualizacion = tiempoActual;
-
-                let x = aceleracion.x;
-                let y = aceleracion.y;
-                let z = aceleracion.z;
-
-                if (ultimoX !== null) {
-                    let velocidad = Math.abs(x + y + z - ultimoX - ultimoY - ultimoZ) / diferenciaTiempo * 10000;
-                    if (velocidad > UMBRAL_SHAKE) {
-                        revelarFotoMagica();
-                    }
-                }
-                ultimoX = x;
-                ultimoY = y;
-                ultimoZ = z;
-            }
-        }
-
-        function revelarFotoMagica() {
-            if (!fotoRevelada) {
-                fotoRevelada = true;
-                document.getElementById('contenedorShake').classList.add('revealed');
-                lanzarCelebracion(); // Lanza confeti premium al descubrirla
-            }
-        }
-
-        // Función de respaldo por si están en PC o el celular bloquea los sensores
-        function forzarReveladoClick() {
-            revelarFotoMagica();
-        }
 
         // NAVEGACIÓN CONTROLADA
         function navegar(actualId, siguienteId, pasoActual) {
@@ -949,6 +824,7 @@
                 const porcentaje = (pasoActual / totalPasos) * 100;
                 document.getElementById('progressBar').style.width = `${porcentaje}%`;
 
+                // Activa la explosión de confeti en las pantallas finales de celebración
                 if(siguienteId === 'pequeñaPausa' || siguienteId === 'mensajeFinal') {
                     lanzarCelebracion();
                 }
