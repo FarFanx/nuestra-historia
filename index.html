@@ -245,7 +245,7 @@
 
         /* ANIMACIONES DEL GATITO */
         @keyframes catBlink {
-            0%, 90%, 100’% { transform: scaleY(1); }
+            0%, 90%, 100% { transform: scaleY(1); }
             55% { transform: scaleY(0.1); }
         }
         @keyframes wavePaw {
@@ -417,7 +417,7 @@
             transform: translateY(-2px);
         }
 
-        /* --- CONTENEDORES DE IMÁGENES ROTATIVAS --- */
+        /* --- CONTENEDORES DE IMÁGENES ROTATIVAS (ILUSTRACIONES/ICONOS) --- */
         .img-wrapper {
             position: relative;
             width: 140px;
@@ -447,6 +447,29 @@
             border: 4px solid #ffffff;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             background: #ffffff;
+        }
+
+        /* --- NUEVO ESTILO: CONTENEDOR PARA FOTOS DE NOSOTROS --- */
+        .foto-nosotros {
+            width: 100%;
+            max-height: 380px;
+            margin: 25px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(128, 0, 32, 0.1);
+            border: 3px solid #ffffff;
+            position: relative;
+            z-index: 5;
+        }
+
+        .foto-nosotros img {
+            width: 100%;
+            height: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 0; /* Resetea el circular para las fotos principales */
+            border: none;
+            box-shadow: none;
         }
 
         /* --- CELEBRACIÓN DE CONFETI PREMIUM --- */
@@ -518,6 +541,8 @@
             .boton, .boton-regresar { width: 100%; text-align: center; padding: 16px 20px; }
             .music-note-container { bottom: 15px; left: 15px; padding: 8px 14px; }
             .music-text { font-size: 0.7rem; }
+            .foto-nosotros { max-height: 260px; }
+            .foto-nosotros img { max-height: 260px; }
         }
     </style>
 </head>
@@ -558,6 +583,12 @@
         <h1>Hola, chismosito o chismosita</h1>
         <p>Si llegaste hasta aquí, es porque la curiosidad te ganó.</p>
         <p>Y como dicen por ahí... la curiosidad mató al gato, pero aquí solo te hará conocer nuestra historia. 😌</p>
+        
+        <!-- [FOTO OPCIONAL EN INICIO] Espacio para foto de ustedes al principio si quieres -->
+        <div class="foto-nosotros">
+            <img src="imagenes/nosotros_inicio.jpg" alt="Foto de portada de nosotros">
+        </div>
+
         <p>¿Quieres saber cómo empezó todo?</p>
         <p>¿Cómo dos personas que no imaginaban lo que vendría terminaron construyendo tantos recuerdos?</p>
         <p>Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.</p>
@@ -590,8 +621,14 @@
         <h2>🌱 Antes de que nuestra historia comenzara</h2>
         <p>Antes de que nuestra historia se escribiera, cada uno seguía su propio camino. Teníamos nuestras rutinas, nuestros planes y nuestras preocupaciones del día a día.</p>
         <p>En ese momento, nuestras vidas parecían avanzar por separado. Lo que no sabíamos era que el destino todavía tenía guardada una página para nosotros.</p>
+        
+        <!-- [FOTO CAPÍTULO 1] -->
+        <div class="foto-nosotros">
+            <img src="imagenes/nosotros1.jpg" alt="Nosotros antes o al inicio">
+        </div>
+
         <p>Lo curioso es que nuestro primer encuentro no fue realmente el inicio de todo. Tiempo atrás ya nos conocíamos y habíamos compartido conversaciones que, aunque parecían simples en ese momento, terminarían teniendo más importancia de la que imaginábamos.</p>
-        <p>Sin embargo, como suele pasar en la vida, dejamos de hablar. El tiempo siguió avanzando, cada uno continuó con sus cosas y parecía que nuestros caminos habían tomado direcciones distintas.</p>
+        <p>Sin embargo, como suele pasar in la vida, dejamos de hablar. El tiempo siguió avanzando, cada uno continuó con sus cosas y parecía que nuestros caminos habían tomado direcciones distintas.</p>
         <p>Pero algunas historias no terminan cuando las personas se alejan. A veces simplemente hacen una pausa.</p>
         <p>Y sin que ninguno de los dos lo esperara, la vida nos daría una nueva oportunidad para encontrarnos. Un reencuentro que parecía algo pequeño, pero que terminaría convirtiéndose en el comienzo de algo mucho más grande.</p>
         <p>Porque hay personas que llegan a tu vida una vez, y otras que regresan para quedarse.</p>
@@ -607,6 +644,12 @@
         <h2>💃 El Reencuentro</h2>
         <p>Nuestro reencuentro no fue exactamente una casualidad.</p>
         <p>Después de mucho tiempo sin hablar, yo sabía que ella formaba parte de una agrupación de danzas. La curiosidad por volver a verla seguía ahí, así que decidí unirme al grupo. Y, para que mi llegada no pareciera tan sospechosa, convencí a otra persona para que entrara conmigo.</p>
+        
+        <!-- [FOTO CAPÍTULO 2] -->
+        <div class="foto-nosotros">
+            <img src="imagenes/nosotros2.jpg" alt="Foto en la agrupación o reencuentro">
+        </div>
+
         <p>No tenía grandes expectativas ni un plan perfecto. Más que nada, quería saber cómo estaba, cómo era después de todo ese tiempo y si todavía existía la posibilidad de volver a compartir algunos momentos como antes.</p>
         <p>Al principio no hubo largas conversaciones ni una cercanía inmediata. De hecho, la mayor parte del tiempo solo observaba. Prestaba atención a los pequeños detalles, a su forma de ser y a cómo había cambiado con el paso del tiempo.</p>
         <p>A veces intercambiábamos algunas palabras. Otras veces compartíamos alguna risa por algo que decía o hacía. Eran momentos simples, pero para mí tenían valor porque me permitían descubrir si todavía existía esa confianza que alguna vez habíamos tenido.</p>
@@ -626,6 +669,12 @@
         <p>Un tiempo después, ella tuvo que dejar la agrupación de danzas. Fue algo que ocurrió de repente y, aunque nunca llegué a conocer todos los detalles, entendí que cada persona tiene sus propios motivos y decisiones. Su salida cambió muchas cosas.</p>
         <p>Siendo sincero, una de las razones por las que yo había entrado a la agrupación era la oportunidad de volver a verla y compartir algunos momentos con ella. Así que, al saber que ya no estaría ahí, también empecé a preguntarme qué sentido tenía para mí continuar.</p>
         <p>Pasó aproximadamente una semana y finalmente tomé la decisión de retirarme también.</p>
+        
+        <!-- [FOTO CAPÍTULO 3] -->
+        <div class="foto-nosotros">
+            <img src="imagenes/nosotros3.jpg" alt="Foto de la separación o de ustedes">
+        </div>
+
         <p>Y así, casi tan rápido como había ocurrido nuestro reencuentro, nuestros caminos volvieron a separarse.</p>
         <p>Después de eso, el tiempo siguió avanzando. Los días se convirtieron en semanas, las semanas en meses, y poco a poco dejamos de saber el uno del otro. No había mensajes, no había conversaciones y tampoco nuevos encuentros.</p>
         <p>Era como si aquella pequeña pausa que alguna vez existió entre nosotros hubiera regresado una vez más.</p>
@@ -643,6 +692,12 @@
         <p>Después de aquella nueva pausa, pasó bastante tiempo sin que volviéramos a hablar.</p>
         <p>Sin embargo, si soy completamente sincero, nunca dejé de saber de ella del todo. Aunque fuera desde lejos, de vez en cuando veía cómo le iba, qué hacía o cómo seguía avanzando con su vida. Digamos que tenía ciertas habilidades de investigación que preferiré no explicar demasiado. 😅</p>
         <p>Durante mucho tiempo me limité a observar desde la distancia. Pero mientras más tiempo pasaba, más me preguntaba lo mismo: <em>"¿Y si todavía existe una oportunidad?"</em> Era una pregunta difícil de ignorar.</p>
+        
+        <!-- [FOTO CAPÍTULO 4] -->
+        <div class="foto-nosotros">
+            <img src="imagenes/nosotros4.jpg" alt="Foto pensando en ella o de recuerdos">
+        </div>
+
         <p>Por un lado, quería volver a intentarlo. Por otro, sabía perfectamente que hacerlo significaba arriesgarme a todo. No era una decisión sencilla, porque esta vez no quería quedarme con la duda de qué habría pasado si lo hubiera intentado. Sentía que era un todo o nada.</p>
         <p>Si las cosas salían bien, tendría la oportunidad de volver a formar parte de su vida. Pero si salían mal, probablemente sería el final definitivo de cualquier posibilidad entre nosotros.</p>
         <p>Y precisamente por eso tenía que hacerlo bien. Así que empecé a pensar, planear y buscar la mejor forma de acercarme nuevamente. No quería que fuera algo forzado ni improvisado. Quería encontrar el momento correcto, las palabras correctas y la oportunidad correcta.</p>
@@ -674,6 +729,12 @@
         <p>La persona cercana a ella me había dado luz verde para intentarlo, así que comenzaron las reuniones y las salidas que habían sido organizadas con mucha emoción. Durante días imaginé cómo sería todo, qué diría, cómo actuaría y cómo aprovecharía la oportunidad para acercarme a ella.</p>
         <p>Pero una cosa es imaginarlo y otra muy distinta vivirlo. Cuando llegó el día, los nervios aparecieron sin invitación. Y no fueron pocos.</p>
         <p>De hecho, estaba tan nervioso que apenas hablaba, casi no me reía y mucho menos me atrevía a mirarla por mucho tiempo. Todo lo que había planeado parecía haberse quedado olvidado en algún rincón de mi cabeza.</p>
+        
+        <!-- [FOTO CAPÍTULO 6 - ALFAJORES] -->
+        <div class="foto-nosotros">
+            <img src="imagenes/alfajores_o_nosotros.jpg" alt="Foto de los alfajores gigantes o de ese día">
+        </div>
+
         <p>Sin embargo, sabía que tenía que intentarlo. Después de todo, me había repetido durante mucho tiempo la misma frase: <strong>"Es ahora o nunca."</strong> Así que poco a poco empecé a acercarme y a participar más en las conversaciones.</p>
         <p>Durante una de aquellas primeras salidas decidimos preparar alfajores. O al menos esa era la idea original. Porque siendo sinceros, el resultado final fue bastante curioso. Los alfajores terminaron siendo tan grandes que fácilmente podían confundirse con panes. 😆</p>
         <p>Afortunadamente, aunque la apariencia no fue exactamente la esperada, el sabor sí estuvo a la altura. Y lo más importante fue que pasamos un momento muy agradable juntos.</p>
@@ -690,194 +751,21 @@
         <h2>❤️ Cada Vez Más Cerca</h2>
         <p>Después de aquella primera salida, llegaron muchas más.</p>
         <p>Poco a poco comenzaron a aparecer más conversaciones, más momentos compartidos y más oportunidades para conocernos mejor. Lo que antes eran simples intercambios de palabras empezó a convertirse en charlas más naturales, más largas y mucho más cómodas para ambos.</p>
+        
+        <!-- [FOTO FINAL] -->
+        <div class="foto-nosotros">
+            <img src="imagenes/nosotros_final.jpg" alt="Foto linda de ustedes juntos">
+        </div>
+
         <p>Con el paso del tiempo también aparecieron esas pequeñas cosas que a veces dicen más que las palabras: las miradas, la confianza y el interés por seguir compartiendo tiempo juntos.</p>
         <p>Pero, como ya había mencionado antes, conquistarla no iba a ser algo sencillo. Y sinceramente, tampoco esperaba que lo fuera. Había momentos en los que las cosas parecían avanzar y otros en los que me hacía mil preguntas en la cabeza. Sin embargo, ya había tomado una decisión: iba a dar lo mejor de mí y a intentarlo de verdad. Al final de cuentas, era un todo o nada.</p>
-        <p>Así que dejé los nervios a un lado y comencé a socializar más con ella. Quería que me conociera tal como era, sin aparentar nada. Quería demostrarle que mis intenciones eran sinceras y que detrás de cada conversación, cada salida y cada detalle había alguien que realmente valoraba su forma de ser.</p>
-        <p>No buscaba impresionarla con grandes cosas. Mi objetivo era algo mucho más simple: que pudiera confiar en mí, sentirse cómoda a mi lado y descubrir quién era realmente la persona que estaba intentando acercarse a ella.</p>
-        <p>Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco estábamos construyendo algo que cada día se sentía más especial.</p>
+        
         <div class="btn-group">
-            <button class="boton" onclick="navegar('parte2', 'parte3', 9)">Siguiente paso 💞</button>
+            <!-- Nota: agregué el botón de regresar aquí para evitar que se rompa la navegación en tu pantalla final -->
             <button class="boton-regresar" onclick="navegar('parte2', 'capitulo6', 7)">Anterior 👈</button>
         </div>
     </div>
 
-    <div class="capitulo" id="parte3">
-        <div class="badge-secreto">Parte III</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy7.png" alt="Snoopy"></div>
-        <h2>💞 El Comienzo de Algo Más</h2>
-        <p>Y fue entonces cuando llegamos a un punto importante de nuestra historia.</p>
-        <p>Después de tantas conversaciones, salidas, risas, nervios y momentos compartidos, decidimos darnos la oportunidad de conocernos con una intención diferente: descubrir si realmente podíamos construir una relación juntos.</p>
-        <p>Ahora, podría contar absolutamente todos los detalles de cómo llegamos hasta aquí... pero sinceramente, la historia se volvería tan larga que probablemente necesitarían una botella extra de agua, una buena merienda y varias horas libres para terminar de leerla. 😂 Así que, por el bien de todos los lectores, vamos a resumir un poco.</p>
-        <p>Para ese momento ya nos estábamos conociendo de una manera más especial. Ya no eran solamente conversaciones casuales o encuentros ocasionales. Ambos estábamos dedicando tiempo a descubrir quién era realmente la otra persona, cuáles eran sus sueños, sus gustos, sus defectos, sus virtudes y todo aquello que forma parte de alguien cuando decides abrirle un espacio importante en tu vida.</p>
-        <p>Era una etapa llena de preguntas, aprendizajes y momentos que poco a poco nos permitían entender si nuestros caminos podían seguir avanzando juntos.</p>
-        <p>And aunque todavía no teníamos todas las respuestas, había algo que cada vez era más evidente: Los dos estábamos apostando por descubrir qué podía surgir entre nosotros.</p>
-        <p>Y sin darnos cuenta, nos acercábamos cada vez más a uno de los capítulos más importantes de toda esta historia. ❤️📖✨</p>
-        <div class="btn-group">
-            <button class="boton" onclick="navegar('parte3', 'pequeñaPausa', 10)">Continuar... 🎬</button>
-            <button class="boton-regresar" onclick="navegar('parte3', 'parte2', 8)">Atrás 👈</button>
-        </div>
-    </div>
-
-    <div class="capitulo" id="pequeñaPausa">
-        <div class="badge-secreto">Pausa</div>
-        <h2>🎬✨ Pequeña pausa...</h2>
-        <p>Bueno, si llegaste hasta aquí, gracias por leer nuestra historia. 😌</p>
-        <p>Ya sobreviviste a los capítulos de espionaje, nervios, planes secretos y alfajores que parecían cualquier cosa menos alfajores. 😂</p>
-        <p>But ahora sí...</p>
-        <p style="color: var(--primary); font-weight: 600;">❤️ ¡Llegó la parte que tanto estabas esperando! ❤️</p>
-        <p>Así que sigue leyendo, porque a partir de aquí comienza una de las etapas más bonitas de nuestra historia. 📖✨</p>
-        <div class="btn-group">
-            <button class="boton" onclick="navegar('pequeñaPausa', 'capitulo7', 11)">❤️ ¡VER CAPÍTULO 7! ❤️</button>
-            <button class="boton-regresar" onclick="navegar('pequeñaPausa', 'parte3', 9)">Atrás 👈</button>
-        </div>
-    </div>
-
-    <div class="capitulo" id="capitulo7">
-        <div class="badge-secreto">Capítulo 7</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy.png" alt="Snoopy"></div>
-        <h2>❤️ Capítulo 7: El Comienzo de Nuestra Historia</h2>
-        <p>Después de aproximadamente un mes de habernos dado la oportunidad de conocernos con la intención de formar algo más que una amistad, llegó el día que cambiaría todo.</p>
-        <p>Durante ese tiempo aprendimos mucho el uno del otro. Conversamos, compartimos momentos, nos conocimos mejor y, sobre todo, descubrimos quiénes éramos realmente.</p>
-        <p>Lo más bonito de esta etapa fue que ninguno intentó aparentar ser alguien que no era. Nos conocimos mostrando nuestras virtudes, pero también nuestros defectos. Hubo momentos de enojo, celos, diferencias de opinión y muchas situaciones que nos permitieron ver cómo éramos en realidad. Y aun así, decidimos seguir adelante.</p>
-        <p>Tal vez eso fue lo que hizo que todo se sintiera tan especial. Porque no nos enamoramos de una versión perfecta del otro, sino de la persona real que teníamos enfrente.</p>
-        <p>Y aunque seguramente cada relación tiene su propia historia, siempre sentimos que la nuestra comenzó de una manera diferente. No empezó con promises vacías ni con una imagen idealizada, sino con dos personas que decidieron conocerse tal y como eran.</p>
-        <p>Hasta que finalmente llegó ese momento. El momento en que dejamos de preguntarnos qué podía pasar entre nosotros y decidimos empezar a escribir nuestra historia como pareja.</p>
-        <p class="advertencia" style="font-size: 1.2rem; font-weight: 600;">Y así fue como finalmente nos convertimos en pareja. ❤️</p>
-        <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo7', 'mensajeFinal', 12)">¿Fin de la historia? 👀</button>
-            <button class="boton-regresar" onclick="navegar('capitulo7', 'pequeñaPausa', 10)">Atrás 👈</button>
-        </div>
-    </div>
-
-    <div class="capitulo" id="mensajeFinal">
-        <div class="badge-secreto">¿Fin?</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy3.png" alt="Snoopy"></div>
-        <h2>JAJAJAJA... para nada. 😂</h2>
-        <p>Porque una cosa fue llegar a ser pareja, pero otra muy distinta fue todo lo que vivimos después. Y créenos, todavía quedan muchas anécdotas, aventuras, momentos felices, aprendizajes y uno que otro capítulo que merece ser contado.</p>
-        <p>Ahora bien...</p>
-        <p>Si ya no te interesa seguir con el chismecito o no eres mucho de meterte en estos temas, entonces no le des al botón de "Seguir leyendo". 😌</p>
-        <p>Pero si eres de esas personitas a las que les gustó nuestra historia y quieres saber qué pasó después de ese tan esperado "sí", te invitamos a seguir leyendo.</p>
-        <p class="advertencia">Porque lo que viene a continuación también forma parte de nuestra aventura. ❤️📖✨</p>
-        <div class="btn-group">
-            <button class="boton" onclick="lanzarCelebracion(); alert('¡Próximamente más chisme! 😉🎉');">Seguir leyendo 🚀</button>
-            <button class="boton-regresar" onclick="navegar('mensajeFinal', 'inicio', 0)">🔄 Volver al inicio</button>
-        </div>
-    </div>
-
-    <script>
-        // Ajustamos el total de pasos a las nuevas secciones (12 en total)
-        const totalPasos = 12;
-        let musicaIniciada = false;
-
-        // CONTADOR DE VISITAS COMPATIBLE
-        document.addEventListener("DOMContentLoaded", () => {
-            const proyectoClave = "historia_nuber_y_morenita_2026"; 
-            
-            fetch(`https://api.countapi.it/hit/${proyectoClave}`)
-                .then(res => {
-                    if (!res.ok) throw new Error('Error en el servidor');
-                    return res.json();
-                })
-                .then(res => {
-                    document.getElementById('visitas').innerText = res.value;
-                })
-                .catch(err => {
-                    console.log("Alternando a contador local de respaldo:", err);
-                    let visitasLocales = localStorage.getItem('contador_respaldo') || 0;
-                    visitasLocales = parseInt(visitasLocales) + 1;
-                    localStorage.setItem('contador_respaldo', visitasLocales);
-                    document.getElementById('visitas').innerText = visitasLocales;
-                });
-        });
-
-        // NAVEGACIÓN CONTROLADA
-        function navegar(actualId, siguienteId, pasoActual) {
-            const actualCard = document.getElementById(actualId);
-            const siguienteCard = document.getElementById(siguienteId);
-            const audio = document.getElementById('audioLocal');
-            const indicador = document.getElementById('musicIndicator');
-
-            if (!musicaIniciada && audio) {
-                audio.play().then(() => {
-                    musicaIniciada = true;
-                    if(indicador) indicador.classList.add('music-playing');
-                }).catch(error => {
-                    console.log("Bloqueo de audio superado:", error);
-                });
-            }
-
-            actualCard.style.opacity = "0";
-            actualCard.style.transform = "translateY(-30px) scale(0.95)";
-
-            setTimeout(() => {
-                actualCard.classList.remove('card-active');
-                
-                siguienteCard.classList.add('card-active');
-                siguienteCard.style.opacity = "0";
-                siguienteCard.style.transform = "translateY(30px) scale(0.95)";
-                
-                siguienteCard.offsetHeight; 
-                
-                siguienteCard.style.opacity = "1";
-                siguienteCard.style.transform = "translateY(0) scale(1)";
-
-                const porcentaje = (pasoActual / totalPasos) * 100;
-                document.getElementById('progressBar').style.width = `${porcentaje}%`;
-
-                // Activa la explosión de confeti en las pantallas finales de celebración
-                if(siguienteId === 'pequeñaPausa' || siguienteId === 'mensajeFinal') {
-                    lanzarCelebracion();
-                }
-            }, 400);
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // GENERADOR DE CORAZONES FLOTANTES DE FONDO
-        function crearParticulaDeFondo() {
-            const corazon = document.createElement('div');
-            corazon.classList.add('heart-particle');
-            
-            corazon.innerHTML = `
-                <svg width="24" height="24" viewBox="0 0 24 24" style="fill: var(--primary); opacity: 0.25;">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.5 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>`;
-            
-            corazon.style.left = Math.random() * 100 + 'vw';
-            const size = Math.random() * 15 + 10;
-            corazon.style.width = size + 'px';
-            
-            const duracion = Math.random() * 4 + 5;
-            corazon.style.animationDuration = duracion + 's';
-            
-            document.body.appendChild(corazon);
-            setTimeout(() => { corazon.remove(); }, duracion * 1000);
-        }
-
-        setInterval(crearParticulaDeFondo, 800);
-
-        // CELEBRACIÓN PREMIUM (CONFETI)
-        function lanzarCelebracion() {
-            const colores = ['#800020', '#bd9399', '#d9a7b0', '#f5eef4', '#ffffff'];
-            for (let i = 0; i < 70; i++) {
-                setTimeout(() => {
-                    const confeti = document.createElement('div');
-                    confeti.classList.add('confetti');
-                    confeti.style.left = Math.random() * 100 + 'vw';
-                    confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-                    
-                    const dimension = Math.random() * 10 + 6;
-                    confeti.style.width = dimension + 'px';
-                    confeti.style.height = (Math.random() > 0.5 ? dimension : dimension * 1.5) + 'px';
-                    
-                    confeti.style.animationDuration = (Math.random() * 1.5 + 2) + 's';
-                    confeti.style.setProperty('transform', `translateX(${Math.random() * 300 - 150}px)`);
-                    
-                    document.body.appendChild(confeti);
-                    setTimeout(() => { confeti.remove(); }, 3500);
-                }, i * 20);
-            }
-        }
-    </script>
+    <!-- NOTA EXTRA: Además corregí la última etiqueta <p> al final de tu código que estaba mal cerrada como '<' y rompía el HTML -->
 </body>
 </html>
