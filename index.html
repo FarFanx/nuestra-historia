@@ -12,6 +12,7 @@
       gtag('js', new Date());
       gtag('config', 'TU_ID_DE_SEGUIMIENTO');
     </script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -118,7 +119,7 @@
             }
         }
 
-        /* --- DETALLES FLORALES VECTORIALES --- */
+        /* --- DETALLES FLORALES --- */
         .container::before, .container::after,
         .capitulo::before, .capitulo::after {
             content: "";
@@ -135,6 +136,43 @@
 
         .container::before, .capitulo::before { top: 20px; left: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 Q30,0 40,25 Q20,45 0,30 Z' fill='%23800020'/%3E%3Ccircle cx='15' cy='15' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
         .container::after, .capitulo::after { bottom: 20px; right: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100,100 Q70,100 60,75 Q80,55 100,70 Z' fill='%23800020'/%3E%3Ccircle cx='85' cy='85' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
+
+        /* --- ELEMENTOS TIPOGRÁFICOS --- */
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 400;
+            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-bg);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .advertencia {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-style: italic;
+            background: rgba(128, 0, 32, 0.04);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
 
         /* --- COMPONENTE: GATITO ANIMADO EN CSS --- */
         .cat-stage {
@@ -154,6 +192,7 @@
             position: relative;
             width: 80px;
             height: 80px;
+            animation: catBreathe 4s ease-in-out infinite;
         }
 
         .cat-ears {
@@ -162,6 +201,7 @@
             justify-content: space-between;
             position: absolute;
             top: 5px;
+            z-index: 1;
         }
 
         .cat-ear {
@@ -172,8 +212,8 @@
             border-bottom: 25px solid var(--primary);
             border-radius: 4px;
         }
-        .cat-ear.left { transform: rotate(-15deg); animation: twitchEarLeft 4s infinite; }
-        .cat-ear.right { transform: rotate(15deg); animation: twitchEarRight 5s infinite; }
+        .cat-ear.left { transform: rotate(-15deg); animation: twitchEarLeft 6s ease-in-out infinite; }
+        .cat-ear.right { transform: rotate(15deg); animation: twitchEarRight 6s ease-in-out infinite; }
 
         .cat-face {
             position: absolute;
@@ -183,6 +223,23 @@
             background: var(--primary);
             border-radius: 40px 40px 35px 35px;
             left: 2px;
+            z-index: 2;
+        }
+
+        .cat-eyebrows {
+            position: absolute;
+            top: 15px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 12px;
+        }
+        .cat-eyebrow {
+            width: 12px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            animation: eyebrowMove 3.5s infinite;
         }
 
         .cat-eyes {
@@ -212,18 +269,47 @@
             border-radius: 50%;
             top: 2px;
             left: 2px;
+            animation: pupilLook 7s ease-in-out infinite;
         }
 
-        .cat-nose {
+        .cat-nose-container {
             position: absolute;
             top: 34px;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: twitchNose 3s ease-in-out infinite;
+        }
+
+        .cat-nose {
             width: 0;
             height: 0;
             border-left: 5px solid transparent;
             border-right: 5px solid transparent;
             border-top: 5px solid var(--accent);
+        }
+
+        .cat-mouth {
+            width: 8px;
+            height: 4px;
+            border: 1.5px solid var(--accent);
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            margin-top: 1px;
+        }
+
+        .cat-blush {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            bottom: 14px;
+            right: 8px;
+            opacity: 0.6;
+            animation: blushGlow 4s ease-in-out infinite;
         }
 
         .cat-paw {
@@ -236,162 +322,133 @@
             right: -5px;
             border: 2px solid var(--primary);
             transform-origin: bottom center;
+            z-index: 3;
             animation: wavePaw 2.5s ease-in-out infinite;
         }
 
+        .cat-stage:hover .cat-eye {
+            transform: scaleY(1) !important;
+            animation: none;
+        }
+        .cat-stage:hover .cat-blush {
+            opacity: 0.9;
+            transform: scale(1.2);
+        }
+
+        /* --- KEYFRAMES DEL GATITO --- */
         @keyframes catBlink {
             0%, 90%, 100% { transform: scaleY(1); }
-            55% { transform: scaleY(0.1); }
+            95% { transform: scaleY(0.1); }
+        }
+        @keyframes pupilLook {
+            0%, 30%, 100% { transform: translate(0, 0); }
+            40%, 60% { transform: translate(2px, 0px); }
+            70%, 90% { transform: translate(-2px, 0px); }
+        }
+        @keyframes eyebrowMove {
+            0%, 90%, 100% { transform: translateY(0); }
+            95% { transform: translateY(1.5px); }
+        }
+        @keyframes catBreathe {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        @keyframes twitchNose {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            45%, 55% { transform: translateX(-50%) translateY(-1px); }
+            50% { transform: translateX(-50%) translateY(0.5px); }
+        }
+        @keyframes blushGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.15); opacity: 0.8; }
+        }
+        @keyframes twitchEarLeft {
+            0%, 70%, 100% { transform: rotate(-15deg); }
+            73%, 77% { transform: rotate(-19deg) translateY(-1px); }
+            75% { transform: rotate(-12deg); }
+        }
+        @keyframes twitchEarRight {
+            0%, 40%, 100% { transform: rotate(15deg); }
+            43%, 47% { transform: rotate(11deg); }
+            45% { transform: rotate(20deg) translateY(-1px); }
         }
         @keyframes wavePaw {
             0%, 100% { transform: rotate(0deg); }
             50% { transform: rotate(-35deg) translateY(-5px); }
         }
-        @keyframes twitchEarLeft {
-            0%, 90%, 100% { transform: rotate(-15deg); }
-            93% { transform: rotate(-22deg); }
-        }
-        @keyframes twitchEarRight {
-            0%, 85%, 100% { transform: rotate(15deg); }
-            88% { transform: rotate(25deg); }
-        }
 
-        /* --- MARCA TEXTUAL --- */
-        .badge-secreto {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            color: var(--primary-light);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 25px;
-            font-weight: 600;
-            display: inline-block;
-            border-bottom: 1px solid rgba(189, 147, 153, 0.4);
-            padding-bottom: 6px;
-        }
-
-        /* --- TIPOGRAFÍA PREMIUM --- */
-        h1, h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            color: var(--primary);
-            font-weight: 400;
-            margin-bottom: 25px;
-            line-height: 1.1;
-        }
-
-        h1+p, h2+p {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-style: italic;
-            color: var(--text-muted);
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-
-        p {
-            font-size: 1rem;
-            line-height: 2;
-            color: var(--text-main);
-            margin-bottom: 22px;
-            position: relative;
-            z-index: 2;
-            font-weight: 300;
-        }
-
-        .advertencia {
-            font-family: 'Playfair Display', serif;
-            margin-top: 40px;
-            font-style: italic;
-            color: var(--primary);
-            font-size: 1rem;
-            border-top: 1px dashed rgba(219, 167, 176, 0.6);
-            padding-top: 25px;
-        }
-
-        /* --- CONTADOR EN VIVO --- */
-        .live-counter-box {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary);
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-        }
-
-        .live-counter-box span {
-            font-family: 'Poppins', sans-serif;
-            background: rgba(128, 0, 32, 0.08);
-            color: var(--primary-bg);
-            padding: 2px 10px;
-            border-radius: 8px;
-            font-style: normal;
-            font-size: 1rem;
-            border: 1px solid rgba(128, 0, 32, 0.15);
-        }
-
-        /* --- BOTONES --- */
+        /* --- BOTONES PREMIUM --- */
         .btn-group {
-            margin-top: 40px;
             display: flex;
             gap: 20px;
             justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
+            margin-top: 35px;
+            position: relative;
+            z-index: 5;
         }
 
         .boton {
-            text-decoration: none;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bg) 100%);
             color: #ffffff;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            padding: 18px 40px;
-            border: 1px solid var(--primary);
+            padding: 16px 35px;
+            border: none;
             border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
+            box-shadow: 0 10px 25px rgba(128, 0, 32, 0.25);
             transition: var(--transition-smooth);
-            position: relative;
-            z-index: 5;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(128, 0, 32, 0.2);
-            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .boton:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(128, 0, 32, 0.3);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(128, 0, 32, 0.4);
         }
 
         .boton-regresar {
-            text-decoration: none;
-            background: transparent;
+            background: #ffffff;
             color: var(--text-muted);
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            padding: 18px 30px;
-            border: 1px solid transparent;
+            padding: 16px 30px;
+            border: 2px solid rgba(128, 0, 32, 0.15);
             border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
             transition: var(--transition-smooth);
-            position: relative;
-            z-index: 5;
         }
 
         .boton-regresar:hover {
+            background: var(--accent-light);
+            border-color: var(--primary-light);
             color: var(--primary);
-            border-color: rgba(128, 0, 32, 0.2);
-            background: rgba(255, 255, 255, 0.6);
             transform: translateY(-2px);
+        }
+
+        /* --- DECORACIONES DE COMPONENTE --- */
+        .badge-secreto {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(128,0,0,0.15);
+        }
+
+        .live-counter-box {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 25px;
+            font-weight: 500;
         }
 
         /* --- CONFIGURACIÓN DE IMÁGENES SNOOPY --- */
@@ -479,7 +536,7 @@
 
         .video-item-portada:hover {
             transform: translateY(-8px) rotate(1deg) scale(1.03);
-            box-shadow: 0 20px 50px rgba(128, 0, 32, 0.2);
+            box-shadow: 0 20px 50px rgba(128, 0, 32, 0.25);
         }
 
         /* DISEÑO B: MOSAICO DOBLE (Dos fotos medianas iguales) */
@@ -588,8 +645,26 @@
         
         <div class="cat-stage">
             <div class="premium-cat">
-                <div class="cat-ears"><div class="cat-ear left"></div><div class="cat-ear right"></div></div>
-                <div class="cat-face"><div class="cat-eyes"><div class="cat-eye"></div><div class="cat-eye"></div></div><div class="cat-nose"></div><div class="cat-paw"></div></div>
+                <div class="cat-ears">
+                    <div class="cat-ear left"></div>
+                    <div class="cat-ear right"></div>
+                </div>
+                <div class="cat-face">
+                    <div class="cat-eyebrows">
+                        <div class="cat-eyebrow left"></div>
+                        <div class="cat-eyebrow right"></div>
+                    </div>
+                    <div class="cat-eyes">
+                        <div class="cat-eye"></div>
+                        <div class="cat-eye"></div>
+                    </div>
+                    <div class="cat-nose-container">
+                        <div class="cat-nose"></div>
+                        <div class="cat-mouth"></div>
+                    </div>
+                    <div class="cat-blush"></div>
+                    <div class="cat-paw"></div>
+                </div>
             </div>
         </div>
 
@@ -687,139 +762,136 @@
             <div class="foto-item"><img src="imagenes/nosotros4_a.jpg" alt="Estrategia 1"></div>
             <div class="foto-item"><img src="imagenes/nosotros4_b.jpg" alt="Estrategia 2"></div>
         </div>
-
-        <p>Era un todo o nada. Así que empecé a planear la mejor forma de acercarme nuevamente. Estaba a punto de tomar una decisión crucial.</p>
-        <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo4', 'pausaComercial', 6)">Continuar ⚠️</button>
-            <button class="boton-regresar" onclick="navegar('capitulo4', 'capitulo3', 4)">Anterior 👈</button>
-        </div>
-    </div>
-
-    <div class="capitulo" id="pausaComercial">
-        <div class="badge-secreto">Intermedio</div>
-        <h2>⚠️ Pausa comercial ⚠️</h2>
-        <p>Ya conoces el 15% de los esfuerzos estratégicos. Hubo nervios, tácticas and más trabajo del que cualquiera imaginaría. 😅</p>
-        <div class="btn-group">
-            <button class="boton" onclick="navegar('pausaComercial', 'capitulo6', 7)">Ver el Primer Intento 🍪</button>
-            <button class="boton-regresar" onclick="navegar('pausaComercial', 'capitulo4', 5)">Atrás 👈</button>
-        </div>
-    </div>
-
-    <div class="capitulo" id="capitulo6">
-        <div class="badge-secreto">Capítulo 6</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy5.png" alt="Snoopy"></div>
-        <h2>🍪 Los Nervios del Primer Intento</h2>
-        <p>Llegó el día de la salida. Los nervios me traicionaron tanto que casi no hablaba ni la miraba. ¡Pero sacamos adelante los alfajores gigantes! Que parecían panes, pero sabían deliciosos. 😆</p>
-        
-        <div class="galeria-trio-polaroid">
-            <div class="foto-item principal"><img src="imagenes/alfajores_lista.jpg" alt="Cita Alfajores"></div>
-            <div class="foto-item secundaria"><img src="imagenes/alfajores_proceso.jpg" alt="Haciendo alfajores"></div>
-            <div class="foto-item secundaria"><img src="imagenes/alfajores_resultado.jpg" alt="Resultado pan-alfajor"></div>
-        </div>
-
-        <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo6', 'parte2', 8)">Siguiente capítulo ❤️</button>
-            <button class="boton-regresar" onclick="navegar('capitulo6', 'pausaComercial', 6)">Atrás 👈</button>
-        </div>
-    </div>
-
-    <div class="capitulo" id="parte2">
-        <div class="badge-secreto">Parte II</div>
-        <div class="img-wrapper"><img src="imagenes/snoopy6.png" alt="Snoopy"></div>
-        <h2>❤️ Cada Vez Más Cerca</h2>
-        <p>Llegaron más citas, charlas interminables y miradas con confianza. Sabía que conquistarla no sería fácil, pero ya había decidido dar lo mejor de mí.</p>
-        
-        <div class="galeria-asimetrica">
-            <div class="foto-item foto-alta"><img src="imagenes/nosotros_final_1.jpg" alt="Gran Recuerdo Final"></div>
-            <div class="foto-item foto-pequena"><img src="imagenes/nosotros_final_2.jpg" alt="Mini Recuerdo 1"></div>
-            <div class="foto-item foto-pequena"><img src="imagenes/nosotros_final_3.jpg" alt="Mini Recuerdo 2"></div>
-        </div>
-
-        <div class="btn-group">
-            <button class="boton-regresar" onclick="navegar('parte2', 'capitulo6', 7)">Anterior 👈</button>
-        </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const visitasElement = document.getElementById("visitas");
-            if(visitasElement) {
-                let numeroAleatorio = Math.floor(Math.random() * (145 - 84 + 1)) + 84;
-                visitasElement.textContent = numeroAleatorio;
+        // --- CONFIGURACIÓN DE CONTADOR DE VISITAS CON FIREBASE ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAs-REAL-KEY-AQUI",
+            authDomain: "contadorchismosos.firebaseapp.com",
+            databaseURL: "https://contadorchismosos-default-rtdb.firebaseio.com",
+            projectId: "contadorchismosos",
+            storageBucket: "contadorchismosos.appspot.com",
+            messagingSenderId: "1234567890",
+            appId: "1:1234567890:web:abcdef123456"
+        };
+
+        let visitasRef;
+        try {
+            if (typeof firebase !== 'undefined') {
+                firebase.initializeApp(firebaseConfig);
+                const database = firebase.database();
+                visitasRef = database.ref('contador_visitas');
+                
+                visitasRef.transaction(currentValue => {
+                    return (currentValue || 0) + 1;
+                }, (error, committed, snapshot) => {
+                    if (committed) {
+                        document.getElementById('visitas').innerText = snapshot.val();
+                    }
+                });
+            } else {
+                document.getElementById('visitas').innerText = "1,424"; 
             }
-            setInterval(crearCorazon, 800);
+        } catch(e) {
+            document.getElementById('visitas').innerText = "1,424";
+        }
+
+        // --- MANEJO DE MÚSICA DE FONDO INTERACTIVA ---
+        const audio = document.getElementById('audioLocal');
+        const musicIndicator = document.getElementById('musicIndicator');
+        let musicStarted = false;
+
+        function tryPlayMusic() {
+            if(!musicStarted) {
+                audio.play().then(() => {
+                    musicStarted = true;
+                    musicIndicator.classList.add('music-playing');
+                }).catch(e => console.log("Interacción requerida para audio"));
+            }
+        }
+
+        musicIndicator.addEventListener('click', () => {
+            if(audio.paused) {
+                audio.play();
+                musicIndicator.classList.add('music-playing');
+                musicStarted = true;
+            } else {
+                audio.pause();
+                musicIndicator.classList.remove('music-playing');
+            }
         });
 
-        const audio = document.getElementById("audioLocal");
-        const musicIndicator = document.getElementById("musicIndicator");
-        let musicaIniciada = false;
+        // --- SISTEMA DE NAVEGACIÓN ENTRE SECCIONES ---
+        function navegar(idActual, idSiguiente, paso) {
+            tryPlayMusic();
+            
+            const actual = document.getElementById(idActual);
+            const siguiente = document.getElementById(idSiguiente);
 
-        if (musicIndicator && audio) {
-            musicIndicator.addEventListener("click", () => {
-                if (audio.paused) {
-                    audio.play().catch(e => console.log(e));
-                    musicIndicator.classList.add("music-playing");
-                } else {
-                    audio.pause();
-                    musicIndicator.classList.remove("music-playing");
-                }
-            });
-        }
-
-        function navegar(idPantallaActual, idSiguientePantalla, pasoActual) {
-            if (!musicaIniciada && audio) {
-                audio.play().then(() => { musicIndicator.classList.add("music-playing"); }).catch(e => {});
-                musicaIniciada = true;
-            }
-
-            const actual = document.getElementById(idPantallaActual);
-            const siguiente = document.getElementById(idSiguientePantalla);
-
-            if (actual && siguiente) {
-                actual.style.opacity = "0";
-                actual.style.transform = "translateY(-20px) scale(0.95)";
+            if(actual && siguiente) {
+                // Animación de salida avanzada
+                actual.style.opacity = '0';
+                actual.style.transform = 'translateY(-30px) scale(0.97)';
                 
                 setTimeout(() => {
-                    actual.classList.remove("card-active");
-                    siguiente.classList.add("card-active");
-                    setTimeout(() => {
-                        siguiente.style.opacity = "1";
-                        siguiente.style.transform = "translateY(0) scale(1)";
-                    }, 50);
+                    actual.classList.remove('card-active');
+                    siguiente.classList.add('card-active');
+                    
+                    // Forzar reflow para animación limpia de entrada
+                    void siguiente.offsetWidth;
+                    
+                    // Actualizar barra de progreso (5 pasos en total)
+                    const porcentaje = (paso / 5) * 100;
+                    document.getElementById('progressBar').style.width = porcentaje + '%';
+                    
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 400);
-            }
-
-            const progresoTotal = (pasoActual / 8) * 100;
-            const progressBar = document.getElementById("progressBar");
-            if(progressBar) { progressBar.style.width = progresoTotal + "%"; }
-
-            if (idSiguientePantalla === 'parte2') {
-                for (let i = 0; i < 50; i++) { setTimeout(crearConfeti, i * 60); }
+                    
+                    // Disparar confeti premium en pantallas importantes o finales
+                    if(paso === 2 || paso === 5) {
+                        lanzarConfettiAvanzado();
+                    }
+                }, 500);
             }
         }
 
-        function crearCorazon() {
-            const corazon = document.createElement("div");
-            corazon.className = "heart-particle";
-            corazon.innerText = ["❤️", "💖", "💕", "🌸"][Math.floor(Math.random() * 4)];
-            corazon.style.left = Math.random() * 100 + "vw";
-            corazon.style.fontSize = Math.random() * (24 - 12) + 12 + "px";
-            corazon.style.animationDuration = Math.random() * (8 - 5) + 5 + "s";
-            document.body.appendChild(corazon);
-            setTimeout(() => { corazon.remove(); }, 7000);
+        // --- GENERADOR DE CORAZONES FLOTANTES DE FONDO ---
+        function crearCorazonFondo() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-particle');
+            
+            // Variantes de color premium (pálidos y elegantes)
+            const colores = ['#800020', '#bd9399', '#d9a7b0', '#e6ccd0'];
+            const colorRandom = colores[Math.floor(Math.random() * colores.length)];
+            
+            heart.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='${colorRandom}' opacity='0.35'/></svg>`;
+            
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 4 + 5) + 's'; 
+            
+            const scale = Math.random() * 0.6 + 0.4;
+            heart.style.transform = `scale(${scale})`;
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => { heart.remove(); }, 8000);
         }
+        setInterval(crearCorazonFondo, 1200);
 
-        function crearConfeti() {
-            const confeti = document.createElement("div");
-            confeti.className = "confetti";
-            const colores = ["#800020", "#bd9399", "#d9a7b0", "#5c061a", "#ffffff"];
-            confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
-            confeti.style.left = Math.random() * 100 + "vw";
-            confeti.style.width = Math.random() * (14 - 6) + 6 + "px";
-            confeti.style.height = confeti.style.width;
-            document.body.appendChild(confeti);
-            setTimeout(() => { confeti.remove(); }, 4000);
+        // --- EFECTO DE CONFETI PREMIUM ---
+        function lanzarConfettiAvanzado() {
+            const coloresConfetti = ['#800020', '#bd9399', '#d9a7b0', '#3a2e31', '#ffffff'];
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = coloresConfetti[Math.floor(Math.random() * coloresConfetti.length)];
+                confetti.style.animationDelay = Math.random() * 0.4 + 's';
+                confetti.style.transform = `scale(${Math.random() * 0.7 + 0.5})`;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => { confetti.remove(); }, 3500);
+            }
         }
     </script>
 </body>
