@@ -315,6 +315,32 @@
             padding-top: 25px;
         }
 
+        /* --- ESTILO PERSONALIZADO DEL CONTADOR EN VIVO --- */
+        .live-counter-box {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .live-counter-box span {
+            font-family: 'Poppins', sans-serif;
+            background: rgba(128, 0, 32, 0.08);
+            color: var(--primary-bg);
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-style: normal;
+            font-size: 1rem;
+            border: 1px solid rgba(128, 0, 32, 0.15);
+        }
+
         /* --- BOTONES CON EFECTO DE BRILLO --- */
         .btn-group {
             margin-top: 40px;
@@ -536,6 +562,11 @@
         <p>¿Cómo dos personas que no imaginaban lo que vendría terminaron construyendo tantos recuerdos?</p>
         <p>Entonces dale clic al botón de abajo y acompáñanos en este pequeño viaje.</p>
         <p class="advertencia">⚠️ Advertencia: podrías terminar creyendo en las coincidencias.</p>
+        
+        <div class="live-counter-box">
+            👀 Ojos chismosos por aquí: <span id="visitas">...</span>
+        </div>
+
         <div class="btn-group">
             <button class="boton" onclick="navegar('inicio', 'segundaPantalla', 1)">Quiero el chisme completo 👀</button>
         </div>
@@ -575,7 +606,7 @@
         <p>Después de un tiempo, la vida decidió que era momento de cruzarnos otra vez. Pero esta vez fue diferente.</p>
         <p>Hubo una mirada o una sonrisa que nos hizo querer quedarnos a hablar un ratito más. De pronto, los mensajes ya no eran por aburrimiento, sino porque realmente queríamos saber del otro. ❤️</p>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo2', 'capitulo3', 4)">¿Qué pasó después? 👀</button>
+            <button class="boton" onclick="navegar('capitulo2', 'capitulo1', 2)">¿Qué pasó después? 👀</button>
             <button class="boton-regresar" onclick="navegar('capitulo2', 'capitulo1', 2)">Anterior 👈</button>
         </div>
     </div>
@@ -648,6 +679,22 @@
     <script>
         const totalPasos = 8;
         let musicaIniciada = false;
+
+        // INICIALIZACIÓN AUTOMÁTICA DEL CONTADOR DE VISITAS AL CARGAR LA PÁGINA
+        document.addEventListener("DOMContentLoaded", () => {
+            // Clave única basada en tu proyecto para llevar la cuenta real
+            const nombreClave = "nuestra-historia-romantica-forever"; 
+            
+            fetch(`https://api.countapi.xyz/hit/${nombreClave}/visitas`)
+                .then(res => res.json())
+                .then(res => {
+                    document.getElementById('visitas').innerText = res.value;
+                })
+                .catch(err => {
+                    console.log("Error al cargar contador:", err);
+                    document.getElementById('visitas').innerText = "1"; // Valor por defecto si falla la API temporalmente
+                });
+        });
 
         function navegar(actualId, siguienteId, pasoActual) {
             const actualCard = document.getElementById(actualId);
