@@ -23,10 +23,10 @@
             --primary-light: #bd9399;
             --primary-bg: #5c061a;
             --accent: #d9a7b0;
-            --accent-light: #fbf5f8;
+            --accent-light: rgba(251, 245, 248, 0.4); /* Ajustado para transparencia sobre video */
             --text-main: #3a2e31;
             --text-muted: #614d52;
-            --shadow-premium: 0 30px 70px rgba(128, 0, 32, 0.12), 0 10px 30px rgba(0, 0, 0, 0.04);
+            --shadow-premium: 0 30px 70px rgba(128, 0, 32, 0.15), 0 10px 30px rgba(0, 0, 0, 0.06);
             --transition-smooth: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -39,7 +39,6 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 50%, #f5eef4 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,6 +47,32 @@
             overflow-x: hidden;
             font-family: 'Poppins', sans-serif;
             position: relative;
+            background: #000; /* Fondo oscuro por si tarda en cargar el video */
+        }
+
+        /* --- CONTENEDOR Y ESTILOS DEL VIDEO DE FONDO --- */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.65; /* Atenúa un poco el video para que resalte más el texto */
+        }
+
+        /* Capa overlay sutil para dar calidez al video */
+        .video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, rgba(92, 6, 26, 0.2) 100%);
+            z-index: 0;
+            pointer-events: none;
         }
 
         /* --- BARRA DE PROGRESO PREMIUM --- */
@@ -73,7 +98,7 @@
         .heart-particle {
             position: fixed;
             pointer-events: none;
-            z-index: 0;
+            z-index: 1;
             opacity: 0;
             bottom: -50px;
             animation: floatParticle 7s ease-in-out infinite;
@@ -81,8 +106,8 @@
 
         @keyframes floatParticle {
             0% { transform: translateY(0) scale(0) rotate(0deg); opacity: 0; }
-            15% { opacity: 0.5; }
-            85% { opacity: 0.5; }
+            15% { opacity: 0.6; }
+            85% { opacity: 0.6; }
             100% { transform: translateY(-115vh) scale(1.3) rotate(360deg); opacity: 0; }
         }
 
@@ -98,7 +123,7 @@
             text-align: center;
             position: relative;
             box-shadow: var(--shadow-premium);
-            border: 1px solid rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.6);
             z-index: 10;
             display: none;
             opacity: 0;
@@ -283,7 +308,6 @@
         h1+p, h2+p {
             font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
-            font-style: italic;
             color: var(--text-muted);
             margin-bottom: 35px;
             line-height: 1.6;
@@ -302,7 +326,6 @@
         .advertencia {
             font-family: 'Playfair Display', serif;
             margin-top: 40px;
-            font-style: italic;
             color: var(--primary);
             font-size: 1rem;
             border-top: 1px dashed rgba(219, 167, 176, 0.6);
@@ -313,7 +336,6 @@
         .live-counter-box {
             font-family: 'Playfair Display', serif;
             color: var(--primary);
-            font-style: italic;
             font-size: 1.1rem;
             margin-top: 25px;
             margin-bottom: 15px;
@@ -553,6 +575,11 @@
 </head>
 <body>
 
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="videos/video_fondo.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
     <audio id="audioLocal" loop>
@@ -677,7 +704,7 @@
     <div class="capitulo" id="pausaComercial">
         <div class="badge-secreto">Intermedio</div>
         <h2>⚠️ Pausa comercial ⚠️</h2>
-        <p>Ya conoces el 15% de los esfuerzos estratégicos. Hubo nervios, tácticas y más trabajo del que cualquiera imaginaría. 😅</p>
+        <p>Ya conoces el 15% de los esfuerzos estratégicos. Hubo nervios, tácticas and más trabajo del que cualquiera imaginaría. 😅</p>
         <div class="btn-group">
             <button class="boton" onclick="navegar('pausaComercial', 'capitulo6', 7)">Ver el Primer Intento 🍪</button>
             <button class="boton-regresar" onclick="navegar('pausaComercial', 'capitulo4', 5)">Atrás 👈</button>
