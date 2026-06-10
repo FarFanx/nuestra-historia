@@ -127,6 +127,93 @@
             transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        .progress-label {
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(128, 0, 32, 0.12);
+            box-shadow: 0 12px 32px rgba(128, 0, 32, 0.12);
+            color: var(--primary-bg);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.82rem;
+            font-style: italic;
+            white-space: nowrap;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .timeline-panel {
+            position: fixed;
+            left: 22px;
+            top: 92px;
+            z-index: 900;
+            width: 190px;
+            padding: 16px 14px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: var(--shadow-premium);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .timeline-title {
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
+        .timeline-item {
+            width: 100%;
+            min-height: 36px;
+            margin: 0 0 8px 0;
+            padding: 8px 8px 8px 24px;
+            border: 0;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.76rem;
+            line-height: 1.25;
+            position: relative;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 50%;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--accent);
+            transform: translateY(-50%);
+            box-shadow: 0 0 0 4px rgba(217, 167, 176, 0.16);
+        }
+
+        .timeline-item:hover,
+        .timeline-item.timeline-active {
+            background: rgba(128, 0, 32, 0.08);
+            color: var(--primary-bg);
+            transform: translateX(2px);
+        }
+
+        .timeline-item.timeline-active::before {
+            background: var(--primary);
+        }
+
         /* --- CORAZONES DE FONDO --- */
         .heart-particle {
             position: fixed;
@@ -980,6 +1067,58 @@
             color: var(--primary);
         }
 
+        .secreto-box {
+            width: min(100%, 450px);
+            margin: 28px auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .secreto-trigger {
+            border: 1px solid rgba(128, 0, 32, 0.16);
+            background: rgba(255, 255, 255, 0.72);
+            color: var(--primary-bg);
+            padding: 12px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.86rem;
+            font-style: italic;
+            box-shadow: 0 12px 28px rgba(128, 0, 32, 0.1);
+            transition: var(--transition-smooth);
+        }
+
+        .secreto-trigger:hover {
+            transform: translateY(-3px);
+            background: #ffffff;
+        }
+
+        .secreto-carta {
+            display: none;
+            margin-top: 16px;
+            padding: 20px 22px;
+            border-radius: 16px;
+            background:
+                linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+                repeating-linear-gradient(0deg, transparent 0 29px, rgba(128, 0, 32, 0.08) 29px 30px);
+            border: 1px solid rgba(128, 0, 32, 0.12);
+            box-shadow: 0 18px 38px rgba(128,0,32,0.1);
+            text-align: left;
+            animation: fadeInUp 0.55s ease forwards;
+        }
+
+        .secreto-carta.secreto-activo {
+            display: block;
+        }
+
+        .secreto-carta p {
+            margin-bottom: 0;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
         .puzzle-board {
             width: min(100%, 390px);
             aspect-ratio: 1;
@@ -1148,12 +1287,34 @@
             .container, .capitulo { padding: 45px 25px; }
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
             .boton, .boton-regresar { width: 100%; text-align: center; }
+            .progress-label { top: 10px; max-width: 78vw; overflow: hidden; text-overflow: ellipsis; }
+            .timeline-panel {
+                left: 0;
+                right: 0;
+                top: auto;
+                bottom: 0;
+                width: 100%;
+                padding: 10px 12px;
+                border-radius: 16px 16px 0 0;
+                display: flex;
+                gap: 8px;
+                overflow-x: auto;
+            }
+            .timeline-title { display: none; }
+            .timeline-item {
+                min-width: 128px;
+                margin-bottom: 0;
+                padding: 8px 10px 8px 22px;
+                flex: 0 0 auto;
+                background: rgba(255, 255, 255, 0.56);
+            }
             /* Ajustes Mobile */
             .video-item-portada { height: 240px; }
             .galeria-doble .foto-item { height: 150px; }
             .galeria-trio-polaroid .principal { height: 180px; }
             .galeria-trio-polaroid .secundaria { height: 100px; }
             .galeria-asimetrica { height: 260px; }
+            body { padding-bottom: 96px; }
         }
     </style>
 </head>
@@ -1169,6 +1330,19 @@
     </div>
 
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="progress-label" id="progressLabel">Inicio de la historia</div>
+
+    <nav class="timeline-panel" aria-label="Linea de tiempo de la historia">
+        <div class="timeline-title">Linea de tiempo</div>
+        <button class="timeline-item timeline-active" type="button" data-target="inicio" data-step="0" onclick="irATimeline('inicio', 0)">Inicio</button>
+        <button class="timeline-item" type="button" data-target="capitulo1" data-step="2" onclick="irATimeline('capitulo1', 2)">Antes de comenzar</button>
+        <button class="timeline-item" type="button" data-target="capitulo2" data-step="3" onclick="irATimeline('capitulo2', 3)">Reencuentro</button>
+        <button class="timeline-item" type="button" data-target="capitulo4" data-step="5" onclick="irATimeline('capitulo4', 5)">Ultima oportunidad</button>
+        <button class="timeline-item" type="button" data-target="capitulo6" data-step="7" onclick="irATimeline('capitulo6', 7)">Primer intento</button>
+        <button class="timeline-item" type="button" data-target="parte2" data-step="8" onclick="irATimeline('parte2', 8)">Cada vez mas cerca</button>
+        <button class="timeline-item" type="button" data-target="capitulo15" data-step="17" onclick="irATimeline('capitulo15', 17)">La sorpresa</button>
+        <button class="timeline-item" type="button" data-target="capitulo21" data-step="23" onclick="irATimeline('capitulo21', 23)">Continuara</button>
+    </nav>
 
     <audio id="audioLocal" loop>
         <source src="musica/pablo_alboran_donde_esta_el_amor.mp3" type="audio/mpeg">
@@ -1328,6 +1502,12 @@ Y precisamente por eso tenía que hacerlo bien.
 Así que empecé a pensar, planear y buscar la mejor forma de acercarme nuevamente. No quería que fuera algo forzado ni improvisado. Quería encontrar el momento correcto, las palabras correctas y la oportunidad correcta.
 Sin saberlo, estaba a punto de tomar una de las decisiones más importantes de toda esta historia.
 </p>
+        <div class="secreto-box">
+            <button class="secreto-trigger" type="button" onclick="toggleSecreto('secretoCap4')">Leer pensamiento secreto</button>
+            <div class="secreto-carta" id="secretoCap4">
+                <p>En esta parte probablemente habia mas miedo del que se notaba. A veces uno dice que esta tranquilo, pero por dentro ya esta imaginando mil finales posibles.</p>
+            </div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo4', 'pausaComercial', 6)">Continuar ⚠️</button>
             <button class="boton-regresar" onclick="navegar('capitulo4', 'capitulo3', 4)">Anterior 👈</button>
@@ -1374,6 +1554,13 @@ Y aunque todavía faltaba mucho por vivir, poco a poco las cosas comenzaban a av
             <div class="foto-item secundaria"><img src="imagenes/alfajores_resultado.jpg" alt="Resultado pan-alfajor"></div>
         </div>
 
+        <div class="secreto-box">
+            <button class="secreto-trigger" type="button" onclick="toggleSecreto('secretoCap6')">Abrir detalle oculto</button>
+            <div class="secreto-carta" id="secretoCap6">
+                <p>Los nervios tambien cuentan como prueba de esfuerzo. Si algo te importa, hasta preparar alfajores puede sentirse como una escena importante.</p>
+            </div>
+        </div>
+
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo6', 'parte2', 8)">Siguiente capítulo ❤️</button>
             <button class="boton-regresar" onclick="navegar('capitulo6', 'pausaComercial', 6)">Atrás 👈</button>
@@ -1400,6 +1587,13 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             <div class="foto-item foto-alta"><img src="imagenes/nosotros_final_1.jpg" alt="Gran Recuerdo Final"></div>
             <div class="foto-item foto-pequena"><img src="imagenes/nosotros_final_2.jpg" alt="Mini Recuerdo 1"></div>
             <div class="foto-item foto-pequena"><img src="imagenes/nosotros_final_3.jpg" alt="Mini Recuerdo 2"></div>
+        </div>
+
+        <div class="secreto-box">
+            <button class="secreto-trigger" type="button" onclick="toggleSecreto('secretoParte2')">Ver confesión escondida</button>
+            <div class="secreto-carta" id="secretoParte2">
+                <p>Esta etapa no era solo acercarse. Era aprender a quedarse, a escuchar mejor y a demostrar con hechos lo que a veces las palabras todavia no sabian decir.</p>
+            </div>
         </div>
 
         <div class="btn-group">
@@ -1703,6 +1897,12 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             <div class="foto-item foto-pequena"><img src="imágenes/capitulo21_1.jpg" alt="Recuerdo capitulo 21 1"></div>
             <div class="foto-item foto-pequena"><img src="imágenes/capitulo21_2.jpg" alt="Recuerdo capitulo 21 2"></div>
         </div>
+        <div class="secreto-box">
+            <button class="secreto-trigger" type="button" onclick="toggleSecreto('secretoCap21')">Abrir nota antes del final</button>
+            <div class="secreto-carta" id="secretoCap21">
+                <p>Que diga continuara no significa que falte un final. Significa que todavia quedan dias, fotos, conversaciones y capitulos que la pagina aun no conoce.</p>
+            </div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo21', 'rompecabezasFinal', 24)">Armar el rompecabezas</button>
             <button class="boton-regresar" onclick="navegar('capitulo21', 'corteComercial4', 23)">Anterior</button>
@@ -1756,6 +1956,7 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             setInterval(crearCorazon, 800);
             actualizarHoraFecha();
             setInterval(actualizarHoraFecha, 1000);
+            actualizarProgresoVisual("inicio", 0);
             prepararLightbox();
         });
 
@@ -1779,6 +1980,38 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
         let piezasRompecabezas = [];
         let piezaSeleccionada = null;
         let rompecabezasResuelto = false;
+        let pantallaActualGlobal = "inicio";
+        const nombresPantallas = {
+            inicio: "Inicio de la historia",
+            segundaPantalla: "Confirmacion",
+            capitulo1: "Capitulo 1 de 21: Antes de comenzar",
+            capitulo2: "Capitulo 2 de 21: El reencuentro",
+            capitulo3: "Capitulo 3 de 21: Una nueva pausa",
+            capitulo4: "Capitulo 4 de 21: Una ultima oportunidad",
+            pausaComercial: "Pausa comercial",
+            capitulo6: "Capitulo 6 de 21: Primer intento",
+            parte2: "Parte II: Cada vez mas cerca",
+            capitulo7: "Capitulo 7 de 21",
+            capitulo8: "Capitulo 8 de 21",
+            capitulo9: "Capitulo 9 de 21",
+            capitulo10: "Capitulo 10 de 21",
+            corteComercial2: "Corte comercial",
+            capitulo11: "Capitulo 11 de 21",
+            capitulo12: "Capitulo 12 de 21",
+            capitulo13: "Capitulo 13 de 21",
+            capitulo14: "Capitulo 14 de 21",
+            capitulo15: "Capitulo 15 de 21: La sorpresa",
+            corteComercial3: "Corte comercial",
+            capitulo16: "Capitulo 16 de 21",
+            capitulo17: "Capitulo 17 de 21",
+            capitulo18: "Capitulo 18 de 21",
+            capitulo19: "Capitulo 19 de 21",
+            capitulo20: "Capitulo 20 de 21",
+            corteComercial4: "Ultimo corte comercial",
+            capitulo21: "Capitulo 21 de 21: Continuara",
+            rompecabezasFinal: "Ultima prueba: rompecabezas",
+            cartaFinal: "Carta final desbloqueada"
+        };
 
         if (musicIndicator && audio) {
             musicIndicator.addEventListener("click", () => {
@@ -1816,6 +2049,8 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
                     actual.classList.remove("card-active");
                     actual.classList.remove("page-exit");
                     siguiente.classList.add("card-active");
+                    pantallaActualGlobal = idSiguientePantalla;
+                    actualizarProgresoVisual(idSiguientePantalla, pasoActual);
                     setTimeout(() => {
                         siguiente.style.opacity = "1";
                         siguiente.style.transform = "translateY(0) scale(1)";
@@ -1827,6 +2062,7 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             const progresoTotal = (pasoActual / 24) * 100;
             const progressBar = document.getElementById("progressBar");
             if(progressBar) { progressBar.style.width = progresoTotal + "%"; }
+            actualizarProgresoVisual(idSiguientePantalla, pasoActual);
 
             if (idSiguientePantalla === 'parte2' || idSiguientePantalla === 'cartaFinal') {
                 for (let i = 0; i < 50; i++) { setTimeout(crearConfeti, i * 60); }
@@ -1835,6 +2071,31 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             if (idSiguientePantalla === 'rompecabezasFinal') {
                 setTimeout(iniciarRompecabezas, 650);
             }
+        }
+
+        function actualizarProgresoVisual(idPantalla, pasoActual) {
+            const progressLabel = document.getElementById("progressLabel");
+            const timelineItems = document.querySelectorAll(".timeline-item");
+            const porcentaje = Math.max(0, Math.min(100, Math.round((pasoActual / 24) * 100)));
+
+            if (progressLabel) {
+                progressLabel.textContent = `${nombresPantallas[idPantalla] || "Avanzando en la historia"} · ${porcentaje}%`;
+            }
+
+            timelineItems.forEach((item) => {
+                item.classList.toggle("timeline-active", item.dataset.target === idPantalla);
+            });
+        }
+
+        function irATimeline(idDestino, pasoDestino) {
+            if (pantallaActualGlobal === idDestino) return;
+            navegar(pantallaActualGlobal, idDestino, pasoDestino);
+        }
+
+        function toggleSecreto(idSecreto) {
+            const secreto = document.getElementById(idSecreto);
+            if (!secreto) return;
+            secreto.classList.toggle("secreto-activo");
         }
 
         function iniciarRompecabezas() {
