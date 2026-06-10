@@ -415,6 +415,13 @@
             letter-spacing: 0.3px;
         }
 
+        .capitulo > p,
+        .container > p {
+            max-width: 52ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .advertencia {
             font-family: 'Playfair Display', serif;
             margin-top: 40px;
@@ -606,6 +613,87 @@
             transform: scale(1.05);
         }
 
+        .chapter-cover {
+            width: min(100%, 420px);
+            aspect-ratio: 16 / 10;
+            margin: 0 auto 28px auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 6px solid #ffffff;
+            box-shadow: 0 18px 45px rgba(128, 0, 32, 0.14);
+            background: linear-gradient(135deg, #fff7fa, #f8e8ee);
+            position: relative;
+            z-index: 5;
+        }
+
+        .chapter-cover::after {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .chapter-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            display: block;
+        }
+
+        .frase-capitulo {
+            width: min(100%, 440px);
+            margin: 28px auto;
+            padding: 18px 22px;
+            border-top: 1px solid rgba(128, 0, 32, 0.18);
+            border-bottom: 1px solid rgba(128, 0, 32, 0.18);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--primary-bg);
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.42);
+            position: relative;
+            z-index: 5;
+        }
+
+        .frase-capitulo::before,
+        .frase-capitulo::after {
+            color: var(--accent);
+            font-size: 1.4rem;
+            line-height: 0;
+        }
+
+        .frase-capitulo::before { content: "“"; }
+        .frase-capitulo::after { content: "”"; }
+
+        .galeria-trio-polaroid .foto-item,
+        .foto-item.polaroid {
+            border: 8px solid #ffffff;
+            border-bottom-width: 24px;
+            border-radius: 8px;
+            box-shadow: 0 14px 30px rgba(78, 38, 49, 0.14);
+        }
+
+        .galeria-trio-polaroid .foto-item:nth-child(2),
+        .foto-item.polaroid:nth-child(odd) {
+            transform: rotate(-1.5deg);
+        }
+
+        .galeria-trio-polaroid .foto-item:nth-child(3),
+        .foto-item.polaroid:nth-child(even) {
+            transform: rotate(1.5deg);
+        }
+
+        .galeria-trio-polaroid .foto-item:hover,
+        .foto-item.polaroid:hover {
+            transform: translateY(-5px) scale(1.02) rotate(0deg);
+        }
+
         /* 🎬 NUEVO DISEÑO PARA EL VIDEO INTEGRADO (Portada) */
         .video-item-portada {
             width: 100%;
@@ -702,13 +790,29 @@
 
         .music-note-container {
             position: fixed; bottom: 25px; left: 25px; z-index: 999;
-            background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); padding: 12px 18px; border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.7); box-shadow: var(--shadow-premium);
+            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); padding: 12px 18px 12px 14px; border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.85); box-shadow: var(--shadow-premium);
             display: flex; align-items: center; gap: 10px; cursor: pointer;
+            transition: var(--transition-smooth);
         }
 
-        .music-icon { animation: pulseMusic 2s infinite ease-in-out; }
+        .music-note-container:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 42px rgba(128, 0, 32, 0.18);
+        }
+
+        .music-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #ffffff;
+            animation: pulseMusic 2s infinite ease-in-out;
+        }
         @keyframes pulseMusic { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
         .music-playing .music-icon { animation: pulseMusic 0.8s infinite ease-in-out; }
         .music-text { font-family: 'Playfair Display', serif; font-size: 0.8rem; font-style: italic; color: var(--primary); font-weight: 600; }
@@ -749,6 +853,66 @@
             font-size: 0.75rem; 
             color: var(--text-muted);
             font-style: italic;
+        }
+
+        .corte-comercial {
+            background:
+                linear-gradient(135deg, rgba(255,255,255,0.93), rgba(251,245,248,0.92)),
+                repeating-linear-gradient(-45deg, rgba(128,0,32,0.045) 0 8px, rgba(255,255,255,0.06) 8px 16px);
+            border: 2px dashed rgba(128, 0, 32, 0.28);
+        }
+
+        .corte-comercial .badge-secreto {
+            color: var(--primary);
+            border-bottom-color: rgba(128, 0, 32, 0.25);
+        }
+
+        .corte-icon {
+            width: 82px;
+            height: 82px;
+            margin: 0 auto 22px auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, #ffffff, #fdeaf1);
+            border: 2px solid rgba(128, 0, 32, 0.16);
+            box-shadow: 0 14px 34px rgba(128, 0, 32, 0.12);
+        }
+
+        .carta-final {
+            background: rgba(255, 255, 255, 0.94);
+        }
+
+        .carta-box {
+            text-align: left;
+            padding: 34px 30px;
+            margin: 28px 0;
+            border-radius: 18px;
+            background:
+                linear-gradient(rgba(255,255,255,0.86), rgba(255,255,255,0.86)),
+                repeating-linear-gradient(0deg, transparent 0 31px, rgba(128, 0, 32, 0.08) 31px 32px);
+            border: 1px solid rgba(128, 0, 32, 0.12);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7), 0 18px 42px rgba(128,0,32,0.1);
+            position: relative;
+            z-index: 5;
+        }
+
+        .carta-box p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.08rem;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.9;
+        }
+
+        .firma-carta {
+            margin-top: 18px;
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.4rem;
+            color: var(--primary);
         }
 
         /* --- ANIMACIÓN DE TRANSICIÓN (ARRUGAMIENTO DE PAPEL) --- */
@@ -986,8 +1150,9 @@ Sin saberlo, estaba a punto de tomar una de las decisiones más importantes de t
         </div>
     </div>
 
-    <div class="capitulo" id="pausaComercial">
+    <div class="capitulo corte-comercial" id="pausaComercial">
         <div class="badge-secreto">Intermedio</div>
+        <div class="corte-icon">☕</div>
         <h2>⚠️ Pausa comercial ⚠️</h2>
         <p>Si llegaste hasta aquí, felicidades. Ya conoces aproximadamente el 15% de los esfuerzos que alguien tuvo que hacer para conquistar a cierta personita. 😌
 Por motivos de tiempo, presupuesto y para evitar escribir una enciclopedia completa, algunos detalles han sido resumidos.
@@ -1061,9 +1226,15 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo7">
         <div class="badge-secreto">Capitulo 7</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo7_portada.jpg" alt="Portada capitulo 7"></div>
         <h2>Un Nuevo Recuerdo</h2>
         <p>Escribe aqui como continuo la historia despues de sentirse cada vez mas cerca. Puedes contar una salida, una conversacion importante o un detalle que haya marcado este momento.</p>
         <p>Este capitulo puede servir para guardar ese recuerdo que todavia no quieres que se pierda entre tantos dias bonitos.</p>
+        <div class="frase-capitulo">Hay recuerdos que empiezan pequenos y terminan ocupando un lugar enorme.</div>
+        <div class="galeria-doble">
+            <div class="foto-item"><img src="imágenes/capitulo7_1.jpg" alt="Recuerdo capitulo 7 1"></div>
+            <div class="foto-item"><img src="imágenes/capitulo7_2.jpg" alt="Recuerdo capitulo 7 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo7', 'capitulo8', 10)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo7', 'parte2', 8)">Anterior</button>
@@ -1072,9 +1243,16 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo8">
         <div class="badge-secreto">Capitulo 8</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo8_portada.jpg" alt="Portada capitulo 8"></div>
         <h2>Las Pequenas Senales</h2>
         <p>Escribe aqui esas pequenas senales que empezaron a demostrar que algo especial estaba creciendo: miradas, mensajes, risas o momentos que parecian simples, pero significaban mucho.</p>
         <p>A veces la historia avanza en detalles chiquitos, de esos que solo entienden quienes los vivieron.</p>
+        <div class="frase-capitulo">A veces lo mas bonito no se dice fuerte, solo se nota.</div>
+        <div class="galeria-trio-polaroid">
+            <div class="foto-item principal"><img src="imágenes/capitulo8_principal.jpg" alt="Recuerdo principal capitulo 8"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo8_1.jpg" alt="Detalle capitulo 8 1"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo8_2.jpg" alt="Detalle capitulo 8 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo8', 'capitulo9', 11)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo8', 'capitulo7', 9)">Anterior</button>
@@ -1083,9 +1261,16 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo9">
         <div class="badge-secreto">Capitulo 9</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo9_portada.jpg" alt="Portada capitulo 9"></div>
         <h2>Mas Conversaciones</h2>
         <p>Escribe aqui como fueron creciendo las conversaciones entre ustedes. Puedes contar de que hablaban, cuanto duraban o que sentias cuando por fin todo empezaba a sentirse mas natural.</p>
         <p>Este espacio queda listo para una parte mas tranquila, sincera y cercana de la historia.</p>
+        <div class="frase-capitulo">Una buena conversacion tambien puede ser una forma de acercarse.</div>
+        <div class="galeria-asimetrica">
+            <div class="foto-item foto-alta"><img src="imágenes/capitulo9_alta.jpg" alt="Recuerdo capitulo 9 principal"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo9_1.jpg" alt="Recuerdo capitulo 9 1"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo9_2.jpg" alt="Recuerdo capitulo 9 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo9', 'capitulo10', 12)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo9', 'capitulo8', 10)">Anterior</button>
@@ -1094,31 +1279,63 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo10">
         <div class="badge-secreto">Capitulo 10</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo10_portada.jpg" alt="Portada capitulo 10"></div>
         <h2>El Primer Gran Momento</h2>
         <p>Escribe aqui un momento que haya sido importante para ambos. Puede ser una salida, una sorpresa, una fecha especial o una situacion que cambio la forma en que se veian.</p>
         <p>Deja este capitulo como el lugar donde la historia empieza a sentirse mas seria y mas bonita.</p>
+        <div class="frase-capitulo">Todo cambia un poquito cuando un momento se vuelve inolvidable.</div>
+        <div class="galeria-doble">
+            <div class="foto-item"><img src="imágenes/capitulo10_1.jpg" alt="Recuerdo capitulo 10 1"></div>
+            <div class="foto-item"><img src="imágenes/capitulo10_2.jpg" alt="Recuerdo capitulo 10 2"></div>
+        </div>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo10', 'capitulo11', 13)">Siguiente capitulo</button>
+            <button class="boton" onclick="navegar('capitulo10', 'corteComercial2', 13)">Pausa comercial</button>
             <button class="boton-regresar" onclick="navegar('capitulo10', 'capitulo9', 11)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo corte-comercial" id="corteComercial2">
+        <div class="badge-secreto">Corte comercial</div>
+        <div class="corte-icon">🍿</div>
+        <h2>Momento de respirar</h2>
+        <p>Si llegaste hasta aqui, oficialmente ya no estas leyendo por curiosidad. Esto ya es investigacion seria con tintes romanticos.</p>
+        <p>Puedes aprovechar esta pausa para tomar agua, fingir que no te emocionaste y prepararte, porque la historia todavia tiene bastante material comprometedor.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('corteComercial2', 'capitulo11', 13)">Seguir con el chisme</button>
+            <button class="boton-regresar" onclick="navegar('corteComercial2', 'capitulo10', 12)">Volver</button>
         </div>
     </div>
 
     <div class="capitulo" id="capitulo11">
         <div class="badge-secreto">Capitulo 11</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo11_portada.jpg" alt="Portada capitulo 11"></div>
         <h2>Cuando Todo Se Siente Diferente</h2>
         <p>Escribe aqui como empezaste a notar que ya no era solo una ilusion o una idea. Cuenta que cambio, que sentiste y que detalles hicieron que todo se sintiera distinto.</p>
         <p>Este capitulo puede tener ese tono de descubrimiento, como cuando uno entiende que algo ya ocupa un lugar especial.</p>
+        <div class="frase-capitulo">Hay dias en los que el corazon entiende antes que la cabeza.</div>
+        <div class="galeria-trio-polaroid">
+            <div class="foto-item principal"><img src="imágenes/capitulo11_principal.jpg" alt="Recuerdo principal capitulo 11"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo11_1.jpg" alt="Detalle capitulo 11 1"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo11_2.jpg" alt="Detalle capitulo 11 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo11', 'capitulo12', 14)">Siguiente capitulo</button>
-            <button class="boton-regresar" onclick="navegar('capitulo11', 'capitulo10', 12)">Anterior</button>
+            <button class="boton-regresar" onclick="navegar('capitulo11', 'corteComercial2', 13)">Anterior</button>
         </div>
     </div>
 
     <div class="capitulo" id="capitulo12">
         <div class="badge-secreto">Capitulo 12</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo12_portada.jpg" alt="Portada capitulo 12"></div>
         <h2>Los Nervios Tambien Cuentan</h2>
         <p>Escribe aqui una parte donde los nervios, las dudas o la emocion hayan aparecido otra vez. No todas las historias avanzan sin miedo, y eso tambien las hace reales.</p>
         <p>Puedes contar lo que pensabas, lo que querias decir y lo dificil que era actuar normal cuando algo importaba tanto.</p>
+        <div class="frase-capitulo">Los nervios tambien son una pista de que algo importa.</div>
+        <div class="galeria-asimetrica">
+            <div class="foto-item foto-alta"><img src="imágenes/capitulo12_alta.jpg" alt="Recuerdo capitulo 12 principal"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo12_1.jpg" alt="Recuerdo capitulo 12 1"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo12_2.jpg" alt="Recuerdo capitulo 12 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo12', 'capitulo13', 15)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo12', 'capitulo11', 13)">Anterior</button>
@@ -1127,9 +1344,15 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo13">
         <div class="badge-secreto">Capitulo 13</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo13_portada.jpg" alt="Portada capitulo 13"></div>
         <h2>Un Dia Para Recordar</h2>
         <p>Escribe aqui un dia especifico que quieras guardar en la pagina: que hicieron, donde estuvieron, que paso y por que ese momento merece quedarse en la historia.</p>
         <p>Este capitulo esta pensado para un recuerdo con detalles, de esos que se pueden volver a leer y sentir otra vez.</p>
+        <div class="frase-capitulo">Algunos dias se guardan solos, como si supieran que van a hacer falta.</div>
+        <div class="galeria-doble">
+            <div class="foto-item"><img src="imágenes/capitulo13_1.jpg" alt="Recuerdo capitulo 13 1"></div>
+            <div class="foto-item"><img src="imágenes/capitulo13_2.jpg" alt="Recuerdo capitulo 13 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo13', 'capitulo14', 16)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo13', 'capitulo12', 14)">Anterior</button>
@@ -1138,9 +1361,16 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo14">
         <div class="badge-secreto">Capitulo 14</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo14_portada.jpg" alt="Portada capitulo 14"></div>
         <h2>Mas Cerca Que Antes</h2>
         <p>Escribe aqui como la confianza fue creciendo. Puedes hablar de bromas internas, apoyo, secretos compartidos o momentos donde ambos se sintieron mas comodos.</p>
         <p>Esta parte puede mostrar como la relacion dejo de ser solo intento y empezo a sentirse como algo construido entre los dos.</p>
+        <div class="frase-capitulo">La confianza no llega de golpe; se construye en gestos pequenos.</div>
+        <div class="galeria-trio-polaroid">
+            <div class="foto-item principal"><img src="imágenes/capitulo14_principal.jpg" alt="Recuerdo principal capitulo 14"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo14_1.jpg" alt="Detalle capitulo 14 1"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo14_2.jpg" alt="Detalle capitulo 14 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo14', 'capitulo15', 17)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo14', 'capitulo13', 15)">Anterior</button>
@@ -1149,31 +1379,63 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo15">
         <div class="badge-secreto">Capitulo 15</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo15_portada.jpg" alt="Portada capitulo 15"></div>
         <h2>La Sorpresa</h2>
         <p>Escribe aqui una sorpresa, un detalle o una accion especial que haya tenido importancia. Puede ser algo planeado con mucho cuidado o algo pequeno que termino siendo enorme.</p>
         <p>Este capitulo queda listo para ese momento donde el esfuerzo se nota sin necesidad de explicarlo demasiado.</p>
+        <div class="frase-capitulo">Un detalle sincero puede decir mucho mas que un discurso perfecto.</div>
+        <div class="galeria-asimetrica">
+            <div class="foto-item foto-alta"><img src="imágenes/capitulo15_alta.jpg" alt="Recuerdo capitulo 15 principal"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo15_1.jpg" alt="Recuerdo capitulo 15 1"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo15_2.jpg" alt="Recuerdo capitulo 15 2"></div>
+        </div>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo15', 'capitulo16', 18)">Siguiente capitulo</button>
+            <button class="boton" onclick="navegar('capitulo15', 'corteComercial3', 18)">Pausa comercial</button>
             <button class="boton-regresar" onclick="navegar('capitulo15', 'capitulo14', 16)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo corte-comercial" id="corteComercial3">
+        <div class="badge-secreto">Corte comercial</div>
+        <div class="corte-icon">📺</div>
+        <h2>Publicidad no pagada</h2>
+        <p>Este espacio esta patrocinado por los nervios, las indirectas mal disimuladas y esas ganas de actuar normal cuando claramente nada estaba normal.</p>
+        <p>Gracias por seguir leyendo. La administracion de esta pagina no se hace responsable si despues de esto alguien sonrie viendo la pantalla.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('corteComercial3', 'capitulo16', 18)">Continuar</button>
+            <button class="boton-regresar" onclick="navegar('corteComercial3', 'capitulo15', 17)">Volver</button>
         </div>
     </div>
 
     <div class="capitulo" id="capitulo16">
         <div class="badge-secreto">Capitulo 16</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo16_portada.jpg" alt="Portada capitulo 16"></div>
         <h2>Lo Que Iba Naciendo</h2>
         <p>Escribe aqui como empezaron a aparecer sentimientos mas claros. Puedes contar cuando te diste cuenta, que cosas te confirmaban lo que sentias y como cambio tu forma de verla.</p>
         <p>Este espacio puede ser mas personal, como una confesion escondida dentro de la historia.</p>
+        <div class="frase-capitulo">Lo bonito de sentir algo real es que tarde o temprano se empieza a notar.</div>
+        <div class="galeria-doble">
+            <div class="foto-item"><img src="imágenes/capitulo16_1.jpg" alt="Recuerdo capitulo 16 1"></div>
+            <div class="foto-item"><img src="imágenes/capitulo16_2.jpg" alt="Recuerdo capitulo 16 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo16', 'capitulo17', 19)">Siguiente capitulo</button>
-            <button class="boton-regresar" onclick="navegar('capitulo16', 'capitulo15', 17)">Anterior</button>
+            <button class="boton-regresar" onclick="navegar('capitulo16', 'corteComercial3', 18)">Anterior</button>
         </div>
     </div>
 
     <div class="capitulo" id="capitulo17">
         <div class="badge-secreto">Capitulo 17</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo17_portada.jpg" alt="Portada capitulo 17"></div>
         <h2>Un Obstaculo Mas</h2>
         <p>Escribe aqui alguna dificultad, malentendido, distancia, duda o momento complicado que hayan tenido que atravesar. Las historias bonitas tambien tienen partes que cuestan.</p>
         <p>Este capitulo puede ayudar a mostrar que no todo fue perfecto, pero que aun asi valio la pena seguir intentando.</p>
+        <div class="frase-capitulo">No todo fue facil, pero lo importante rara vez lo es.</div>
+        <div class="galeria-trio-polaroid">
+            <div class="foto-item principal"><img src="imágenes/capitulo17_principal.jpg" alt="Recuerdo principal capitulo 17"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo17_1.jpg" alt="Detalle capitulo 17 1"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo17_2.jpg" alt="Detalle capitulo 17 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo17', 'capitulo18', 20)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo17', 'capitulo16', 18)">Anterior</button>
@@ -1182,9 +1444,16 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo18">
         <div class="badge-secreto">Capitulo 18</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo18_portada.jpg" alt="Portada capitulo 18"></div>
         <h2>La Calma Despues</h2>
         <p>Escribe aqui como se resolvio o se sintio mejor una etapa dificil. Puedes hablar de una conversacion, una reconciliacion o un momento que devolvio tranquilidad.</p>
         <p>Este capitulo puede tener un tono mas suave, como una respiracion despues de haber tenido miedo de perder algo importante.</p>
+        <div class="frase-capitulo">Despues del miedo, la calma se siente como un abrazo.</div>
+        <div class="galeria-asimetrica">
+            <div class="foto-item foto-alta"><img src="imágenes/capitulo18_alta.jpg" alt="Recuerdo capitulo 18 principal"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo18_1.jpg" alt="Recuerdo capitulo 18 1"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo18_2.jpg" alt="Recuerdo capitulo 18 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo18', 'capitulo19', 21)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo18', 'capitulo17', 19)">Anterior</button>
@@ -1193,9 +1462,15 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo19">
         <div class="badge-secreto">Capitulo 19</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo19_portada.jpg" alt="Portada capitulo 19"></div>
         <h2>Lo Que Aprendi De Ella</h2>
         <p>Escribe aqui que aprendiste de ella, de su forma de ser, de sus detalles, de su manera de mirar la vida o de las cosas que la hacen especial para ti.</p>
         <p>Este capitulo puede sentirse como una carta dentro de la pagina, honesta y directa.</p>
+        <div class="frase-capitulo">Hay personas que no solo llegan; tambien te ensenan a mirar distinto.</div>
+        <div class="galeria-doble">
+            <div class="foto-item"><img src="imágenes/capitulo19_1.jpg" alt="Recuerdo capitulo 19 1"></div>
+            <div class="foto-item"><img src="imágenes/capitulo19_2.jpg" alt="Recuerdo capitulo 19 2"></div>
+        </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('capitulo19', 'capitulo20', 22)">Siguiente capitulo</button>
             <button class="boton-regresar" onclick="navegar('capitulo19', 'capitulo18', 20)">Anterior</button>
@@ -1204,22 +1479,64 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
     <div class="capitulo" id="capitulo20">
         <div class="badge-secreto">Capitulo 20</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo20_portada.jpg" alt="Portada capitulo 20"></div>
         <h2>Todo Lo Que Fuimos Construyendo</h2>
         <p>Escribe aqui un resumen de todos los momentos que ya habian vivido hasta este punto: las salidas, las risas, los nervios, los intentos y todo lo que fue tomando forma.</p>
         <p>Este capitulo puede funcionar como una pausa antes del cierre, recordando cuanto camino habia detras.</p>
+        <div class="frase-capitulo">Lo que vale la pena no aparece completo; se construye paso a paso.</div>
+        <div class="galeria-trio-polaroid">
+            <div class="foto-item principal"><img src="imágenes/capitulo20_principal.jpg" alt="Recuerdo principal capitulo 20"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo20_1.jpg" alt="Detalle capitulo 20 1"></div>
+            <div class="foto-item secundaria"><img src="imágenes/capitulo20_2.jpg" alt="Detalle capitulo 20 2"></div>
+        </div>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo20', 'capitulo21', 23)">Siguiente capitulo</button>
+            <button class="boton" onclick="navegar('capitulo20', 'corteComercial4', 23)">Ultima pausa comercial</button>
             <button class="boton-regresar" onclick="navegar('capitulo20', 'capitulo19', 21)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo corte-comercial" id="corteComercial4">
+        <div class="badge-secreto">Ultimo corte comercial</div>
+        <div class="corte-icon">🎬</div>
+        <h2>Antes del continuara...</h2>
+        <p>Atencion: la historia esta entrando en zona sensible. Si siente ternura, risa nerviosa o ganas de seguir leyendo, es completamente normal.</p>
+        <p>Despues de esta pausa volvemos con el cierre temporal, porque algunas historias no terminan: solamente piden mas capitulos.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('corteComercial4', 'capitulo21', 23)">Ver el cierre</button>
+            <button class="boton-regresar" onclick="navegar('corteComercial4', 'capitulo20', 22)">Volver</button>
         </div>
     </div>
 
     <div class="capitulo" id="capitulo21">
         <div class="badge-secreto">Capitulo 21</div>
+        <div class="chapter-cover"><img src="imágenes/capitulo21_portada.jpg" alt="Portada capitulo 21"></div>
         <h2>Continuara...</h2>
         <p>Escribe aqui el cierre temporal de la historia. Puede ser una declaracion bonita, una promesa, una reflexion o simplemente la idea de que todavia quedan muchos recuerdos por vivir.</p>
         <p>Este no tiene que ser el final definitivo. Puede ser solo una pausa, porque las mejores historias tambien siguen escribiendose fuera de la pantalla.</p>
+        <div class="frase-capitulo">Algunas historias no terminan; simplemente siguen buscando nuevas paginas.</div>
+        <div class="galeria-asimetrica">
+            <div class="foto-item foto-alta"><img src="imágenes/capitulo21_alta.jpg" alt="Recuerdo capitulo 21 principal"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo21_1.jpg" alt="Recuerdo capitulo 21 1"></div>
+            <div class="foto-item foto-pequena"><img src="imágenes/capitulo21_2.jpg" alt="Recuerdo capitulo 21 2"></div>
+        </div>
         <div class="btn-group">
-            <button class="boton-regresar" onclick="navegar('capitulo21', 'capitulo20', 22)">Anterior</button>
+            <button class="boton" onclick="navegar('capitulo21', 'cartaFinal', 24)">Leer la carta final</button>
+            <button class="boton-regresar" onclick="navegar('capitulo21', 'corteComercial4', 23)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo carta-final" id="cartaFinal">
+        <div class="badge-secreto">Carta final</div>
+        <h2>Para cerrar esta parte</h2>
+        <div class="carta-box">
+            <p>Si estas leyendo esto, quiero que sepas que esta pagina no existe solo para contar una historia bonita. Tambien existe para guardar todo lo que a veces cuesta decir de frente: los nervios, los intentos, las risas, las dudas y cada detalle que fue haciendo que todo se sintiera especial.</p>
+            <p>Todavia falta escribir muchas partes, cambiar algunas fotos y completar varios capitulos, pero eso tambien tiene algo lindo: significa que la historia sigue viva y que aun quedan recuerdos por poner aqui.</p>
+            <p>Gracias por ser parte de esta historia, incluso en las paginas que todavia no estan terminadas.</p>
+            <div class="firma-carta">Con carino</div>
+        </div>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('cartaFinal', 'inicio', 0)">Revivir la historia</button>
+            <button class="boton-regresar" onclick="navegar('cartaFinal', 'capitulo21', 23)">Anterior</button>
         </div>
     </div>
 
@@ -1297,11 +1614,11 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
                 }, 600);
             }
 
-            const progresoTotal = (pasoActual / 23) * 100;
+            const progresoTotal = (pasoActual / 24) * 100;
             const progressBar = document.getElementById("progressBar");
             if(progressBar) { progressBar.style.width = progresoTotal + "%"; }
 
-            if (idSiguientePantalla === 'parte2') {
+            if (idSiguientePantalla === 'parte2' || idSiguientePantalla === 'cartaFinal') {
                 for (let i = 0; i < 50; i++) { setTimeout(crearConfeti, i * 60); }
             }
         }
