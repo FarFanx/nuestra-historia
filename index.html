@@ -70,6 +70,10 @@
         #loader img {
             width: 120px;
             height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 12px 35px rgba(128, 0, 32, 0.25);
             animation: rotateLoader 2.5s linear infinite;
         }
         @keyframes rotateLoader {
@@ -793,6 +797,8 @@
                 transform: translateY(100px) translateX(var(--tx)) rotate(360deg);
             }
         }
+
+        @media (max-width: 768px) {
             h1, h2 { font-size: 3rem; }
             .container, .capitulo { padding: 45px 25px; }
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
@@ -1048,7 +1054,172 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
         </div>
 
         <div class="btn-group">
+            <button class="boton" onclick="navegar('parte2', 'capitulo7', 9)">Continuar la historia ❤️</button>
             <button class="boton-regresar" onclick="navegar('parte2', 'capitulo6', 7)">Anterior 👈</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo7">
+        <div class="badge-secreto">Capitulo 7</div>
+        <h2>Un Nuevo Recuerdo</h2>
+        <p>Escribe aqui como continuo la historia despues de sentirse cada vez mas cerca. Puedes contar una salida, una conversacion importante o un detalle que haya marcado este momento.</p>
+        <p>Este capitulo puede servir para guardar ese recuerdo que todavia no quieres que se pierda entre tantos dias bonitos.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo7', 'capitulo8', 10)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo7', 'parte2', 8)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo8">
+        <div class="badge-secreto">Capitulo 8</div>
+        <h2>Las Pequenas Senales</h2>
+        <p>Escribe aqui esas pequenas senales que empezaron a demostrar que algo especial estaba creciendo: miradas, mensajes, risas o momentos que parecian simples, pero significaban mucho.</p>
+        <p>A veces la historia avanza en detalles chiquitos, de esos que solo entienden quienes los vivieron.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo8', 'capitulo9', 11)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo8', 'capitulo7', 9)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo9">
+        <div class="badge-secreto">Capitulo 9</div>
+        <h2>Mas Conversaciones</h2>
+        <p>Escribe aqui como fueron creciendo las conversaciones entre ustedes. Puedes contar de que hablaban, cuanto duraban o que sentias cuando por fin todo empezaba a sentirse mas natural.</p>
+        <p>Este espacio queda listo para una parte mas tranquila, sincera y cercana de la historia.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo9', 'capitulo10', 12)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo9', 'capitulo8', 10)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo10">
+        <div class="badge-secreto">Capitulo 10</div>
+        <h2>El Primer Gran Momento</h2>
+        <p>Escribe aqui un momento que haya sido importante para ambos. Puede ser una salida, una sorpresa, una fecha especial o una situacion que cambio la forma en que se veian.</p>
+        <p>Deja este capitulo como el lugar donde la historia empieza a sentirse mas seria y mas bonita.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo10', 'capitulo11', 13)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo10', 'capitulo9', 11)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo11">
+        <div class="badge-secreto">Capitulo 11</div>
+        <h2>Cuando Todo Se Siente Diferente</h2>
+        <p>Escribe aqui como empezaste a notar que ya no era solo una ilusion o una idea. Cuenta que cambio, que sentiste y que detalles hicieron que todo se sintiera distinto.</p>
+        <p>Este capitulo puede tener ese tono de descubrimiento, como cuando uno entiende que algo ya ocupa un lugar especial.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo11', 'capitulo12', 14)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo11', 'capitulo10', 12)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo12">
+        <div class="badge-secreto">Capitulo 12</div>
+        <h2>Los Nervios Tambien Cuentan</h2>
+        <p>Escribe aqui una parte donde los nervios, las dudas o la emocion hayan aparecido otra vez. No todas las historias avanzan sin miedo, y eso tambien las hace reales.</p>
+        <p>Puedes contar lo que pensabas, lo que querias decir y lo dificil que era actuar normal cuando algo importaba tanto.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo12', 'capitulo13', 15)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo12', 'capitulo11', 13)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo13">
+        <div class="badge-secreto">Capitulo 13</div>
+        <h2>Un Dia Para Recordar</h2>
+        <p>Escribe aqui un dia especifico que quieras guardar en la pagina: que hicieron, donde estuvieron, que paso y por que ese momento merece quedarse en la historia.</p>
+        <p>Este capitulo esta pensado para un recuerdo con detalles, de esos que se pueden volver a leer y sentir otra vez.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo13', 'capitulo14', 16)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo13', 'capitulo12', 14)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo14">
+        <div class="badge-secreto">Capitulo 14</div>
+        <h2>Mas Cerca Que Antes</h2>
+        <p>Escribe aqui como la confianza fue creciendo. Puedes hablar de bromas internas, apoyo, secretos compartidos o momentos donde ambos se sintieron mas comodos.</p>
+        <p>Esta parte puede mostrar como la relacion dejo de ser solo intento y empezo a sentirse como algo construido entre los dos.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo14', 'capitulo15', 17)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo14', 'capitulo13', 15)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo15">
+        <div class="badge-secreto">Capitulo 15</div>
+        <h2>La Sorpresa</h2>
+        <p>Escribe aqui una sorpresa, un detalle o una accion especial que haya tenido importancia. Puede ser algo planeado con mucho cuidado o algo pequeno que termino siendo enorme.</p>
+        <p>Este capitulo queda listo para ese momento donde el esfuerzo se nota sin necesidad de explicarlo demasiado.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo15', 'capitulo16', 18)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo15', 'capitulo14', 16)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo16">
+        <div class="badge-secreto">Capitulo 16</div>
+        <h2>Lo Que Iba Naciendo</h2>
+        <p>Escribe aqui como empezaron a aparecer sentimientos mas claros. Puedes contar cuando te diste cuenta, que cosas te confirmaban lo que sentias y como cambio tu forma de verla.</p>
+        <p>Este espacio puede ser mas personal, como una confesion escondida dentro de la historia.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo16', 'capitulo17', 19)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo16', 'capitulo15', 17)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo17">
+        <div class="badge-secreto">Capitulo 17</div>
+        <h2>Un Obstaculo Mas</h2>
+        <p>Escribe aqui alguna dificultad, malentendido, distancia, duda o momento complicado que hayan tenido que atravesar. Las historias bonitas tambien tienen partes que cuestan.</p>
+        <p>Este capitulo puede ayudar a mostrar que no todo fue perfecto, pero que aun asi valio la pena seguir intentando.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo17', 'capitulo18', 20)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo17', 'capitulo16', 18)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo18">
+        <div class="badge-secreto">Capitulo 18</div>
+        <h2>La Calma Despues</h2>
+        <p>Escribe aqui como se resolvio o se sintio mejor una etapa dificil. Puedes hablar de una conversacion, una reconciliacion o un momento que devolvio tranquilidad.</p>
+        <p>Este capitulo puede tener un tono mas suave, como una respiracion despues de haber tenido miedo de perder algo importante.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo18', 'capitulo19', 21)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo18', 'capitulo17', 19)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo19">
+        <div class="badge-secreto">Capitulo 19</div>
+        <h2>Lo Que Aprendi De Ella</h2>
+        <p>Escribe aqui que aprendiste de ella, de su forma de ser, de sus detalles, de su manera de mirar la vida o de las cosas que la hacen especial para ti.</p>
+        <p>Este capitulo puede sentirse como una carta dentro de la pagina, honesta y directa.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo19', 'capitulo20', 22)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo19', 'capitulo18', 20)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo20">
+        <div class="badge-secreto">Capitulo 20</div>
+        <h2>Todo Lo Que Fuimos Construyendo</h2>
+        <p>Escribe aqui un resumen de todos los momentos que ya habian vivido hasta este punto: las salidas, las risas, los nervios, los intentos y todo lo que fue tomando forma.</p>
+        <p>Este capitulo puede funcionar como una pausa antes del cierre, recordando cuanto camino habia detras.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo20', 'capitulo21', 23)">Siguiente capitulo</button>
+            <button class="boton-regresar" onclick="navegar('capitulo20', 'capitulo19', 21)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo21">
+        <div class="badge-secreto">Capitulo 21</div>
+        <h2>Continuara...</h2>
+        <p>Escribe aqui el cierre temporal de la historia. Puede ser una declaracion bonita, una promesa, una reflexion o simplemente la idea de que todavia quedan muchos recuerdos por vivir.</p>
+        <p>Este no tiene que ser el final definitivo. Puede ser solo una pausa, porque las mejores historias tambien siguen escribiendose fuera de la pantalla.</p>
+        <div class="btn-group">
+            <button class="boton-regresar" onclick="navegar('capitulo21', 'capitulo20', 22)">Anterior</button>
         </div>
     </div>
 
@@ -1068,11 +1239,13 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             // Ocultar el loader cuando todo la página esté cargada
             const loader = document.getElementById("loader");
             if (loader) {
-                loader.style.opacity = "0";
-                loader.style.transition = "opacity 0.5s ease";
                 setTimeout(() => {
-                    loader.style.display = "none";
-                }, 500);
+                    loader.style.opacity = "0";
+                    loader.style.transition = "opacity 0.5s ease";
+                    setTimeout(() => {
+                        loader.style.display = "none";
+                    }, 500);
+                }, 3000);
             }
         });
 
@@ -1094,7 +1267,13 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
         function navegar(idPantallaActual, idSiguientePantalla, pasoActual) {
             if (!musicaIniciada && audio) {
-                audio.play().then(() => { musicIndicator.classList.add("music-playing"); }).catch(e => {});
+                audio.play()
+                    .then(() => {
+                        if (musicIndicator) {
+                            musicIndicator.classList.add("music-playing");
+                        }
+                    })
+                    .catch(e => {});
                 musicaIniciada = true;
             }
 
@@ -1118,7 +1297,7 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
                 }, 600);
             }
 
-            const progresoTotal = (pasoActual / 8) * 100;
+            const progresoTotal = (pasoActual / 23) * 100;
             const progressBar = document.getElementById("progressBar");
             if(progressBar) { progressBar.style.width = progresoTotal + "%"; }
 
