@@ -980,11 +980,37 @@
         .puzzle-piece {
             border: 0;
             border-radius: 10px;
-            background-image: url("imágenes/rompecabezas_pareja.jpg");
-            background-size: 300% 300%;
+            background-color: #fdeaf1;
+            background-image:
+                url("imagenes/rompecabezas_pareja.jpg"),
+                url("imágenes/rompecabezas_pareja.jpg"),
+                linear-gradient(135deg, #ffffff, #fdeaf1);
+            background-size: 300% 300%, 300% 300%, cover;
             cursor: pointer;
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.7);
             transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .puzzle-piece::after {
+            content: attr(data-piece);
+            position: absolute;
+            right: 8px;
+            bottom: 6px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.78);
+            box-shadow: 0 6px 16px rgba(128,0,32,0.12);
+            font-size: 0.9rem;
         }
 
         .puzzle-piece:hover,
@@ -1656,8 +1682,21 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             <div class="foto-item foto-pequena"><img src="imágenes/capitulo21_2.jpg" alt="Recuerdo capitulo 21 2"></div>
         </div>
         <div class="btn-group">
-            <button class="boton" onclick="navegar('capitulo21', 'cartaFinal', 24)">Leer la carta final</button>
+            <button class="boton" onclick="navegar('capitulo21', 'rompecabezasFinal', 24)">Armar el rompecabezas</button>
             <button class="boton-regresar" onclick="navegar('capitulo21', 'corteComercial4', 23)">Anterior</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="rompecabezasFinal">
+        <div class="badge-secreto">Ultima prueba</div>
+        <h2>Un recuerdo por armar</h2>
+        <p>Antes de abrir la carta final, toca ordenar este pequeno rompecabezas. Algunas historias tambien se entienden pieza por pieza.</p>
+        <div class="puzzle-board" id="puzzleBoard" aria-label="Rompecabezas final"></div>
+        <div class="puzzle-status" id="puzzleStatus">Ordena las piezas para desbloquear la carta.</div>
+        <div class="btn-group">
+            <button class="boton boton-bloqueado" id="botonCartaFinal" onclick="irACartaFinal()" disabled>Leer la carta final</button>
+            <button class="boton-regresar" onclick="reiniciarRompecabezas()">Mezclar otra vez</button>
+            <button class="boton-regresar" onclick="navegar('rompecabezasFinal', 'capitulo21', 23)">Anterior</button>
         </div>
     </div>
 
@@ -1676,7 +1715,7 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
         </div>
         <div class="btn-group">
             <button class="boton" onclick="navegar('cartaFinal', 'inicio', 0)">Revivir la historia</button>
-            <button class="boton-regresar" onclick="navegar('cartaFinal', 'capitulo21', 23)">Anterior</button>
+            <button class="boton-regresar" onclick="navegar('cartaFinal', 'rompecabezasFinal', 24)">Anterior</button>
         </div>
     </div>
 
@@ -1715,6 +1754,9 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
         const audio = document.getElementById("audioLocal");
         const musicIndicator = document.getElementById("musicIndicator");
         let musicaIniciada = false;
+        let piezasRompecabezas = [];
+        let piezaSeleccionada = null;
+        let rompecabezasResuelto = false;
 
         if (musicIndicator && audio) {
             musicIndicator.addEventListener("click", () => {
@@ -1767,6 +1809,106 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             if (idSiguientePantalla === 'parte2' || idSiguientePantalla === 'cartaFinal') {
                 for (let i = 0; i < 50; i++) { setTimeout(crearConfeti, i * 60); }
             }
+
+            if (idSiguientePantalla === 'rompecabezasFinal') {
+                setTimeout(iniciarRompecabezas, 650);
+            }
+        }
+
+        function iniciarRompecabezas() {
+            if (piezasRompecabezas.length === 0) {
+                reiniciarRompecabezas();
+            }
+        }
+
+        function reiniciarRompecabezas() {
+            const tablero = document.getElementById("puzzleBoard");
+            const estado = document.getElementById("puzzleStatus");
+            const botonCarta = document.getElementById("botonCartaFinal");
+
+            if (!tablero || !estado || !botonCarta) return;
+
+            piezasRompecabezas = mezclarPiezas([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+            piezaSeleccionada = null;
+            rompecabezasResuelto = false;
+            tablero.innerHTML = "";
+
+            piezasRompecabezas.forEach((pieza, posicion) => {
+                const boton = document.createElement("button");
+                boton.type = "button";
+                boton.className = "puzzle-piece";
+                boton.dataset.piece = pieza + 1;
+                boton.setAttribute("aria-label", `Pieza ${posicion + 1}`);
+                boton.style.backgroundPosition = `${(pieza % 3) * 50}% ${Math.floor(pieza / 3) * 50}%`;
+                boton.addEventListener("click", () => seleccionarPieza(posicion));
+                tablero.appendChild(boton);
+            });
+
+            estado.textContent = "Ordena las piezas para desbloquear la carta.";
+            botonCarta.disabled = true;
+            botonCarta.classList.add("boton-bloqueado");
+        }
+
+        function mezclarPiezas(piezas) {
+            const mezcladas = [...piezas];
+
+            do {
+                for (let i = mezcladas.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [mezcladas[i], mezcladas[j]] = [mezcladas[j], mezcladas[i]];
+                }
+            } while (mezcladas.every((pieza, index) => pieza === index));
+
+            return mezcladas;
+        }
+
+        function seleccionarPieza(posicion) {
+            if (rompecabezasResuelto) return;
+
+            const tablero = document.getElementById("puzzleBoard");
+            if (!tablero) return;
+
+            const botones = tablero.querySelectorAll(".puzzle-piece");
+
+            if (piezaSeleccionada === null) {
+                piezaSeleccionada = posicion;
+                botones[posicion].classList.add("seleccionada");
+                return;
+            }
+
+            [piezasRompecabezas[piezaSeleccionada], piezasRompecabezas[posicion]] = [piezasRompecabezas[posicion], piezasRompecabezas[piezaSeleccionada]];
+            piezaSeleccionada = null;
+            actualizarRompecabezas();
+        }
+
+        function actualizarRompecabezas() {
+            const tablero = document.getElementById("puzzleBoard");
+            const estado = document.getElementById("puzzleStatus");
+            const botonCarta = document.getElementById("botonCartaFinal");
+
+            if (!tablero || !estado || !botonCarta) return;
+
+            tablero.querySelectorAll(".puzzle-piece").forEach((boton, posicion) => {
+                const pieza = piezasRompecabezas[posicion];
+                boton.classList.remove("seleccionada");
+                boton.dataset.piece = pieza + 1;
+                boton.style.backgroundPosition = `${(pieza % 3) * 50}% ${Math.floor(pieza / 3) * 50}%`;
+            });
+
+            if (piezasRompecabezas.every((pieza, index) => pieza === index)) {
+                rompecabezasResuelto = true;
+                estado.textContent = "Listo. La carta final ya esta desbloqueada.";
+                botonCarta.disabled = false;
+                botonCarta.classList.remove("boton-bloqueado");
+                for (let i = 0; i < 35; i++) { setTimeout(crearConfeti, i * 45); }
+            } else {
+                estado.textContent = "Vas bien. Elige dos piezas para intercambiarlas.";
+            }
+        }
+
+        function irACartaFinal() {
+            if (!rompecabezasResuelto) return;
+            navegar('rompecabezasFinal', 'cartaFinal', 24);
         }
 
         function prepararLightbox() {
