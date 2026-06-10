@@ -625,6 +625,44 @@
         .music-playing .music-icon { animation: pulseMusic 0.8s infinite ease-in-out; }
         .music-text { font-family: 'Playfair Display', serif; font-size: 0.8rem; font-style: italic; color: var(--primary); font-weight: 600; }
 
+        /* --- RELOJ Y FECHA --- */
+        .datetime-container {
+            position: fixed; 
+            top: 25px; 
+            right: 25px; 
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.88); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); 
+            padding: 12px 18px; 
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.7); 
+            box-shadow: var(--shadow-premium);
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            gap: 4px;
+        }
+
+        .datetime-content {
+            text-align: center;
+        }
+
+        .time {
+            font-family: 'Poppins', sans-serif; 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .date {
+            font-family: 'Playfair Display', serif; 
+            font-size: 0.75rem; 
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
         @media (max-width: 480px) {
             h1, h2 { font-size: 3rem; }
             .container, .capitulo { padding: 45px 25px; }
@@ -650,6 +688,13 @@
     <div class="music-note-container" id="musicIndicator">
         <span class="music-icon">🎵</span>
         <span class="music-text">Donde Está El Amor</span>
+    </div>
+
+    <div class="datetime-container" id="datetimeContainer">
+        <div class="datetime-content">
+            <div class="time" id="currentTime">--:--</div>
+            <div class="date" id="currentDate">--/--/----</div>
+        </div>
     </div>
 
     <div class="container card-active" id="inicio">
@@ -818,6 +863,8 @@
                 visitasElement.textContent = numeroAleatorio;
             }
             setInterval(crearCorazon, 800);
+            actualizarHoraFecha();
+            setInterval(actualizarHoraFecha, 1000);
         });
 
         const audio = document.getElementById("audioLocal");
@@ -920,6 +967,28 @@
 
         // Mostrar mensajitos cada 4-6 segundos
         setInterval(mostrarMensajeGatito, Math.random() * (6000 - 4000) + 4000);
+
+        function actualizarHoraFecha() {
+            const ahora = new Date();
+            
+            // Obtener hora en formato HH:MM
+            const horas = String(ahora.getHours()).padStart(2, '0');
+            const minutos = String(ahora.getMinutes()).padStart(2, '0');
+            const horaFormato = `${horas}:${minutos}`;
+            
+            // Obtener fecha en formato DD/MM/YYYY
+            const dia = String(ahora.getDate()).padStart(2, '0');
+            const mes = String(ahora.getMonth() + 1).padStart(2, '0');
+            const año = ahora.getFullYear();
+            const fechaFormato = `${dia}/${mes}/${año}`;
+            
+            // Actualizar los elementos
+            const timeElement = document.getElementById("currentTime");
+            const dateElement = document.getElementById("currentDate");
+            
+            if (timeElement) timeElement.textContent = horaFormato;
+            if (dateElement) dateElement.textContent = fechaFormato;
+        }
     </script>
 </body>
 </html>
