@@ -136,8 +136,8 @@
         .container::before, .capitulo::before { top: 20px; left: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 Q30,0 40,25 Q20,45 0,30 Z' fill='%23800020'/%3E%3Ccircle cx='15' cy='15' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
         .container::after, .capitulo::after { bottom: 20px; right: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100,100 Q70,100 60,75 Q80,55 100,70 Z' fill='%23800020'/%3E%3Ccircle cx='85' cy='85' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
 
-        /* --- COMPONENTE: PERRITO ANIMADO EN CSS --- */
-        .dog-stage {
+        /* --- COMPONENTE: GATITO ANIMADO EN CSS --- */
+        .cat-stage {
             width: 140px;
             height: 140px;
             margin: 0 auto 30px auto;
@@ -150,324 +150,110 @@
             align-items: center;
         }
 
-        .dog-stage:hover .dog-body {
-            animation: breathing 1.2s ease-in-out infinite, head-sway 1.8s ease-in-out infinite, hover-lift 0.6s ease-in-out !important;
-        }
-
-        .dog-stage:hover .tail {
-            animation: tail-wag 0.4s ease-in-out infinite !important;
-        }
-
-        .dog-stage:hover .snout {
-            background: radial-gradient(circle at 30% 35%, rgba(255, 200, 220, 0.8), rgba(255, 255, 255, 1) 70%);
-        }
-
-        .premium-dog {
+        .premium-cat {
             position: relative;
             width: 80px;
-            height: 90px;
+            height: 80px;
         }
 
-        .dog-body {
+        .cat-ears {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
             position: absolute;
-            width: 70px;
-            height: 60px;
-            background: #FFFFFF;
-            border-radius: 25px 25px 20px 20px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            animation: breathing 1.8s ease-in-out infinite, head-sway 2.4s ease-in-out infinite;
+            top: 5px;
         }
 
-        .dog-head {
+        .cat-ear {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 25px solid var(--primary);
+            border-radius: 4px;
+        }
+        .cat-ear.left { transform: rotate(-15deg); animation: twitchEarLeft 4s infinite; }
+        .cat-ear.right { transform: rotate(15deg); animation: twitchEarRight 5s infinite; }
+
+        .cat-face {
             position: absolute;
-            width: 65px;
+            bottom: 10px;
+            width: 76px;
             height: 60px;
-            background: #FFFFFF;
-            border-radius: 50% 50% 45% 45%;
-            top: -25px;
+            background: var(--primary);
+            border-radius: 40px 40px 35px 35px;
+            left: 2px;
+        }
+
+        .cat-eyes {
+            position: absolute;
+            top: 22px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 0 14px;
+        }
+
+        .cat-eye {
+            width: 10px;
+            height: 10px;
+            background: #ffffff;
+            border-radius: 50%;
+            position: relative;
+            animation: catBlink 3.5s infinite;
+        }
+
+        .cat-eye::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-bg);
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+        }
+
+        .cat-nose {
+            position: absolute;
+            top: 34px;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid var(--accent);
         }
 
-        .dog-ear-right {
-            position: absolute;
-            width: 18px;
-            height: 26px;
-            background: #000000;
-            border-radius: 50% 50% 45% 45%;
-            right: -2px;
-            top: 8px;
-            transform: rotate(25deg);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-            animation: ear-wiggle 2.4s ease-in-out infinite;
-        }
-
-        .dog-ear-left {
+        .cat-paw {
             position: absolute;
             width: 16px;
-            height: 24px;
-            background: #FFFFFF;
-            border-radius: 50% 50% 45% 45%;
-            border: 2px solid #e0e0e0;
-            left: -2px;
-            top: 10px;
-            transform: rotate(-25deg);
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .dog-snout {
-            position: absolute;
-            width: 38px;
-            height: 30px;
-            background: radial-gradient(circle at 30% 35%, rgba(255, 200, 220, 0.5), rgba(255, 255, 255, 1) 70%);
-            border-radius: 50% 50% 55% 55%;
-            top: 28px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03);
-        }
-
-        .dog-nose {
-            position: absolute;
-            width: 8px;
-            height: 7px;
-            background: #000000;
+            height: 16px;
+            background: var(--accent);
             border-radius: 50%;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            bottom: 5px;
+            right: -5px;
+            border: 2px solid var(--primary);
+            transform-origin: bottom center;
+            animation: wavePaw 2.5s ease-in-out infinite;
         }
 
-        .dog-mouth {
-            position: absolute;
-            width: 12px;
-            height: 8px;
-            top: 17px;
-            left: 50%;
-            transform: translateX(-50%);
+        @keyframes catBlink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            55% { transform: scaleY(0.1); }
         }
-
-        .dog-mouth::before {
-            content: '';
-            position: absolute;
-            width: 1.5px;
-            height: 8px;
-            background: #000000;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
+        @keyframes wavePaw {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-35deg) translateY(-5px); }
         }
-
-        .dog-mouth::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 5px;
-            border: 1px solid #000000;
-            border-top: none;
-            border-radius: 0 0 8px 8px;
-            top: 3px;
-            left: 50%;
-            transform: translateX(-50%);
+        @keyframes twitchEarLeft {
+            0%, 90%, 100% { transform: rotate(-15deg); }
+            93% { transform: rotate(-22deg); }
         }
-
-        .dog-eyes {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-
-        .dog-eye {
-            position: absolute;
-            width: 11px;
-            height: 14px;
-            background: #000000;
-            border-radius: 50%;
-            top: 16px;
-        }
-
-        .dog-eye-left {
-            left: 14px;
-        }
-
-        .dog-eye-right {
-            right: 14px;
-        }
-
-        .dog-eye-patch {
-            position: absolute;
-            width: 20px;
-            height: 18px;
-            background: #000000;
-            border-radius: 50%;
-            right: 8px;
-            top: 12px;
-            opacity: 0.85;
-            z-index: -1;
-        }
-
-        .dog-pupil {
-            position: absolute;
-            width: 5px;
-            height: 6px;
-            background: #FFFFFF;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: blink 2.4s ease-in-out infinite;
-        }
-
-        .dog-legs {
-            position: absolute;
-            width: 100%;
-            height: 24px;
-            bottom: -24px;
-            left: 0;
-        }
-
-        .dog-leg {
-            position: absolute;
-            width: 14px;
-            height: 24px;
-            background: #FFFFFF;
-            border-radius: 8px;
-            bottom: 0;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-        }
-
-        .dog-leg-front-left {
-            left: 16px;
-        }
-
-        .dog-leg-front-right {
-            right: 16px;
-        }
-
-        .dog-leg-back-left {
-            left: 8px;
-            animation: leg-bounce 1.2s ease-in-out infinite;
-        }
-
-        .dog-leg-back-right {
-            right: 8px;
-            animation: leg-bounce 1.2s ease-in-out infinite 0.1s;
-        }
-
-        .dog-leg-waving {
-            position: absolute;
-            width: 12px;
-            height: 22px;
-            background: #FFFFFF;
-            border-radius: 8px;
-            right: 18px;
-            top: 50px;
-            transform-origin: top center;
-            animation: waving 0.5s ease-in-out infinite;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-        }
-
-        .dog-tail {
-            position: absolute;
-            width: 20px;
-            height: 36px;
-            background: #FFFFFF;
-            border-radius: 50% 50% 50% 40%;
-            right: -8px;
-            bottom: 16px;
-            transform-origin: top right;
-            animation: tail-normal 0.5s ease-in-out infinite;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-        }
-
-        .dog-blush {
-            position: absolute;
-            width: 12px;
-            height: 8px;
-            background: rgba(255, 182, 193, 0.7);
-            border-radius: 50%;
-            top: 34px;
-            animation: cheek-pulse 1.8s ease-in-out infinite;
-        }
-
-        .dog-blush-left {
-            left: 4px;
-        }
-
-        .dog-blush-right {
-            right: 4px;
-        }
-
-        .dog-leg::after,
-        .dog-leg-waving::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            height: 5px;
-            background: #000000;
-            border-radius: 50%;
-            bottom: -3px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        @keyframes blink {
-            0%, 10%, 12%, 100% { transform: translate(-50%, -50%) scaleY(1); }
-            11% { transform: translate(-50%, -50%) scaleY(0.1); }
-        }
-
-        @keyframes ear-wiggle {
-            0%, 100% { transform: rotate(25deg); }
-            50% { transform: rotate(35deg); }
-        }
-
-        @keyframes breathing {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.02); }
-        }
-
-        @keyframes head-sway {
-            0%, 100% { transform: translateX(-50%) rotate(0deg); }
-            25% { transform: translateX(-50%) rotate(-1deg); }
-            75% { transform: translateX(-50%) rotate(1deg); }
-        }
-
-        @keyframes hover-lift {
-            0% { transform: translate(-50%, -50%); }
-            50% { transform: translate(-50%, -65px); }
-            100% { transform: translate(-50%, -50%); }
-        }
-
-        @keyframes waving {
-            0%, 100% { transform: rotate(-10deg); }
-            50% { transform: rotate(45deg); }
-        }
-
-        @keyframes tail-normal {
-            0%, 100% { transform: rotate(-20deg); }
-            50% { transform: rotate(25deg); }
-        }
-
-        @keyframes tail-wag {
-            0%, 100% { transform: rotate(-20deg); }
-            50% { transform: rotate(40deg); }
-        }
-
-        @keyframes leg-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-        }
-
-        @keyframes cheek-pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
+        @keyframes twitchEarRight {
+            0%, 85%, 100% { transform: rotate(15deg); }
+            88% { transform: rotate(25deg); }
         }
 
         /* --- MARCA TEXTUAL --- */
@@ -800,33 +586,10 @@
     <div class="container card-active" id="inicio">
         <div class="badge-secreto">Bienvenidos</div>
         
-        <div class="dog-stage">
-            <div class="premium-dog">
-                <div class="dog-body">
-                    <div class="dog-head">
-                        <div class="dog-ear-right"></div>
-                        <div class="dog-ear-left"></div>
-                        <div class="dog-snout">
-                            <div class="dog-nose"></div>
-                            <div class="dog-mouth"></div>
-                        </div>
-                        <div class="dog-eyes">
-                            <div class="dog-eye dog-eye-left"><div class="dog-pupil"></div></div>
-                            <div class="dog-eye-patch"></div>
-                            <div class="dog-eye dog-eye-right"><div class="dog-pupil"></div></div>
-                        </div>
-                        <div class="dog-blush dog-blush-left"></div>
-                        <div class="dog-blush dog-blush-right"></div>
-                    </div>
-                    <div class="dog-legs">
-                        <div class="dog-leg dog-leg-front-left"></div>
-                        <div class="dog-leg dog-leg-front-right"></div>
-                        <div class="dog-leg dog-leg-back-left"></div>
-                        <div class="dog-leg dog-leg-back-right"></div>
-                    </div>
-                    <div class="dog-leg-waving"></div>
-                    <div class="dog-tail"></div>
-                </div>
+        <div class="cat-stage">
+            <div class="premium-cat">
+                <div class="cat-ears"><div class="cat-ear left"></div><div class="cat-ear right"></div></div>
+                <div class="cat-face"><div class="cat-eyes"><div class="cat-eye"></div><div class="cat-eye"></div></div><div class="cat-nose"></div><div class="cat-paw"></div></div>
             </div>
         </div>
 
