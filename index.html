@@ -12,7 +12,6 @@
       gtag('js', new Date());
       gtag('config', 'TU_ID_DE_SEGUIMIENTO');
     </script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -119,7 +118,7 @@
             }
         }
 
-        /* --- DETALLES FLORALES --- */
+        /* --- DETALLES FLORALES VECTORIALES --- */
         .container::before, .container::after,
         .capitulo::before, .capitulo::after {
             content: "";
@@ -137,339 +136,476 @@
         .container::before, .capitulo::before { top: 20px; left: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0,0 Q30,0 40,25 Q20,45 0,30 Z' fill='%23800020'/%3E%3Ccircle cx='15' cy='15' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
         .container::after, .capitulo::after { bottom: 20px; right: 20px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M100,100 Q70,100 60,75 Q80,55 100,70 Z' fill='%23800020'/%3E%3Ccircle cx='85' cy='85' r='8' fill='%23d9a7b0'/%3E%3C/svg%3E"); }
 
-        /* --- ELEMENTOS TIPOGRÁFICOS --- */
-        h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4.2rem;
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-weight: 400;
-            text-shadow: 2px 2px 0px rgba(255,255,255,0.8);
+        /* --- COMPONENTE: PERRITO ANIMADO EN CSS --- */
+        .dog-stage {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px auto;
+            background: linear-gradient(135deg, rgba(217, 167, 176, 0.1), rgba(128, 0, 32, 0.05));
+            border-radius: 50%;
+            position: relative;
+            border: 2px dashed var(--accent);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        h2 {
+        .dog-stage:hover .dog-body {
+            animation: breathing 1.2s ease-in-out infinite, head-sway 1.8s ease-in-out infinite, hover-lift 0.6s ease-in-out !important;
+        }
+
+        .dog-stage:hover .tail {
+            animation: tail-wag 0.4s ease-in-out infinite !important;
+        }
+
+        .dog-stage:hover .snout {
+            background: radial-gradient(circle at 30% 35%, rgba(255, 200, 220, 0.8), rgba(255, 255, 255, 1) 70%);
+        }
+
+        .premium-dog {
+            position: relative;
+            width: 80px;
+            height: 90px;
+        }
+
+        .dog-body {
+            position: absolute;
+            width: 70px;
+            height: 60px;
+            background: #FFFFFF;
+            border-radius: 25px 25px 20px 20px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            animation: breathing 1.8s ease-in-out infinite, head-sway 2.4s ease-in-out infinite;
+        }
+
+        .dog-head {
+            position: absolute;
+            width: 65px;
+            height: 60px;
+            background: #FFFFFF;
+            border-radius: 50% 50% 45% 45%;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .dog-ear-right {
+            position: absolute;
+            width: 18px;
+            height: 26px;
+            background: #000000;
+            border-radius: 50% 50% 45% 45%;
+            right: -2px;
+            top: 8px;
+            transform: rotate(25deg);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            animation: ear-wiggle 2.4s ease-in-out infinite;
+        }
+
+        .dog-ear-left {
+            position: absolute;
+            width: 16px;
+            height: 24px;
+            background: #FFFFFF;
+            border-radius: 50% 50% 45% 45%;
+            border: 2px solid #e0e0e0;
+            left: -2px;
+            top: 10px;
+            transform: rotate(-25deg);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .dog-snout {
+            position: absolute;
+            width: 38px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 35%, rgba(255, 200, 220, 0.5), rgba(255, 255, 255, 1) 70%);
+            border-radius: 50% 50% 55% 55%;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.03);
+        }
+
+        .dog-nose {
+            position: absolute;
+            width: 8px;
+            height: 7px;
+            background: #000000;
+            border-radius: 50%;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .dog-mouth {
+            position: absolute;
+            width: 12px;
+            height: 8px;
+            top: 17px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dog-mouth::before {
+            content: '';
+            position: absolute;
+            width: 1.5px;
+            height: 8px;
+            background: #000000;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .dog-mouth::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 5px;
+            border: 1px solid #000000;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            top: 3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .dog-eyes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .dog-eye {
+            position: absolute;
+            width: 11px;
+            height: 14px;
+            background: #000000;
+            border-radius: 50%;
+            top: 16px;
+        }
+
+        .dog-eye-left {
+            left: 14px;
+        }
+
+        .dog-eye-right {
+            right: 14px;
+        }
+
+        .dog-eye-patch {
+            position: absolute;
+            width: 20px;
+            height: 18px;
+            background: #000000;
+            border-radius: 50%;
+            right: 8px;
+            top: 12px;
+            opacity: 0.85;
+            z-index: -1;
+        }
+
+        .dog-pupil {
+            position: absolute;
+            width: 5px;
+            height: 6px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: blink 2.4s ease-in-out infinite;
+        }
+
+        .dog-legs {
+            position: absolute;
+            width: 100%;
+            height: 24px;
+            bottom: -24px;
+            left: 0;
+        }
+
+        .dog-leg {
+            position: absolute;
+            width: 14px;
+            height: 24px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            bottom: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .dog-leg-front-left {
+            left: 16px;
+        }
+
+        .dog-leg-front-right {
+            right: 16px;
+        }
+
+        .dog-leg-back-left {
+            left: 8px;
+            animation: leg-bounce 1.2s ease-in-out infinite;
+        }
+
+        .dog-leg-back-right {
+            right: 8px;
+            animation: leg-bounce 1.2s ease-in-out infinite 0.1s;
+        }
+
+        .dog-leg-waving {
+            position: absolute;
+            width: 12px;
+            height: 22px;
+            background: #FFFFFF;
+            border-radius: 8px;
+            right: 18px;
+            top: 50px;
+            transform-origin: top center;
+            animation: waving 0.5s ease-in-out infinite;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .dog-tail {
+            position: absolute;
+            width: 20px;
+            height: 36px;
+            background: #FFFFFF;
+            border-radius: 50% 50% 50% 40%;
+            right: -8px;
+            bottom: 16px;
+            transform-origin: top right;
+            animation: tail-normal 0.5s ease-in-out infinite;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .dog-blush {
+            position: absolute;
+            width: 12px;
+            height: 8px;
+            background: rgba(255, 182, 193, 0.7);
+            border-radius: 50%;
+            top: 34px;
+            animation: cheek-pulse 1.8s ease-in-out infinite;
+        }
+
+        .dog-blush-left {
+            left: 4px;
+        }
+
+        .dog-blush-right {
+            right: 4px;
+        }
+
+        .dog-leg::after,
+        .dog-leg-waving::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 5px;
+            background: #000000;
+            border-radius: 50%;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes blink {
+            0%, 10%, 12%, 100% { transform: translate(-50%, -50%) scaleY(1); }
+            11% { transform: translate(-50%, -50%) scaleY(0.1); }
+        }
+
+        @keyframes ear-wiggle {
+            0%, 100% { transform: rotate(25deg); }
+            50% { transform: rotate(35deg); }
+        }
+
+        @keyframes breathing {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.02); }
+        }
+
+        @keyframes head-sway {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(-1deg); }
+            75% { transform: translateX(-50%) rotate(1deg); }
+        }
+
+        @keyframes hover-lift {
+            0% { transform: translate(-50%, -50%); }
+            50% { transform: translate(-50%, -65px); }
+            100% { transform: translate(-50%, -50%); }
+        }
+
+        @keyframes waving {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(45deg); }
+        }
+
+        @keyframes tail-normal {
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(25deg); }
+        }
+
+        @keyframes tail-wag {
+            0%, 100% { transform: rotate(-20deg); }
+            50% { transform: rotate(40deg); }
+        }
+
+        @keyframes leg-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes cheek-pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        /* --- MARCA TEXTUAL --- */
+        .badge-secreto {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            color: var(--primary-bg);
+            font-size: 0.8rem;
+            color: var(--primary-light);
+            text-transform: uppercase;
+            letter-spacing: 5px;
             margin-bottom: 25px;
             font-weight: 600;
-            letter-spacing: -0.5px;
+            display: inline-block;
+            border-bottom: 1px solid rgba(189, 147, 153, 0.4);
+            padding-bottom: 6px;
+        }
+
+        /* --- TIPOGRAFÍA PREMIUM --- */
+        h1, h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--primary);
+            font-weight: 400;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        h1+p, h2+p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
 
         p {
-            font-size: 1.05rem;
+            font-size: 1rem;
+            line-height: 2;
             color: var(--text-main);
-            line-height: 1.8;
-            margin-bottom: 25px;
-            font-weight: 400;
+            margin-bottom: 22px;
+            position: relative;
+            z-index: 2;
+            font-weight: 300;
         }
 
         .advertencia {
-            font-size: 0.95rem;
-            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            margin-top: 40px;
             font-style: italic;
-            background: rgba(128, 0, 32, 0.04);
-            padding: 10px 15px;
-            border-radius: 10px;
-            display: inline-block;
+            color: var(--primary);
+            font-size: 1rem;
+            border-top: 1px dashed rgba(219, 167, 176, 0.6);
+            padding-top: 25px;
         }
 
-       <div class="dog-stage">
-    <div class="dog">
+        /* --- CONTADOR EN VIVO --- */
+        .live-counter-box {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
 
-        <div class="dog-ear left"></div>
-        <div class="dog-ear right"></div>
+        .live-counter-box span {
+            font-family: 'Poppins', sans-serif;
+            background: rgba(128, 0, 32, 0.08);
+            color: var(--primary-bg);
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-style: normal;
+            font-size: 1rem;
+            border: 1px solid rgba(128, 0, 32, 0.15);
+        }
 
-        <div class="dog-head">
-
-            <div class="dog-spot"></div>
-
-            <div class="dog-eye left"></div>
-            <div class="dog-eye right"></div>
-
-            <div class="dog-nose"></div>
-
-            <div class="dog-mouth"></div>
-
-            <div class="dog-blush left"></div>
-            <div class="dog-blush right"></div>
-
-        </div>
-
-        <div class="dog-body">
-            <div class="dog-tail"></div>
-            <div class="dog-paw"></div>
-        </div>
-
-    </div>
-</div>
-        /* ===================================== */
-/* 🐶 PERRITO SALUDANDO */
-/* ===================================== */
-
-.dog-stage{
-    width:160px;
-    height:160px;
-    margin:0 auto 30px auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.dog{
-    position:relative;
-    width:120px;
-    height:130px;
-}
-
-.dog-head{
-    position:absolute;
-    width:90px;
-    height:85px;
-    background:#fff;
-    border:3px solid #222;
-    border-radius:50%;
-    left:15px;
-    top:0;
-    animation:dogBounce 3s ease-in-out infinite;
-}
-
-.dog-ear{
-    position:absolute;
-    width:28px;
-    height:48px;
-    border-radius:20px;
-    top:-5px;
-}
-
-.dog-ear.left{
-    left:10px;
-    background:#000;
-    transform:rotate(-20deg);
-}
-
-.dog-ear.right{
-    right:10px;
-    background:#fff;
-    border:3px solid #222;
-    transform:rotate(20deg);
-}
-
-.dog-spot{
-    position:absolute;
-    width:35px;
-    height:35px;
-    background:#000;
-    border-radius:50%;
-    left:5px;
-    top:18px;
-}
-
-.dog-eye{
-    position:absolute;
-    width:10px;
-    height:10px;
-    background:#000;
-    border-radius:50%;
-    top:30px;
-    animation:blink 4s infinite;
-}
-
-.dog-eye.left{
-    left:24px;
-}
-
-.dog-eye.right{
-    right:22px;
-}
-
-.dog-nose{
-    position:absolute;
-    width:14px;
-    height:10px;
-    background:#000;
-    border-radius:50%;
-    left:38px;
-    top:45px;
-}
-
-.dog-mouth{
-    position:absolute;
-    width:20px;
-    height:10px;
-    border-bottom:3px solid #222;
-    border-radius:0 0 20px 20px;
-    left:35px;
-    top:58px;
-}
-
-.dog-blush{
-    position:absolute;
-    width:12px;
-    height:12px;
-    background:#ffb6c1;
-    border-radius:50%;
-    top:52px;
-    opacity:.7;
-}
-
-.dog-blush.left{
-    left:10px;
-}
-
-.dog-blush.right{
-    right:10px;
-}
-
-.dog-body{
-    position:absolute;
-    width:70px;
-    height:60px;
-    background:#fff;
-    border:3px solid #222;
-    border-radius:35px;
-    left:25px;
-    bottom:0;
-}
-
-.dog-tail{
-    position:absolute;
-    width:32px;
-    height:8px;
-    background:#000;
-    border-radius:10px;
-    left:-20px;
-    top:20px;
-    transform-origin:right center;
-    animation:tailWag .4s infinite alternate;
-}
-
-.dog-paw{
-    position:absolute;
-    width:22px;
-    height:22px;
-    background:#fff;
-    border:3px solid #222;
-    border-radius:50%;
-    right:-10px;
-    top:8px;
-    transform-origin:bottom center;
-    animation:wavePaw 1.2s infinite;
-}
-
-/* Animaciones */
-
-@keyframes wavePaw{
-    0%{
-        transform:rotate(0deg);
-    }
-    50%{
-        transform:rotate(-35deg);
-    }
-    100%{
-        transform:rotate(0deg);
-    }
-}
-
-@keyframes tailWag{
-    from{
-        transform:rotate(-25deg);
-    }
-    to{
-        transform:rotate(25deg);
-    }
-}
-
-@keyframes blink{
-    0%,95%,100%{
-        transform:scaleY(1);
-    }
-    97%{
-        transform:scaleY(.1);
-    }
-}
-
-@keyframes dogBounce{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-4px);
-    }
-}
-
-        /* --- BOTONES PREMIUM --- */
+        /* --- BOTONES --- */
         .btn-group {
+            margin-top: 40px;
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin-top: 35px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .boton {
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bg) 100%);
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 18px 40px;
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 5;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(128, 0, 32, 0.2);
+            overflow: hidden;
+        }
+
+        .boton:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(128, 0, 32, 0.3);
+        }
+
+        .boton-regresar {
+            text-decoration: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            padding: 18px 30px;
+            border: 1px solid transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
             position: relative;
             z-index: 5;
         }
 
-        .boton {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-bg) 100%);
-            color: #ffffff;
-            padding: 16px 35px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(128, 0, 32, 0.25);
-            transition: var(--transition-smooth);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .boton:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 15px 35px rgba(128, 0, 32, 0.4);
-        }
-
-        .boton-regresar {
-            background: #ffffff;
-            color: var(--text-muted);
-            padding: 16px 30px;
-            border: 2px solid rgba(128, 0, 32, 0.15);
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
         .boton-regresar:hover {
-            background: var(--accent-light);
-            border-color: var(--primary-light);
             color: var(--primary);
+            border-color: rgba(128, 0, 32, 0.2);
+            background: rgba(255, 255, 255, 0.6);
             transform: translateY(-2px);
-        }
-
-        /* --- DECORACIONES DE COMPONENTE --- */
-        .badge-secreto {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 6px 20px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(128,0,0,0.15);
-        }
-
-        .live-counter-box {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 25px;
-            font-weight: 500;
         }
 
         /* --- CONFIGURACIÓN DE IMÁGENES SNOOPY --- */
@@ -557,7 +693,7 @@
 
         .video-item-portada:hover {
             transform: translateY(-8px) rotate(1deg) scale(1.03);
-            box-shadow: 0 20px 50px rgba(128, 0, 32, 0.25);
+            box-shadow: 0 20px 50px rgba(128, 0, 32, 0.2);
         }
 
         /* DISEÑO B: MOSAICO DOBLE (Dos fotos medianas iguales) */
@@ -664,27 +800,32 @@
     <div class="container card-active" id="inicio">
         <div class="badge-secreto">Bienvenidos</div>
         
-        <div class="cat-stage">
-            <div class="premium-cat">
-                <div class="cat-ears">
-                    <div class="cat-ear left"></div>
-                    <div class="cat-ear right"></div>
-                </div>
-                <div class="cat-face">
-                    <div class="cat-eyebrows">
-                        <div class="cat-eyebrow left"></div>
-                        <div class="cat-eyebrow right"></div>
+        <div class="dog-stage">
+            <div class="premium-dog">
+                <div class="dog-body">
+                    <div class="dog-head">
+                        <div class="dog-ear-right"></div>
+                        <div class="dog-ear-left"></div>
+                        <div class="dog-snout">
+                            <div class="dog-nose"></div>
+                            <div class="dog-mouth"></div>
+                        </div>
+                        <div class="dog-eyes">
+                            <div class="dog-eye dog-eye-left"><div class="dog-pupil"></div></div>
+                            <div class="dog-eye-patch"></div>
+                            <div class="dog-eye dog-eye-right"><div class="dog-pupil"></div></div>
+                        </div>
+                        <div class="dog-blush dog-blush-left"></div>
+                        <div class="dog-blush dog-blush-right"></div>
                     </div>
-                    <div class="cat-eyes">
-                        <div class="cat-eye"></div>
-                        <div class="cat-eye"></div>
+                    <div class="dog-legs">
+                        <div class="dog-leg dog-leg-front-left"></div>
+                        <div class="dog-leg dog-leg-front-right"></div>
+                        <div class="dog-leg dog-leg-back-left"></div>
+                        <div class="dog-leg dog-leg-back-right"></div>
                     </div>
-                    <div class="cat-nose-container">
-                        <div class="cat-nose"></div>
-                        <div class="cat-mouth"></div>
-                    </div>
-                    <div class="cat-blush"></div>
-                    <div class="cat-paw"></div>
+                    <div class="dog-leg-waving"></div>
+                    <div class="dog-tail"></div>
                 </div>
             </div>
         </div>
@@ -783,136 +924,139 @@
             <div class="foto-item"><img src="imagenes/nosotros4_a.jpg" alt="Estrategia 1"></div>
             <div class="foto-item"><img src="imagenes/nosotros4_b.jpg" alt="Estrategia 2"></div>
         </div>
+
+        <p>Era un todo o nada. Así que empecé a planear la mejor forma de acercarme nuevamente. Estaba a punto de tomar una decisión crucial.</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo4', 'pausaComercial', 6)">Continuar ⚠️</button>
+            <button class="boton-regresar" onclick="navegar('capitulo4', 'capitulo3', 4)">Anterior 👈</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="pausaComercial">
+        <div class="badge-secreto">Intermedio</div>
+        <h2>⚠️ Pausa comercial ⚠️</h2>
+        <p>Ya conoces el 15% de los esfuerzos estratégicos. Hubo nervios, tácticas and más trabajo del que cualquiera imaginaría. 😅</p>
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('pausaComercial', 'capitulo6', 7)">Ver el Primer Intento 🍪</button>
+            <button class="boton-regresar" onclick="navegar('pausaComercial', 'capitulo4', 5)">Atrás 👈</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="capitulo6">
+        <div class="badge-secreto">Capítulo 6</div>
+        <div class="img-wrapper"><img src="imagenes/snoopy5.png" alt="Snoopy"></div>
+        <h2>🍪 Los Nervios del Primer Intento</h2>
+        <p>Llegó el día de la salida. Los nervios me traicionaron tanto que casi no hablaba ni la miraba. ¡Pero sacamos adelante los alfajores gigantes! Que parecían panes, pero sabían deliciosos. 😆</p>
+        
+        <div class="galeria-trio-polaroid">
+            <div class="foto-item principal"><img src="imagenes/alfajores_lista.jpg" alt="Cita Alfajores"></div>
+            <div class="foto-item secundaria"><img src="imagenes/alfajores_proceso.jpg" alt="Haciendo alfajores"></div>
+            <div class="foto-item secundaria"><img src="imagenes/alfajores_resultado.jpg" alt="Resultado pan-alfajor"></div>
+        </div>
+
+        <div class="btn-group">
+            <button class="boton" onclick="navegar('capitulo6', 'parte2', 8)">Siguiente capítulo ❤️</button>
+            <button class="boton-regresar" onclick="navegar('capitulo6', 'pausaComercial', 6)">Atrás 👈</button>
+        </div>
+    </div>
+
+    <div class="capitulo" id="parte2">
+        <div class="badge-secreto">Parte II</div>
+        <div class="img-wrapper"><img src="imagenes/snoopy6.png" alt="Snoopy"></div>
+        <h2>❤️ Cada Vez Más Cerca</h2>
+        <p>Llegaron más citas, charlas interminables y miradas con confianza. Sabía que conquistarla no sería fácil, pero ya había decidido dar lo mejor de mí.</p>
+        
+        <div class="galeria-asimetrica">
+            <div class="foto-item foto-alta"><img src="imagenes/nosotros_final_1.jpg" alt="Gran Recuerdo Final"></div>
+            <div class="foto-item foto-pequena"><img src="imagenes/nosotros_final_2.jpg" alt="Mini Recuerdo 1"></div>
+            <div class="foto-item foto-pequena"><img src="imagenes/nosotros_final_3.jpg" alt="Mini Recuerdo 2"></div>
+        </div>
+
+        <div class="btn-group">
+            <button class="boton-regresar" onclick="navegar('parte2', 'capitulo6', 7)">Anterior 👈</button>
+        </div>
     </div>
 
     <script>
-        // --- CONFIGURACIÓN DE CONTADOR DE VISITAS CON FIREBASE ---
-        const firebaseConfig = {
-            apiKey: "AIzaSyAs-REAL-KEY-AQUI",
-            authDomain: "contadorchismosos.firebaseapp.com",
-            databaseURL: "https://contadorchismosos-default-rtdb.firebaseio.com",
-            projectId: "contadorchismosos",
-            storageBucket: "contadorchismosos.appspot.com",
-            messagingSenderId: "1234567890",
-            appId: "1:1234567890:web:abcdef123456"
-        };
-
-        let visitasRef;
-        try {
-            if (typeof firebase !== 'undefined') {
-                firebase.initializeApp(firebaseConfig);
-                const database = firebase.database();
-                visitasRef = database.ref('contador_visitas');
-                
-                visitasRef.transaction(currentValue => {
-                    return (currentValue || 0) + 1;
-                }, (error, committed, snapshot) => {
-                    if (committed) {
-                        document.getElementById('visitas').innerText = snapshot.val();
-                    }
-                });
-            } else {
-                document.getElementById('visitas').innerText = "1,424"; 
+        document.addEventListener("DOMContentLoaded", () => {
+            const visitasElement = document.getElementById("visitas");
+            if(visitasElement) {
+                let numeroAleatorio = Math.floor(Math.random() * (145 - 84 + 1)) + 84;
+                visitasElement.textContent = numeroAleatorio;
             }
-        } catch(e) {
-            document.getElementById('visitas').innerText = "1,424";
-        }
-
-        // --- MANEJO DE MÚSICA DE FONDO INTERACTIVA ---
-        const audio = document.getElementById('audioLocal');
-        const musicIndicator = document.getElementById('musicIndicator');
-        let musicStarted = false;
-
-        function tryPlayMusic() {
-            if(!musicStarted) {
-                audio.play().then(() => {
-                    musicStarted = true;
-                    musicIndicator.classList.add('music-playing');
-                }).catch(e => console.log("Interacción requerida para audio"));
-            }
-        }
-
-        musicIndicator.addEventListener('click', () => {
-            if(audio.paused) {
-                audio.play();
-                musicIndicator.classList.add('music-playing');
-                musicStarted = true;
-            } else {
-                audio.pause();
-                musicIndicator.classList.remove('music-playing');
-            }
+            setInterval(crearCorazon, 800);
         });
 
-        // --- SISTEMA DE NAVEGACIÓN ENTRE SECCIONES ---
-        function navegar(idActual, idSiguiente, paso) {
-            tryPlayMusic();
-            
-            const actual = document.getElementById(idActual);
-            const siguiente = document.getElementById(idSiguiente);
+        const audio = document.getElementById("audioLocal");
+        const musicIndicator = document.getElementById("musicIndicator");
+        let musicaIniciada = false;
 
-            if(actual && siguiente) {
-                // Animación de salida avanzada
-                actual.style.opacity = '0';
-                actual.style.transform = 'translateY(-30px) scale(0.97)';
+        if (musicIndicator && audio) {
+            musicIndicator.addEventListener("click", () => {
+                if (audio.paused) {
+                    audio.play().catch(e => console.log(e));
+                    musicIndicator.classList.add("music-playing");
+                } else {
+                    audio.pause();
+                    musicIndicator.classList.remove("music-playing");
+                }
+            });
+        }
+
+        function navegar(idPantallaActual, idSiguientePantalla, pasoActual) {
+            if (!musicaIniciada && audio) {
+                audio.play().then(() => { musicIndicator.classList.add("music-playing"); }).catch(e => {});
+                musicaIniciada = true;
+            }
+
+            const actual = document.getElementById(idPantallaActual);
+            const siguiente = document.getElementById(idSiguientePantalla);
+
+            if (actual && siguiente) {
+                actual.style.opacity = "0";
+                actual.style.transform = "translateY(-20px) scale(0.95)";
                 
                 setTimeout(() => {
-                    actual.classList.remove('card-active');
-                    siguiente.classList.add('card-active');
-                    
-                    // Forzar reflow para animación limpia de entrada
-                    void siguiente.offsetWidth;
-                    
-                    // Actualizar barra de progreso (5 pasos en total)
-                    const porcentaje = (paso / 5) * 100;
-                    document.getElementById('progressBar').style.width = porcentaje + '%';
-                    
+                    actual.classList.remove("card-active");
+                    siguiente.classList.add("card-active");
+                    setTimeout(() => {
+                        siguiente.style.opacity = "1";
+                        siguiente.style.transform = "translateY(0) scale(1)";
+                    }, 50);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    
-                    // Disparar confeti premium en pantallas importantes o finales
-                    if(paso === 2 || paso === 5) {
-                        lanzarConfettiAvanzado();
-                    }
-                }, 500);
+                }, 400);
+            }
+
+            const progresoTotal = (pasoActual / 8) * 100;
+            const progressBar = document.getElementById("progressBar");
+            if(progressBar) { progressBar.style.width = progresoTotal + "%"; }
+
+            if (idSiguientePantalla === 'parte2') {
+                for (let i = 0; i < 50; i++) { setTimeout(crearConfeti, i * 60); }
             }
         }
 
-        // --- GENERADOR DE CORAZONES FLOTANTES DE FONDO ---
-        function crearCorazonFondo() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-particle');
-            
-            // Variantes de color premium (pálidos y elegantes)
-            const colores = ['#800020', '#bd9399', '#d9a7b0', '#e6ccd0'];
-            const colorRandom = colores[Math.floor(Math.random() * colores.length)];
-            
-            heart.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='${colorRandom}' opacity='0.35'/></svg>`;
-            
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = (Math.random() * 4 + 5) + 's'; 
-            
-            const scale = Math.random() * 0.6 + 0.4;
-            heart.style.transform = `scale(${scale})`;
-            
-            document.body.appendChild(heart);
-            
-            setTimeout(() => { heart.remove(); }, 8000);
+        function crearCorazon() {
+            const corazon = document.createElement("div");
+            corazon.className = "heart-particle";
+            corazon.innerText = ["❤️", "💖", "💕", "🌸"][Math.floor(Math.random() * 4)];
+            corazon.style.left = Math.random() * 100 + "vw";
+            corazon.style.fontSize = Math.random() * (24 - 12) + 12 + "px";
+            corazon.style.animationDuration = Math.random() * (8 - 5) + 5 + "s";
+            document.body.appendChild(corazon);
+            setTimeout(() => { corazon.remove(); }, 7000);
         }
-        setInterval(crearCorazonFondo, 1200);
 
-        // --- EFECTO DE CONFETI PREMIUM ---
-        function lanzarConfettiAvanzado() {
-            const coloresConfetti = ['#800020', '#bd9399', '#d9a7b0', '#3a2e31', '#ffffff'];
-            for (let i = 0; i < 40; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = coloresConfetti[Math.floor(Math.random() * coloresConfetti.length)];
-                confetti.style.animationDelay = Math.random() * 0.4 + 's';
-                confetti.style.transform = `scale(${Math.random() * 0.7 + 0.5})`;
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => { confetti.remove(); }, 3500);
-            }
+        function crearConfeti() {
+            const confeti = document.createElement("div");
+            confeti.className = "confetti";
+            const colores = ["#800020", "#bd9399", "#d9a7b0", "#5c061a", "#ffffff"];
+            confeti.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+            confeti.style.left = Math.random() * 100 + "vw";
+            confeti.style.width = Math.random() * (14 - 6) + 6 + "px";
+            confeti.style.height = confeti.style.width;
+            document.body.appendChild(confeti);
+            setTimeout(() => { confeti.remove(); }, 4000);
         }
     </script>
 </body>
