@@ -147,73 +147,6 @@
             -webkit-backdrop-filter: blur(14px);
         }
 
-        .timeline-panel {
-            position: fixed;
-            left: 22px;
-            top: 92px;
-            z-index: 900;
-            width: 190px;
-            padding: 16px 14px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.86);
-            border: 1px solid rgba(255, 255, 255, 0.75);
-            box-shadow: var(--shadow-premium);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        }
-
-        .timeline-title {
-            margin-bottom: 12px;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--primary);
-        }
-
-        .timeline-item {
-            width: 100%;
-            min-height: 36px;
-            margin: 0 0 8px 0;
-            padding: 8px 8px 8px 24px;
-            border: 0;
-            border-radius: 10px;
-            background: transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            text-align: left;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.76rem;
-            line-height: 1.25;
-            position: relative;
-            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
-        }
-
-        .timeline-item::before {
-            content: "";
-            position: absolute;
-            left: 7px;
-            top: 50%;
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: var(--accent);
-            transform: translateY(-50%);
-            box-shadow: 0 0 0 4px rgba(217, 167, 176, 0.16);
-        }
-
-        .timeline-item:hover,
-        .timeline-item.timeline-active {
-            background: rgba(128, 0, 32, 0.08);
-            color: var(--primary-bg);
-            transform: translateX(2px);
-        }
-
-        .timeline-item.timeline-active::before {
-            background: var(--primary);
-        }
-
         /* --- CORAZONES DE FONDO --- */
         .heart-particle {
             position: fixed;
@@ -1288,33 +1221,12 @@
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
             .boton, .boton-regresar { width: 100%; text-align: center; }
             .progress-label { top: 10px; max-width: 78vw; overflow: hidden; text-overflow: ellipsis; }
-            .timeline-panel {
-                left: 0;
-                right: 0;
-                top: auto;
-                bottom: 0;
-                width: 100%;
-                padding: 10px 12px;
-                border-radius: 16px 16px 0 0;
-                display: flex;
-                gap: 8px;
-                overflow-x: auto;
-            }
-            .timeline-title { display: none; }
-            .timeline-item {
-                min-width: 128px;
-                margin-bottom: 0;
-                padding: 8px 10px 8px 22px;
-                flex: 0 0 auto;
-                background: rgba(255, 255, 255, 0.56);
-            }
             /* Ajustes Mobile */
             .video-item-portada { height: 240px; }
             .galeria-doble .foto-item { height: 150px; }
             .galeria-trio-polaroid .principal { height: 180px; }
             .galeria-trio-polaroid .secundaria { height: 100px; }
             .galeria-asimetrica { height: 260px; }
-            body { padding-bottom: 96px; }
         }
     </style>
 </head>
@@ -1331,18 +1243,6 @@
 
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
     <div class="progress-label" id="progressLabel">Inicio de la historia</div>
-
-    <nav class="timeline-panel" aria-label="Linea de tiempo de la historia">
-        <div class="timeline-title">Linea de tiempo</div>
-        <button class="timeline-item timeline-active" type="button" data-target="inicio" data-step="0" onclick="irATimeline('inicio', 0)">Inicio</button>
-        <button class="timeline-item" type="button" data-target="capitulo1" data-step="2" onclick="irATimeline('capitulo1', 2)">Antes de comenzar</button>
-        <button class="timeline-item" type="button" data-target="capitulo2" data-step="3" onclick="irATimeline('capitulo2', 3)">Reencuentro</button>
-        <button class="timeline-item" type="button" data-target="capitulo4" data-step="5" onclick="irATimeline('capitulo4', 5)">Ultima oportunidad</button>
-        <button class="timeline-item" type="button" data-target="capitulo6" data-step="7" onclick="irATimeline('capitulo6', 7)">Primer intento</button>
-        <button class="timeline-item" type="button" data-target="parte2" data-step="8" onclick="irATimeline('parte2', 8)">Cada vez mas cerca</button>
-        <button class="timeline-item" type="button" data-target="capitulo15" data-step="17" onclick="irATimeline('capitulo15', 17)">La sorpresa</button>
-        <button class="timeline-item" type="button" data-target="capitulo21" data-step="23" onclick="irATimeline('capitulo21', 23)">Continuara</button>
-    </nav>
 
     <audio id="audioLocal" loop>
         <source src="musica/pablo_alboran_donde_esta_el_amor.mp3" type="audio/mpeg">
@@ -1980,7 +1880,6 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
         let piezasRompecabezas = [];
         let piezaSeleccionada = null;
         let rompecabezasResuelto = false;
-        let pantallaActualGlobal = "inicio";
         const nombresPantallas = {
             inicio: "Inicio de la historia",
             segundaPantalla: "Confirmacion",
@@ -2049,7 +1948,6 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
                     actual.classList.remove("card-active");
                     actual.classList.remove("page-exit");
                     siguiente.classList.add("card-active");
-                    pantallaActualGlobal = idSiguientePantalla;
                     actualizarProgresoVisual(idSiguientePantalla, pasoActual);
                     setTimeout(() => {
                         siguiente.style.opacity = "1";
@@ -2075,21 +1973,11 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
 
         function actualizarProgresoVisual(idPantalla, pasoActual) {
             const progressLabel = document.getElementById("progressLabel");
-            const timelineItems = document.querySelectorAll(".timeline-item");
             const porcentaje = Math.max(0, Math.min(100, Math.round((pasoActual / 24) * 100)));
 
             if (progressLabel) {
                 progressLabel.textContent = `${nombresPantallas[idPantalla] || "Avanzando en la historia"} · ${porcentaje}%`;
             }
-
-            timelineItems.forEach((item) => {
-                item.classList.toggle("timeline-active", item.dataset.target === idPantalla);
-            });
-        }
-
-        function irATimeline(idDestino, pasoDestino) {
-            if (pantallaActualGlobal === idDestino) return;
-            navegar(pantallaActualGlobal, idDestino, pasoDestino);
         }
 
         function toggleSecreto(idSecreto) {
