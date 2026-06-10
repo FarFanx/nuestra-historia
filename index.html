@@ -53,6 +53,38 @@
             position: relative;
         }
 
+        /* --- LOADER DE CARGA --- */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #loader img {
+            width: 120px;
+            height: 120px;
+            animation: rotateLoader 2.5s linear infinite;
+        }
+        @keyframes rotateLoader {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #loader p {
+            margin-top: 20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
         /* --- BARRA DE PROGRESO PREMIUM --- */
         .progress-container {
             position: fixed;
@@ -776,6 +808,12 @@
 </head>
 <body>
 
+    <!-- LOADER CON LOGO -->
+    <div id="loader">
+        <img src="logo.png" alt="Cargando...">
+        <p>Cargando...</p>
+    </div>
+
     <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
 
     <audio id="audioLocal" loop>
@@ -1024,6 +1062,18 @@ Y aunque el camino todavía tenía varios obstáculos por delante, poco a poco e
             setInterval(crearCorazon, 800);
             actualizarHoraFecha();
             setInterval(actualizarHoraFecha, 1000);
+        });
+
+        window.addEventListener("load", () => {
+            // Ocultar el loader cuando todo la página esté cargada
+            const loader = document.getElementById("loader");
+            if (loader) {
+                loader.style.opacity = "0";
+                loader.style.transition = "opacity 0.5s ease";
+                setTimeout(() => {
+                    loader.style.display = "none";
+                }, 500);
+            }
         });
 
         const audio = document.getElementById("audioLocal");
