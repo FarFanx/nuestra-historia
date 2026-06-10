@@ -663,7 +663,52 @@
             font-style: italic;
         }
 
-        @media (max-width: 480px) {
+        /* --- ANIMACIÓN DE TRANSICIÓN (ARRUGAMIENTO DE PAPEL) --- */
+        .page-exit {
+            animation: paperCrumple 0.6s ease-in-out forwards;
+        }
+
+        @keyframes paperCrumple {
+            0% {
+                opacity: 1;
+                transform: scale(1) rotateY(0deg) rotateZ(0deg);
+                filter: brightness(1);
+            }
+            30% {
+                opacity: 0.8;
+                transform: scale(1.02) rotateY(10deg) rotateZ(2deg);
+                filter: brightness(0.95);
+            }
+            60% {
+                opacity: 0.4;
+                transform: scale(0.95) rotateY(-15deg) rotateZ(-3deg);
+                filter: brightness(0.8) blur(2px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8) rotateY(20deg) rotateZ(5deg);
+                filter: brightness(0.5) blur(4px);
+            }
+        }
+
+        /* Partículas de papel */
+        .paper-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: fallPaper 0.8s ease-in forwards;
+        }
+
+        @keyframes fallPaper {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100px) translateX(var(--tx)) rotate(360deg);
+            }
+        }
             h1, h2 { font-size: 3rem; }
             .container, .capitulo { padding: 45px 25px; }
             .btn-group { flex-direction: column; width: 100%; gap: 12px; }
@@ -893,18 +938,20 @@
             const siguiente = document.getElementById(idSiguientePantalla);
 
             if (actual && siguiente) {
-                actual.style.opacity = "0";
-                actual.style.transform = "translateY(-20px) scale(0.95)";
+                // Agregar efecto de arrugamiento y crear partículas
+                actual.classList.add("page-exit");
+                crearParticulasPapel();
                 
                 setTimeout(() => {
                     actual.classList.remove("card-active");
+                    actual.classList.remove("page-exit");
                     siguiente.classList.add("card-active");
                     setTimeout(() => {
                         siguiente.style.opacity = "1";
                         siguiente.style.transform = "translateY(0) scale(1)";
                     }, 50);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                }, 400);
+                }, 600);
             }
 
             const progresoTotal = (pasoActual / 8) * 100;
@@ -988,6 +1035,46 @@
             
             if (timeElement) timeElement.textContent = horaFormato;
             if (dateElement) dateElement.textContent = fechaFormato;
+        }
+
+        function crearParticulasPapel() {
+            // Crear 8-12 partículas de papel
+            const numParticulas = Math.floor(Math.random() * (12 - 8 + 1)) + 8;
+            
+            for (let i = 0; i < numParticulas; i++) {
+                const particula = document.createElement("div");
+                particula.className = "paper-particle";
+                
+                // Colores de papel
+                const colores = ["#FFB6C1", "#FFC0CB", "#FFE4E1", "#F0E6FF", "#E6F0FF"];
+                particula.style.background = colores[Math.floor(Math.random() * colores.length)];
+                
+                // Tamaño aleatorio
+                const size = Math.random() * (20 - 8) + 8;
+                particula.style.width = size + "px";
+                particula.style.height = size + "px";
+                
+                // Posición inicial aleatoria
+                particula.style.left = Math.random() * 100 + "vw";
+                particula.style.top = Math.random() * 30 - 30 + "px";
+                
+                // Desplazamiento lateral aleatorio
+                const tx = (Math.random() - 0.5) * 200;
+                particula.style.setProperty("--tx", tx + "px");
+                
+                // Borde y sombra para efecto de papel
+                particula.style.border = "1px solid rgba(0, 0, 0, 0.1)";
+                particula.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.1)";
+                particula.style.borderRadius = Math.random() > 0.5 ? "2px" : "50%";
+                
+                // Animación con delay
+                particula.style.animationDelay = (i * 0.05) + "s";
+                
+                document.body.appendChild(particula);
+                
+                // Remover después de la animación
+                setTimeout(() => { particula.remove(); }, 800 + (i * 50));
+            }
         }
     </script>
 </body>
